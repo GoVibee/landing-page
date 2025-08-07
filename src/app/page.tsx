@@ -7,6 +7,9 @@ import image from '../../assets/1.jpg';
 import image1 from '../../assets/2.jpg';
 import image2 from '../../assets/3.jpg';
 import image3 from '../../assets/4.jpg';
+import mobile1 from '../../assets/mobile1.png';
+import mobile2 from '../../assets/mobile2.png';
+import mobile3 from '../../assets/mobile3.png';
 import Image from 'next/image';
 
 // Animation variants for Framer Motion
@@ -201,9 +204,9 @@ const HowItWorksSection = () => (
                  <div className="bg-purple-100 text-[#3B0A45] w-12 h-12 rounded-full flex items-center justify-center">
                     <step.icon size={24} />
                  </div>
-                 <h3 className="text-2xl font-bold text-gray-800">{step.title}</h3>
+                 <h3 className="text-2xl font-plu font-bold text-gray-800">{step.title}</h3>
               </div>
-              <p className="text-gray-600">{step.description}</p>
+              <p className="text-gray-600 font-plus">{step.description}</p>
             </div>
           </motion.div>
         ))}
@@ -220,7 +223,7 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => (
-  <section className="py-20 bg-gray-50">
+  <section className="py-20 bg-purple-100">
     <div className="container mx-auto px-6">
       <motion.div
         initial="hidden"
@@ -229,25 +232,48 @@ const TestimonialsSection = () => (
         variants={staggerContainer}
         className="text-center"
       >
-        <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
-          User Testimonials
-        </motion.h2>
-      </motion.div>
-      <motion.div
+        <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        className="text-center"
       >
-        {testimonials.map((testimonial, index) => (
-          <motion.div key={index} variants={fadeIn} className="bg-white p-8 rounded-2xl shadow-lg text-center">
-            <img src={testimonial.image} alt={testimonial.name} className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-purple-200" />
-            <p className="text-gray-600 italic mb-4">"{testimonial.quote}"</p>
-            <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-          </motion.div>
-        ))}
+        <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 font-plus">
+          User Friendly Mobile App
+        </motion.h2>
       </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:grid-cols-3 w-[80%] mx-auto">
+        <motion.div variants={fadeIn} className="">
+              <Image 
+                src={mobile1}
+                className="w-[450px] h-[450px] object-contain rounded-3xl"
+                alt='feature'
+                priority
+              />  
+              </motion.div>
+               <motion.div variants={fadeIn} className="">
+              <Image 
+                src={mobile2}
+                className="w-[450px] h-[450px] object-contain rounded-3xl"
+                alt='feature'
+                priority
+              />
+              </motion.div>
+               <motion.div variants={fadeIn} className="">
+              <Image 
+                src={mobile3}
+                className="w-[450px] h-[450px] object-contain rounded-3xl"
+                alt='feature'
+                priority
+              />
+                  
+              </motion.div>
+       
+      </div>
+        
+      </motion.div>
+     
     </div>
   </section>
 );
@@ -269,19 +295,27 @@ const DownloadSection = () => (
           Get started with GoVibe today and unlock the best nightlife experiences in your city.
         </motion.p>
         <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center items-center gap-6">
-          <motion.button whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-lg font-semibold cursor-pointer ">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
+          <motion.button className="flex items-center gap-3 bg-black text-white px-6 py-1 rounded-lg font-semibold cursor-pointer ">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
             <div>
               <p className="text-xs font-plus">Download on the</p>
               <p className="text-lg font-bold font-plus">App Store</p>
-            </div>
+            </div> */}
+             <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/App%20Store%20%E8%8B%B1%E6%96%87%20%E9%BB%91%E8%89%B2-mzVnx5Nup7Y6MoevDioYCglyFN83fG.png"
+              alt="Download on the App Store"
+              style={{
+                marginBottom: 15
+              }}
+            
+              />
           </motion.button>
-          <motion.button whileHover={{ scale: 1.05 }} className="flex cursor-pointer items-center gap-3 bg-black text-white px-6 py-3 rounded-lg font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M6 11.45l2.22-2.34A2.22 2.22 0 0 1 9.78 8.5h4.44a2.22 2.22 0 0 1 1.56.61L18 11.45V21H6Z"/><path d="M12 3v5.5"/><path d="m10 3-2 2.5"/><path d="m14 3 2 2.5"/></svg>
-            <div>
-              <p className="text-xs font-plus">GET IT ON</p>
-              <p className="text-lg font-bold font-plus">Google Play</p>
-            </div>
+          <motion.button className="flex cursor-pointer items-center gap-3 bg-black text-white px-6 py-3 rounded-lg font-semibold">
+             <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Google%20Play%20%E8%8B%B1%E6%96%87%20%E9%BB%91%E8%89%B2-5ip16nv7GXomrgrIDICT4vu5DL5slS.png"
+              alt="Get it on Google Play"
+              
+              />
           </motion.button>
         </motion.div>
       </motion.div>
@@ -314,7 +348,7 @@ export default function HomePage() {
         <HeroSection />
         <FeaturesSection />
         <HowItWorksSection />
-        {/* <TestimonialsSection /> */}
+        <TestimonialsSection />
         <DownloadSection />
       </main>
       <Footer />
