@@ -63,7 +63,7 @@ const Header = () => (
         whileTap={{ scale: 0.95 }}
         className="hidden md:block bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus"
       >
-        Download App
+         <a href='#download'> Download App</a>
       </motion.button>
       <button className="md:hidden text-gray-800">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,7 +95,7 @@ const HeroSection = () => (
             whileTap={{ scale: 0.95 }}
             className="bg-[#3B0A45] text-white  cursor-pointer px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-[#3B0A45] transition-transform font-plus"
           >
-            Download App
+            <a href='#download'> Download App</a>
           </motion.button>
           {/* <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
@@ -337,7 +337,6 @@ const DownloadSection = () => (
              <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Google%20Play%20%E8%8B%B1%E6%96%87%20%E9%BB%91%E8%89%B2-5ip16nv7GXomrgrIDICT4vu5DL5slS.png"
               alt="Get it on Google Play"
-              
               />
           </motion.button>
         </motion.div>
