@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React,{useState} from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Search, Calendar, Star, Compass, BookOpen, Smile, ArrowRight, Download } from 'lucide-react';
 
@@ -20,23 +20,37 @@ const staggerContainer = {
   },
 };
 
+// Mobile Menu Variants
+const menuVariants = {
+  hidden: { x: '100%' },
+  visible: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
+  exit: { x: '100%', transition: { duration: 0.3 } },
+};
+
+const backdropVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
 // Header Component
 const Header = () => (
+
   <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
       <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold text-gray-800">
-        <span className="text-purple-600">Go</span>Vibe
+        <span className="text-[#3B0A45]">Go</span>Vibe
       </motion.div>
       <nav className="hidden md:flex items-center space-x-8">
-        <a href="#" className="text-gray-600 hover:text-purple-600 transition-colors">Home</a>
-        <a href="#features" className="text-gray-600 hover:text-purple-600 transition-colors">Features</a>
-        <a href="#how-it-works" className="text-gray-600 hover:text-purple-600 transition-colors">How It Works</a>
-        <a href="#download" className="text-gray-600 hover:text-purple-600 transition-colors">Download App</a>
+        <a href="#" className="text-gray-600 hover:text-[#3B0A45] transition-colors">Home</a>
+        <a href="#features" className="text-gray-600 hover:text-[#3B0A45] transition-colors">Features</a>
+        <a href="#how-it-works" className="text-gray-600 hover:text-[#3B0A45] transition-colors">How It Works</a>
+        <a href="#download" className="text-gray-600 hover:text-[#3B0A45] transition-colors">Download App</a>
       </nav>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="hidden md:block bg-purple-600 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-purple-700 transition-colors"
+        className="hidden md:block bg-[#3B0A45] text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors"
       >
         Download App
       </motion.button>
@@ -68,7 +82,7 @@ const HeroSection = () => (
           <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-purple-700 transition-transform"
+            className="bg-[#3B0A45] text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-[#3B0A45] transition-transform"
           >
             Download App
           </motion.button>
@@ -119,7 +133,7 @@ const FeaturesSection = () => (
       >
         {features.map((feature, index) => (
           <motion.div key={index} variants={fadeIn} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="bg-purple-100 text-purple-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+            <div className="bg-purple-100 text-[#3B0A45] w-16 h-16 rounded-full flex items-center justify-center mb-6">
               <feature.icon size={32} />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
@@ -164,11 +178,11 @@ const HowItWorksSection = () => (
           <motion.div key={index} variants={fadeIn} className={`flex items-center w-full mb-8 md:mb-16 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
             <div className="hidden md:flex w-5/12" />
             <div className="hidden md:flex justify-center w-1/12">
-              <div className="w-8 h-8 bg-purple-600 rounded-full shadow-md flex items-center justify-center text-white font-bold">{index + 1}</div>
+              <div className="w-8 h-8 bg-[#3B0A45] rounded-full shadow-md flex items-center justify-center text-white font-bold">{index + 1}</div>
             </div>
             <div className="w-full md:w-5/12 bg-gray-50 rounded-2xl p-6 shadow">
               <div className="flex items-center gap-4 mb-3">
-                 <div className="bg-purple-100 text-purple-600 w-12 h-12 rounded-full flex items-center justify-center">
+                 <div className="bg-purple-100 text-[#3B0A45] w-12 h-12 rounded-full flex items-center justify-center">
                     <step.icon size={24} />
                  </div>
                  <h3 className="text-2xl font-bold text-gray-800">{step.title}</h3>
@@ -266,9 +280,9 @@ const Footer = () => (
       <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <p className="text-gray-500">&copy; 2025 GoVibe. All rights reserved.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" className="text-gray-500 hover:text-purple-600">About</a>
-          <a href="#" className="text-gray-500 hover:text-purple-600">Privacy</a>
-          <a href="#" className="text-gray-500 hover:text-purple-600">Terms</a>
+          <a href="#" className="text-gray-500 hover:text-[#3B0A45]">About</a>
+          <a href="#" className="text-gray-500 hover:text-[#3B0A45]">Privacy</a>
+          <a href="#" className="text-gray-500 hover:text-[#3B0A45]">Terms</a>
         </div>
       </div>
     </div>
