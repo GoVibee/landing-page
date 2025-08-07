@@ -10,6 +10,7 @@ import image3 from '../../assets/4.jpg';
 import mobile1 from '../../assets/mobile1.png';
 import mobile2 from '../../assets/mobile2.png';
 import mobile3 from '../../assets/mobile3.png';
+import expereince from '../../assets/experience.jpg';
 import Image from 'next/image';
 
 // Animation variants for Framer Motion
@@ -278,6 +279,28 @@ const TestimonialsSection = () => (
   </section>
 );
 
+// Experience Section Component
+const ExperienceSection = () => (
+  <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 text-white overflow-hidden mt-40">
+    <div className="absolute inset-0">
+      <Image src={expereince} alt="Nightlife" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-black/60"></div>
+    </div>
+    <div className="container mx-auto px-6 text-center relative">
+      <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+        <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl font-extrabold font-plus leading-tight mb-4">
+          Experience The Best of Your City's nightlife Tonight
+        </motion.h1>
+        {/* <motion.p variants={fadeIn} className="text-lg font-plus md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">
+          Discover the best restaurants, bars, clubs, and events in your city. Book a spot, skip the wait, and vibe your night away.
+        </motion.p> */}
+        <motion.div variants={fadeIn} className="flex  flex-col sm:flex-row justify-center items-center gap-4">
+        </motion.div>
+      </motion.div>
+    </div>
+  </section>
+);
+
 // Download App Section Component
 const DownloadSection = () => (
   <section id="download" className="py-20">
@@ -349,6 +372,7 @@ export default function HomePage() {
         <FeaturesSection />
         <HowItWorksSection />
         <TestimonialsSection />
+        <ExperienceSection />
         <DownloadSection />
       </main>
       <Footer />
