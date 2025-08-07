@@ -114,7 +114,7 @@ const HeroSection = () => (
 const features = [
   { icon: Compass, title: 'Restaurant Discovery', description: 'Explore top-rated restaurants with detailed reviews and menus.',image: image1 },
   { icon: MapPin, title: 'Club & Bar Finder', description: 'Find the hottest clubs and bars in your area with real-time availability.',image: image2 },
-  { icon: Calendar, title: 'Event Booking', description: 'Book tickets for exclusive events and parties directly through the app.',image: image3 },
+  { icon: Calendar, title: "Let's Party", description: 'Turn up the vibe and dive into unforgettable nights. From rooftop raves to underground beats, your next party starts here.”.',image: image3 },
   // { icon: Star, title: 'Live Recommendations', description: 'Get personalized recommendations based on your preferences and trending spots.',image: image },
 ];
 
@@ -132,7 +132,7 @@ const FeaturesSection = () => (
           Explore the Best of Your City
         </motion.h2>
         <motion.p variants={fadeIn} className="text-lg text-gray-600 max-w-2xl mx-auto mb-12 font-plus">
-          GoVibe helps you discover and book the best nightlife experiences.
+          GoVibe lets you discover and book the perfect places for dining, nightlife, and unforgettable moments—wherever your vibe takes you.
         </motion.p>
       </motion.div>
       <div className=''>
@@ -315,7 +315,7 @@ const DownloadSection = () => (
           Download The App
         </motion.h2>
         <motion.p variants={fadeIn} className="text-lg text-gray-600 max-w-2xl mx-auto mb-8 font-plus">
-          Get started with GoVibe today and unlock the best nightlife experiences in your city.
+          Get started with GoVibe today and unlock the best spots and book unforgettable experiences. in your city.
         </motion.p>
         <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center items-center gap-6">
           <motion.button className="flex items-center gap-3 bg-black text-white px-6 py-1 rounded-lg font-semibold cursor-pointer ">
