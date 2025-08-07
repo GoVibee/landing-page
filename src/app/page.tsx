@@ -289,7 +289,7 @@ const ExperienceSection = () => (
     <div className="container mx-auto px-6 text-center relative">
       <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
         <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl font-extrabold font-plus leading-tight mb-4">
-          Experience The Best of Your City's nightlife Tonight
+          Experience The Best of Your City's nightlife
         </motion.h1>
         {/* <motion.p variants={fadeIn} className="text-lg font-plus md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">
           Discover the best restaurants, bars, clubs, and events in your city. Book a spot, skip the wait, and vibe your night away.
