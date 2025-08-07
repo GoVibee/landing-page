@@ -3,6 +3,8 @@
 import React,{useState} from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Search, Calendar, Star, Compass, BookOpen, Smile, ArrowRight, Download } from 'lucide-react';
+import image from '../../assets/1.jpg';
+import Image from 'next/image';
 
 // Animation variants for Framer Motion
 const fadeIn = {
@@ -50,7 +52,7 @@ const Header = () => (
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="hidden md:block bg-[#3B0A45] text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors"
+        className="hidden md:block bg-[#3B0A45] text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus"
       >
         Download App
       </motion.button>
@@ -67,7 +69,7 @@ const Header = () => (
 const HeroSection = () => (
   <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 text-white overflow-hidden">
     <div className="absolute inset-0">
-      <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1920&q=80" alt="Nightlife" className="w-full h-full object-cover" />
+      <Image src={image} alt="Nightlife" className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/60"></div>
     </div>
     <div className="container mx-auto px-6 text-center relative">
