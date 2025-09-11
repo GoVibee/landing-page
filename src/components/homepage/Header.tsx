@@ -1,55 +1,97 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 
-// Animation variants for Framer Motion
-const fadeIn = {
-  hidden: { opacity: 0, y: 80 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-};
+const handleLinkClick = (targetId: string) => {
+  const targetElement = document.getElementById(targetId)
+  if (targetElement) {
+    const headerOffset = 80 // adjust for your header height
+    const elementPosition = targetElement.getBoundingClientRect().top
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    })
+  }
 }
 
-// Header Component
-const Header = () => (
+const Header = () => {
+  const router = useRouter();
 
-  <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
+ return (
+   <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href='#'>
-        <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold text-gray-800">
-          <span className="text-[#3B0A45]">Go</span><span className='font-plus'>Vibe</span>
+      <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="text-2xl font-bold text-gray-800"
+        >
+          <span className="text-[#3B0A45]">Go</span>
+          <span className="font-plus">Vibe</span>
         </motion.div>
-      </a>
+      </button>
+
+      {/* Navigation */}
       <nav className="hidden md:flex items-center space-x-8">
-        <a href="#" className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus">Home</a>
-        <a href="#features" className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus">Features</a>
-        <a href="#how-it-works" className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus">How It Works</a>
-        <a href="#download" className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus">Download App</a>
-        <a href="#download" className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus">Become a Host</a>
+        <button
+          onClick={() => handleLinkClick('features')}
+          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+        >
+          Features
+        </button>
+        <button
+          onClick={() => handleLinkClick('how-it-works')}
+          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+        >
+          How It Works
+        </button>
+        <button
+          onClick={() => handleLinkClick('download')}
+          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+        >
+          Download App
+        </button>
+        <button
+          onClick={() => router.push('/pages/host')}
+          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+        >
+          Become a Host
+        </button>
       </nav>
+
+      {/* CTA Button */}
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        onClick={() => handleLinkClick('download')}
         className="hidden md:block bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus"
       >
-         <a href='#download'> Download App</a>
+        Download App
       </motion.button>
+
+      {/* Mobile menu button */}
       <button className="md:hidden text-gray-800">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
         </svg>
       </button>
     </div>
   </header>
-);
+ );
+}
 
-export default Header;
+export default Header
