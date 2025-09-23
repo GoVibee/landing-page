@@ -2,8 +2,8 @@
 
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 // A simple SVG icon component for the logo
 const LogoIcon = () => (
@@ -19,15 +19,16 @@ const LogoIcon = () => (
 
 
 const page: NextPage = () => {
-    const router = useRouter();
-
+  const router = useRouter();
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        router.push('/pages/dashboard')
     }
+
   return (
     <>
       <Head>
-        <title>Sign up - Host Dashboard</title>
+        <title>Sign In - Host Dashboard</title>
       </Head>
 
       <main className="flex min-h-screen w-full flex-col bg-slate-50 font-plus">
@@ -44,7 +45,7 @@ const page: NextPage = () => {
           <div className="w-full max-w-md space-y-8">
             <div>
               <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
-                Create an account
+                Sign in to your account
               </h2>
             </div>
             
@@ -59,7 +60,6 @@ const page: NextPage = () => {
                     id="email"
                     name="email"
                     type="email"
-                    autoComplete="email"
                     required
                     placeholder="Enter your business email"
                     className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
@@ -77,10 +77,9 @@ const page: NextPage = () => {
                     id="password"
                     name="password"
                     type="password"
-                    autoComplete="current-password"
                     required
                     placeholder="Enter your password"
-                    className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+                    className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400  focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                   />
                 </div>
               </div>
@@ -98,6 +97,13 @@ const page: NextPage = () => {
                     Remember me
                   </label> */}
                 </div>
+                <div className='w-20'/>
+
+                <div className="text-sm">
+                  <a href="#" className="font-medium text-[#3B0A45] hover:text-[#3B0A45] hover:underline">
+                    Forgot password?
+                  </a>
+                </div>
               </div>
 
               {/* Sign In Button */}
@@ -106,16 +112,16 @@ const page: NextPage = () => {
                   type="submit"
                   className="w-full justify-center rounded-md border border-transparent bg-[#3B0A45] py-3 px-4 text-sm font-semibold text-white shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:ring-offset-2 cursor-pointer"
                 >
-                  Sign up
+                  Sign in
                 </button>
               </div>
             </form>
             
             {/* Sign Up Link */}
             <p className="text-center text-sm text-gray-600">
-              Already have an account?{' '}
-              <Link href="/pages/host" className="font-medium text-[#3B0A45] hover:text-[#3B0A45] hover:underline">
-                login
+              Don&apos;t have an account?{' '}
+              <Link href="/pages/signup" className="font-medium text-[#3B0A45] hover:text-[#3B0A45] hover:underline">
+                Sign up
               </Link>
             </p>
           </div>
