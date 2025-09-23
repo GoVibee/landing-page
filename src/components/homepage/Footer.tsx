@@ -23,7 +23,7 @@ const staggerContainer = {
 
 // Footer Component
 const Footer = () => (
-  <footer className="bg-gray-100 border-t">
+  <footer className="bg-gray-100">
     <div className="container mx-auto px-6 py-8">
       <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <p className="text-gray-500">&copy; 2025 GoVibe. All rights reserved.</p>
