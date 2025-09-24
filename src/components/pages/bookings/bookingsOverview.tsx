@@ -1,6 +1,6 @@
 export default function BookingsOverviewChart() {
   return (
-    <div className="bg-white p-6 rounded-xl border-[#E3DBE5] border-[1px] font-plus">
+    <div className="bg-white p-6 rounded-xl font-plus">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-800">Sales Overview</h3>

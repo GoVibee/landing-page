@@ -26,10 +26,10 @@ export default function HomePage() {
 
     const sidebarNavItems = [
       { icon: LayoutDashboard, text: 'Dashboard', active: true,route: '/pages/dashboard'  },
-      { icon: Calendar, text: 'Orders',route: '/pages/bookings' },
-      { icon: Logs, text: 'Menu',route: '/pages/restaurants'},
+      { icon: Calendar, text: 'Orders',route: '/pages/orders' },
+      { icon: Logs, text: 'Menu',route: '/pages/menus'},
       { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
-      { icon: Users, text: 'Staff',route: '/pages/users' },
+      { icon: Users, text: 'Staff',route: '/pages/staff' },
       { icon: Settings, text: 'Settings',route: '/pages/settings'},
     ];
   return (
@@ -46,10 +46,10 @@ export default function HomePage() {
               <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
             ))}
           </nav>
-          <div  className="p-4 border-t">
+          {/* <div  className="p-4 border-t">
             <CornerDownRight size={24} color="#000"/> 
             <button> Logout </button>
-          </div>
+          </div> */}
         </aside>
         
         {/* Backdrop for mobile sidebar */}
