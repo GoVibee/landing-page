@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState,useEffect } from 'react';
-import { Home, Calendar, LayoutDashboard,UserRound, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Bell, Menu, X, User, Users2, BellRing, CreditCard, Shield, ChevronRight } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard,UserRound, Settings, BarChart2, Users,Logs, Bell, Menu, X, User} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Oval } from 'react-loader-spinner';
@@ -76,7 +76,8 @@ export default function SettingsPage() {
     const sidebarNavItems = [
            { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
            { icon: Calendar, text: 'Orders',route: '/pages/orders' },
-           { icon: Home, text: 'Menu',route: '/pages/menu'},
+           { icon: Logs, text: 'Menu',route: '/pages/menu'},
+           { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
            { icon: Users, text: 'Staff',route: '/pages/staff' },
            { icon: Settings, text: 'Settings',route: '/pages/settings',active: true},
          ];

@@ -27,7 +27,7 @@ export default function HomePage() {
     const sidebarNavItems = [
       { icon: LayoutDashboard, text: 'Dashboard', active: true,route: '/pages/dashboard'  },
       { icon: Calendar, text: 'Orders',route: '/pages/orders' },
-      { icon: Logs, text: 'Menu',route: '/pages/menus'},
+      { icon: Logs, text: 'Menu',route: '/pages/menu'},
       { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
       { icon: Users, text: 'Staff',route: '/pages/staff' },
       { icon: Settings, text: 'Settings',route: '/pages/settings'},
