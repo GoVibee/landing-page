@@ -224,11 +224,11 @@ export default function HomePage() {
                 {/* Desktop Table Header */}
                 <thead className="border-b border-gray-200 hidden md:table-header-group">
                   <tr>
-                    <th className="px-6 py-3 text-sm font-semibold text-gray-600">Order Id</th>
-                    <th className="px-6 py-3 text-sm font-semibold text-gray-600">Customer</th>
-                    <th className="px-6 py-3 text-sm font-semibold text-gray-600">Order Time</th>
-                    <th className="px-6 py-3 text-sm font-semibold text-gray-600">Status</th>
-                    <th className="px-6 py-3 text-sm font-semibold text-gray-600">Actions</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold">Order Id</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold">Customer</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold">Order Time</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold">Status</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 font-plus">

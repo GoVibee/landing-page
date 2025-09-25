@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import Badge from '../../../components/ui/Badge';
-import FilterDropdown from '../../../components/ui/FilterDropdown';
+import Badge from '../../../../components/ui/Badge';
+import FilterDropdown from '../../../../components/ui/FilterDropdown';
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound } from 'lucide-react';
+import { Home, Calendar,UploadCloud, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
@@ -33,39 +33,151 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6 border-b">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Booking Details</h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <h2 className="text-xl font-bold text-gray-800">Category Details</h2>
+                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600 cursor-pointer">
                             <X size={24} />
                         </button>
                     </div>
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Customer:</span>
+                        <span className="font-semibold text-gray-600">Category Id:</span>
                         <span className="text-gray-800">{booking.customer}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Venue:</span>
+                        <span className="font-semibold text-gray-600">Title:</span>
                         <span className="text-gray-800">{booking.venue}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Date & Time:</span>
+                        <span className="font-semibold text-gray-600">Description:</span>
                         <span className="text-gray-800">{booking.date} at {booking.time}</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                        <span className="font-semibold text-gray-600">Status:</span>
-                        <Badge status={booking.status} />
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Image:</span>
+                        <span className="text-gray-800">{booking.date} at {booking.time}</span>
                     </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
+                    {/* <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
                         Decline
                     </button>
                     <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
                         Confirm
+                    </button> */}
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+const AddCategoryModal = ({onClose }: any) => {
+
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
+
+     // State for form inputs and image preview
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const [imageFile, setImageFile] = useState<File | null>(null);
+
+    // Handler for image selection
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            setImageFile(file);
+            setImagePreview(URL.createObjectURL(file));
+        }
+    };
+
+    // Handler to remove the selected image
+    const removeImage = () => {
+        setImageFile(null);
+        setImagePreview(null);
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 font-plus">
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="bg-white rounded-xl shadow-2xl w-full max-w-md"
+            >
+                <div className="p-6 border-b border-gray-200">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-bold text-gray-800">Category</h2>
+                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                            <X size={24} />
+                        </button>
+                    </div>
+                </div>
+                 <div className="p-6 space-y-5">
+                    {/* Category Name Input */}
+                    <div>
+                        <label htmlFor="categoryName" className="block text-sm font-medium text-gray-700 mb-1">
+                            Category Name
+                        </label>
+                        <input
+                            type="text"
+                            id="categoryName"
+                            className="w-full rounded-lg border border-gray-300 p-2.5 text-gray-900 shadow-sm focus:outline-none focus:border-[#3B0A45] focus:ring-1 focus;ring-[#3B0A45] transition"
+                            placeholder="e.g., Appetizers"
+                        />
+                    </div>
+
+                    {/* Description Textarea */}
+                    <div>
+                        <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+                            Description
+                        </label>
+                        <textarea
+                            id="description"
+                            rows={3}
+                            className="w-full rounded-lg border border-gray-300 p-2.5 text-gray-900 shadow-sm focus:border-[#3B0A45] focus:ring-1 focus;ring-[#3B0A45] focus:outline-none  transition"
+                            placeholder="Enter a short description..."
+                        ></textarea>
+                    </div>
+
+                    {/* Image Uploader */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Category Image
+                        </label>
+                        {!imagePreview ? (
+                             <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <UploadCloud className="w-8 h-8 mb-2 text-gray-500" />
+                                    <p className="mb-1 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p className="text-xs text-gray-500">PNG, JPG, or GIF (MAX. 800x400px)</p>
+                                </div>
+                                <input id="file-upload" type="file" className="hidden" onChange={handleImageChange} accept="image/png, image/jpeg, image/gif"/>
+                            </label>
+                        ) : (
+                            // Image Preview
+                            <div className="mt-2 relative">
+                                <img src={imagePreview} alt="Image Preview" className="w-24 h-24 rounded-lg object-cover" />
+                                <button
+                                    onClick={removeImage}
+                                    className="absolute top-2 right-2 bg-white/70 rounded-full p-1.5 text-gray-800 hover:bg-white transition"
+                                >
+                                    <X size={18} />
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
+                        Close
+                    </button>
+                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white  transition-colors">
+                        Add category
                     </button>
                 </div>
             </motion.div>
@@ -100,7 +212,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete booking</span>
+                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete category</span>
                     </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
@@ -126,6 +238,7 @@ const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
    const [selectedBooking, setSelectedBooking] = useState<any>(null);
+   const [category, setCategory] = useState<any>(null);
     const [deletebooking, setDeleteBooking] = useState<any>(false);
    const router = useRouter();
   
@@ -181,8 +294,13 @@ export default function HomePage() {
         <div >
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-              <h1 className="text-3xl font-plus font-bold mb-4 sm:mb-0"> Menu </h1>
-              <button className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors">
+              <h1 className="text-3xl font-plus font-bold mb-4 sm:mb-0"> Menu Cateory </h1>
+              <button 
+                className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors"
+                onClick={() => {
+                  setCategory(true);
+                }}
+              >
                 Add  Item
               </button>
           </div>
@@ -198,23 +316,7 @@ export default function HomePage() {
                   className="w-full pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
-              <div className="flex flex-wrap items-center gap-3 font-plus">
-                 <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span className="font-plus"> Pizza </span>
-                  </button>
-                 <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span> Burgers </span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700   cursor-pointer">
-                    <span> Meat Lovers</span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span> Drinks </span>
-                  </button>
-                  <button className="text-sm gap-2 bg-[#3B0A45] text-white px-4 py-2 rounded-lg cursor-pointer">
-                    <span> View all </span>
-                  </button>
-              </div>
+
             </div>
           </div>
 
@@ -225,9 +327,8 @@ export default function HomePage() {
                 {/* Desktop Table Header */}
                 <thead className="border-b border-gray-200 hidden md:table-header-group">
                   <tr>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Item</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Category Id</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Category</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Price</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Description</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Actions</th>
                   </tr>
@@ -246,10 +347,6 @@ export default function HomePage() {
                         <div>
                           <div className="text-gray-800 text-sm">{booking.category}</div>
                         </div>
-                      </td>
-                      <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Price:</span>
-                        <span className="font-normal text-sm ">{booking.price}</span>
                       </td>
                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Description:</span>
@@ -284,6 +381,12 @@ export default function HomePage() {
         {selectedBooking && (
             <BookingDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
         )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {
+          category && <AddCategoryModal  onClose={() => setCategory(null)} />
+        }
+         
       </AnimatePresence>
        <AnimatePresence>
         {deletebooking && (
