@@ -1,20 +1,20 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import Badge from '../../../components/ui/Badge';
+import Badge from '@/components/ui/Badge';
 import FilterDropdown from '../../../components/ui/FilterDropdown';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
 const bookingsData = [
-  { orderId: 1,customer: 'Sophia Carter', venue: 'The Urban Bistro', venueDetails: '', date: '2024-07-20', time: '19:00', status: 'Confirmed' as const },
-  { orderId: 2,customer: 'Ethan Bennett', venue: 'The Cozy Corner', venueDetails: 'Cafe', date: '2024-07-21', time: '10:00', status: 'Pending' as const }
+  { orderId: 1,customer: 'Sophia Carter', time: '19:00', status: 'Confirmed' as const },
+  { orderId: 2,customer: 'Ethan Bennett', time: '10:00', status: 'Pending' as const }
 ];
 
 // --- Booking Detail Modal Component ---
-const BookingDetailModal = ({ booking, onClose }: any) => {
+const OrderDetailModal = ({ booking, onClose }: any) => {
     if (!booking) return null;
 
     const modalVariants = {
@@ -32,9 +32,9 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                 exit="exit"
                 className="bg-white rounded-xl shadow-2xl w-full max-w-md"
             >
-                <div className="p-6 border-b">
+                <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Booking Details</h2>
+                        <h2 className="text-xl font-bold text-gray-800">Order Details</h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -42,16 +42,20 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600"> Order Id:</span>
+                        <span className="text-gray-800">{booking.orderId}</span>
+                    </div>
+                     <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600"> Menu:</span>
+                        <span className="text-gray-800"></span>
+                    </div>
+                    <div className="flex justify-between">
                         <span className="font-semibold text-gray-600">Customer:</span>
                         <span className="text-gray-800">{booking.customer}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Venue:</span>
-                        <span className="text-gray-800">{booking.venue}</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Date & Time:</span>
-                        <span className="text-gray-800">{booking.date} at {booking.time}</span>
+                        <span className="font-semibold text-gray-600">Order Time:</span>
+                        <span className="text-gray-800">{booking.time}</span>
                     </div>
                     <div className="flex justify-between items-center">
                         <span className="font-semibold text-gray-600">Status:</span>
@@ -62,11 +66,103 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
+                    {/* <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
                         Decline
                     </button>
                     <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
                         Confirm
+                    </button> */}
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+
+const ConfirmOrderModal = ({ booking, onClose, onUpdateStatus }: any) => {
+    if (!booking) return null;
+
+    // MODIFICATION: State to manage the selected status in the dropdown
+    const [selectedStatus, setSelectedStatus] = useState(booking.status);
+
+    // MODIFICATION: Sync state if the booking prop changes
+    useEffect(() => {
+        setSelectedStatus(booking.status);
+    }, [booking]);
+    
+    const handleUpdate = () => {
+        // Here you would call an API or a function to update the status
+        console.log("Updating status to:", selectedStatus);
+        // onUpdateStatus(booking.orderId, selectedStatus); // Example of a callback
+        onClose(); // Close modal after update
+    };
+
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="bg-white rounded-xl shadow-2xl w-full max-w-sm" // Adjusted max-width for a compact look
+            >
+                <div className="p-6 border-b border-gray-200">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-bold text-gray-800">Update Order Status</h2>
+                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                            <X size={24} />
+                        </button>
+                    </div>
+                </div>
+                
+                <div className="p-6 space-y-4">
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Order ID:</span>
+                        <span className="text-gray-800 font-mono">{booking.orderId}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Customer:</span>
+                        <span className="text-gray-800">{booking.customer}</span>
+                    </div>
+
+                    {/* MODIFICATION: Replaced static Badge with a dropdown */}
+                    <div>
+                        <label htmlFor="status-select" className="block text-sm font-semibold text-gray-600 mb-2">
+                           Status
+                        </label>
+                        <select
+                            id="status-select"
+                            value={selectedStatus}
+                            onChange={(e) => setSelectedStatus(e.target.value)}
+                            className="w-full rounded-lg border border-gray-300 p-2.5 text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition bg-white"
+                        >
+                            <option value="Pending">Pending</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Declined">Declined</option>
+                        </select>
+                    </div>
+                </div>
+
+                {/* MODIFICATION: Updated footer with a single "Update" button */}
+                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+                    <button 
+                        onClick={onClose} 
+                        className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                    >
+                        Cancel
+                    </button>
+                    <button 
+                        onClick={handleUpdate}
+                        disabled={selectedStatus === booking.status} // Disable button if status hasn't changed
+                        className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    >
+                        Update Status
                     </button>
                 </div>
             </motion.div>
@@ -126,9 +222,11 @@ const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
 
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-   const [selectedBooking, setSelectedBooking] = useState<any>(null);
-    const [deletebooking, setDeleteBooking] = useState<any>(false);
-   const router = useRouter();
+  const [selectedBooking, setSelectedBooking] = useState<any>(null);
+  const [deletebooking, setDeleteBooking] = useState<any>(false);
+  const [status,setStatus] = useState<any>(null)
+
+  const router = useRouter();
   
     const sidebarNavItems = [
                   { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
@@ -142,7 +240,7 @@ export default function HomePage() {
   return (
     <div className="lg:flex min-h-screen bg-[#F2F0F5] w-full">
      <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-             <div className="p-6 flex items-center space-x-2 border-b">
+             <div className="p-6 flex items-center space-x-2 border-b border-gray-300">
                <div className="text-2xl font-bold text-gray-800">
                  <span className="text-[#3B0A45]">Go</span>Vibe
                </div>
@@ -248,7 +346,7 @@ export default function HomePage() {
                         <span className="font-semibold text-gray-800 text-sm md:hidden mr-2">Order Time:</span>
                         {booking.time}
                       </td>
-                      <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
+                      <td   className="flex cursor-pointer justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
                         <span className="font-semibold text-gray-800 md:hidden mr-2">Status:</span>
                         <Badge status={booking.status} />
                       </td>
@@ -273,7 +371,12 @@ export default function HomePage() {
       </div>
        <AnimatePresence>
         {selectedBooking && (
-            <BookingDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
+            <OrderDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {status && (
+            <ConfirmOrderModal booking={selectedBooking} onClose={() => setStatus(null)} />
         )}
       </AnimatePresence>
        <AnimatePresence>

@@ -15,13 +15,12 @@ const Header = () => {
    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
       <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="text-2xl font-bold text-gray-800"
+        <div
+          className="text-2xl font-bold text-gray-800 cursor-pointer"
         >
           <span className="text-[#3B0A45]">Go</span>
           <span className="font-plus">Vibe</span>
-        </motion.div>
+        </div>
       </button>
 
       {/* Navigation */}
@@ -30,7 +29,7 @@ const Header = () => {
           onClick={() => {
             router.push('/pages/signin')
           }}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer font-bold"
+          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
         >
           Login
         </button>
@@ -38,7 +37,7 @@ const Header = () => {
           onClick={() => {
             router.push('/pages/signup')
           }}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer font-bold"
+          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
         >
           Get Started
         </button>

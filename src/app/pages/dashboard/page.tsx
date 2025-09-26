@@ -36,7 +36,7 @@ export default function HomePage() {
     <DashboardLayout>
       <div className=" lg:flex min-h-screen bg-[#F2F0F5] w-full font-plus">
         <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-          <div className="p-6 flex items-center space-x-2 border-b">
+          <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
             <div className="text-2xl font-bold text-gray-800">
               <span className="text-[#3B0A45]">Go</span>Vibe
             </div>

@@ -3,13 +3,11 @@
 import React,{useState} from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/host/Header';
-import HeroSection from '@/components/homepage/HeroSection';
-import FeaturesSection from '@/components/homepage/FeaturesSection';
-import HowItWorksSection from '@/components/homepage/HowItWorksSection';
-import TestimonialsSection from '@/components/homepage/TestimonialsSection';
-import ExperienceSection from '@/components/homepage/ExperienceSection';
-import DownloadSection from '@/components/homepage/DownloadSection';
+import mobile from '../../../../assets/mobile1.png';
+import Image from 'next/image';
+import dashboard from '../../../../assets/dashboard1.png';
 import Footer from '@/components/homepage/Footer';
+import { colors } from '@/constants/colors';
 
 
 
@@ -17,10 +15,47 @@ export default function page() {
   return (
     <div className="bg-white">
       <Header />
-      <main>
+      <main className=''>
+        <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+          <div className="container mx-auto px-6 text-center relative">
+            <div>
+              <h1 className={`text-4xl text-gray-900 md:text-6xl font-semibold font-plus leading-tight mb-4 w-[80%] mx-auto`}>
+                Your Venue. Your Menu. Your Customers. All in One Place.
+              </h1>
+              <p  className="text-lg font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">
+                From menus to orders, GoVibe Host gives you the tools to serve customers better.
+              </p>
+              <button
+                className="hidden md:block bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
+              >
+                Get Started
+              </button> 
+            </div>
+          </div>
+        </section>
+        <section className="flex flex-col items-center gap-10">
+          <div  className='flex items-center'>
+            {/* <div className='bg-purple-100 w-[500px] pt-20 rounded-2xl'>
+              <Image 
+                  src={mobile}
+                  className="w-[450px] h-[450px] object-contain rounded-3xl"
+                  alt='feature'
+                  priority
+                />
+            </div> */}
+            <div className='bg-purple-100 w-full p-5 rounded-2xl'>
+                <Image 
+                    src={dashboard}
+                    className="w-full h-[450px] object-contain rounded-3xl"
+                    alt='feature'
+                    priority
+                  />
+              </div>
+          </div>
+        </section>
   
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
