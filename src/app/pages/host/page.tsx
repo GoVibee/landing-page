@@ -16,24 +16,24 @@ export default function page() {
     <div className="bg-white">
       <Header />
       <main className=''>
-        <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+        <section className="relative pt-24 pb-16 md:pt-40 md:pb-24 overflow-hidden">
           <div className="container mx-auto px-6 text-center relative">
             <div>
-              <h1 className={`text-4xl text-gray-900 md:text-6xl font-semibold font-plus leading-tight mb-4 w-[80%] mx-auto`}>
+              <h1 className={`text-2xl text-gray-900 md:text-6xl font-bold font-plus leading-tight mb-4 w-[80%] mx-auto`}>
                 Your Venue. Your Menu. Your Customers. All in One Place.
               </h1>
-              <p  className="text-lg font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">
+              <p  className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">
                 From menus to orders, GoVibe Host gives you the tools to serve customers better.
               </p>
               <button
-                className="hidden md:block bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
+                className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
               >
                 Get Started
               </button> 
             </div>
           </div>
         </section>
-        <section className="flex flex-col items-center gap-10">
+        <section className="flex flex-col items-center gap-10 bg-purple-100">
           <div  className='flex items-center'>
             {/* <div className='bg-purple-100 w-[500px] pt-20 rounded-2xl'>
               <Image 
@@ -43,17 +43,33 @@ export default function page() {
                   priority
                 />
             </div> */}
-            <div className='bg-purple-100 w-full p-5 rounded-2xl'>
+            <div className=' w-full md:p-0 '>
                 <Image 
                     src={dashboard}
-                    className="w-full h-[450px] object-contain rounded-3xl"
+                    className="w-full object-contain"
                     alt='feature'
                     priority
                   />
               </div>
           </div>
         </section>
-  
+       <section className="relative pt-24 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+          <div className="container mx-auto px-6 text-center relative">
+            <div>
+              <h1 className={`text-xl text-gray-900 md:text-5xl font-bold font-plus leading-tight mb-4 w-[80%] mx-auto`}>
+                Our features unlocking potential
+              </h1>
+              <p  className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">
+                Empowering you with tools that unlock your full potentia
+              </p>
+              <button
+                className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
+              >
+                Get Started
+              </button> 
+            </div>
+          </div>
+        </section>
       </main>
       {/* <Footer /> */}
     </div>
