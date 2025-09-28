@@ -34,7 +34,7 @@ export default function page() {
             </div>
           </div>
         </section>
-        <section className="flex flex-col items-center gap-10 bg-purple-100">
+        <section className="flex flex-col items-center gap-10 ">
           <div  className='flex items-center'>
             {/* <div className='bg-purple-100 w-[500px] pt-20 rounded-2xl'>
               <Image 
@@ -44,10 +44,10 @@ export default function page() {
                   priority
                 />
             </div> */}
-            <div className=' w-full md:p-0 '>
+            <div className=' w-[80%] p-5 bg-purple-100 mx-auto rounded-4xl'>
                 <Image 
                     src={dashboard}
-                    className="w-full object-contain"
+                    className="w-full object-contain rounded-4xl"
                     alt='feature'
                     priority
                   />
