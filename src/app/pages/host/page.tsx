@@ -72,12 +72,12 @@ export default function page() {
         </section>
         <FeaturesSection />
        <section className='flex flex-col items-center mt-32'>
-        <div className="flex flex-col md:flex-row md:items-center gap-10 w-[80%] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[80%] mx-auto">
           <div>
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Order Management System</h3>
             <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">Streamline orders from kitchen to customer without delays.</p>
           </div>
-          <div className="w-[50%] p-5 bg-gray-100 rounded-3xl">
+          <div className="w-full md:w-[80%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
             <Image
               src={orders}
               className='w-full object-contain rounded-xl'

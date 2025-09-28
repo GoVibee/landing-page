@@ -36,7 +36,7 @@ const features = [
 const FeaturesSection = () => {
   return (
     <section id="features">
-      <div className="container mx-auto px-24">
+      <div className="container mx-auto px-10 lg:px-24">
         <div className="flex flex-col items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {features.map((feature, index) => {
