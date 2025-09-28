@@ -1,65 +1,107 @@
 'use client'
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Compass,MapPin,Calendar } from 'lucide-react';
+import { ShoppingCart, BookOpen, BarChart3, ChevronRight } from 'lucide-react';
 import image1 from '../../../assets/2.jpg';
 import image2 from '../../../assets/3.jpg';
 import image3 from '../../../assets/3.jpg';
 
-// Animation variants for Framer Motion
-const fadeIn = {
-  hidden: { opacity: 0, y: 80 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
-}
-
-
-// Features Section Component
 const features = [
-  { id:1,icon: Compass, title: 'Restaurant Discovery', description: 'Explore top-rated restaurants with detailed reviews and menus.',image: image1},
-  { id:2,icon: MapPin, title: 'Club & Bar Finder', description: 'Find the hottest clubs and bars in your area with real-time availability.',image: image2},
-  { id:3,icon: Calendar, title: "Let's Party", description: 'Turn up the vibe and dive into unforgettable nights. From rooftop raves to underground beats, your next party starts here.”.',image: image3},
-  // { icon: Star, title: 'Live Recommendations', description: 'Get personalized recommendations based on your preferences and trending spots.',image: image },
+  {
+    id: 1,
+    icon: BookOpen,
+    title: 'Smart Menu Management',
+    description:
+      'Update your menu anytime with photos, prices, and descriptions. Customers see changes instantly, no printing required',
+    image: image1,
+  },
+  {
+    id: 2,
+    icon: ShoppingCart,
+    title: 'Instant Orders',
+    description:
+      'Receive customer orders directly from their phones without waiters, reducing delays and errors.',
+    image: image2,
+  },
+  {
+    id: 3,
+    icon: BarChart3,
+    title: 'Real-Time Analytics',
+    description:
+      'Get insights on top-selling dishes, busiest hours, and revenue trends to make smarter decisions.',
+    image: image3,
+  },
 ];
 
-const FeaturesSection = () => (
-  <section id="features" className="">
-    <div className="container mx-auto px-6">
-      <div className=''>
-        <div
-          className='flex flex-col items-center'
-        >
+const FeaturesSection = () => {
+  return (
+    <section id="features">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className={`${feature.id == 2 ? "bg-[#3B0A45] text-white" : "bg-gray-50"} p-10 relative rounded-4xl`}
-              >
-                <h3 className={`${feature.id == 2 ? 'text-white' : 'text-gray-800'} text-xl font-bold  mb-1 mt-2 font-plus`}>
-                  {feature.title}
-                </h3>
-                <p className={`${feature.id == 2 ? 'text-white' : 'text-gray-600' } w-[300px] font-plus`}>{feature.description}</p>
-                <div className="absolute bottom-1">
-                  <p>Explore</p>
+            {features.map((feature, index) => {
+              const isSecond = feature.id === 2;
+
+              return (
+                <div
+                  key={index}
+                  className={`
+                    group cursor-pointer p-10 relative rounded-4xl transition-all duration-300 shadow-2xl
+                    ${isSecond ? 'bg-[#3B0A45] text-white' : 'bg-gray-100 text-gray-800'}
+                    ${isSecond
+                      ? 'hover:bg-gray-100 hover:text-gray-800'
+                      : 'hover:bg-[#3B0A45] hover:text-white'}
+                  `}
+                >
+                  <feature.icon
+                    className={`
+                      w-10 h-10 mb-4 transition-colors duration-300
+                      ${isSecond ? 'text-white group-hover:text-[#3B0A45]' : 'text-[#3B0A45] group-hover:text-white'}
+                    `}
+                  />
+
+                  <h3
+                    className={`
+                      text-xl font-bold mb-1 mt-2 font-plus transition-colors duration-300
+                      ${isSecond ? 'text-white group-hover:text-gray-800' : 'text-gray-800 group-hover:text-white'}
+                    `}
+                  >
+                    {feature.title}
+                  </h3>
+
+                  <p
+                    className={`
+                      text-[15px] w-[300px] py-3 font-plus opacity-80 transition-colors duration-300
+                      ${isSecond ? 'text-white group-hover:text-gray-600' : 'text-gray-600 group-hover:text-white'}
+                    `}
+                  >
+                    {feature.description}
+                  </p>
+
+                  <div className="absolute bottom-1 flex gap-2 items-center">
+                    <p
+                      className={`
+                        transition-colors duration-300
+                        ${isSecond ? 'text-white group-hover:text-gray-800' : 'text-gray-800 group-hover:text-white'}
+                      `}
+                    >
+                      Explore
+                    </p>
+                    <ChevronRight
+                      className={`
+                        transition-colors duration-300
+                        ${isSecond ? 'text-white group-hover:text-[#3B0A45]' : 'text-[#3B0A45] group-hover:text-white'}
+                      `}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-export default FeaturesSection
+export default FeaturesSection;

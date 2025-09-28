@@ -64,7 +64,7 @@ export default function page() {
                 Empowering you with tools that unlock your full potential
               </p>
               <button
-                className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
+                className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-2xl hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
               >
                 Get Started
               </button> 
