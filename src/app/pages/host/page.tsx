@@ -72,6 +72,7 @@ export default function page() {
           </div>
         </section>
         <FeaturesSection />
+        
       </main>
       {/* <Footer /> */}
     </div>

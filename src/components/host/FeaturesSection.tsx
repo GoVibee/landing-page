@@ -46,7 +46,7 @@ const FeaturesSection = () => {
                 <div
                   key={index}
                   className={`
-                    group cursor-pointer p-10 relative rounded-4xl transition-all duration-300 shadow-2xl
+                    group p-10 relative rounded-4xl transition-all duration-300 shadow-2xl
                     ${isSecond ? 'bg-[#3B0A45] text-white' : 'bg-gray-100 text-gray-800'}
                     ${isSecond
                       ? 'hover:bg-gray-100 hover:text-gray-800'
@@ -71,17 +71,18 @@ const FeaturesSection = () => {
 
                   <p
                     className={`
-                      text-[15px] w-[300px] py-3 font-plus opacity-80 transition-colors duration-300
+                      text-[15px] py-3 font-plus opacity-80 transition-colors duration-300
                       ${isSecond ? 'text-white group-hover:text-gray-600' : 'text-gray-600 group-hover:text-white'}
                     `}
                   >
                     {feature.description}
                   </p>
 
-                  <div className="absolute bottom-1 flex gap-2 items-center">
+                  <div className="absolute bottom-4 flex gap-2 items-center cursor-pointer">
                     <p
                       className={`
                         transition-colors duration-300
+                        font-semibold
                         ${isSecond ? 'text-white group-hover:text-gray-800' : 'text-gray-800 group-hover:text-white'}
                       `}
                     >
