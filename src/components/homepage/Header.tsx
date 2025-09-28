@@ -38,25 +38,25 @@ const Header = () => {
       <nav className="hidden md:flex items-center space-x-8">
         <button
           onClick={() => handleLinkClick('features')}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
         >
           Features
         </button>
         <button
           onClick={() => handleLinkClick('how-it-works')}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
         >
           How It Works
         </button>
         <button
           onClick={() => handleLinkClick('download')}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
         >
           Download App
         </button>
         <button
           onClick={() => router.push('/pages/host')}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
         >
           Become a Host
         </button>

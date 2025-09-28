@@ -7,6 +7,7 @@ import mobile from '../../../../assets/mobile1.png';
 import Image from 'next/image';
 import dashboard from '../../../../assets/dashboard1.png';
 import Footer from '@/components/homepage/Footer';
+import FeaturesSection from '@/components/host/FeaturesSection';
 import { colors } from '@/constants/colors';
 
 
@@ -60,7 +61,7 @@ export default function page() {
                 Our features unlocking potential
               </h1>
               <p  className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">
-                Empowering you with tools that unlock your full potentia
+                Empowering you with tools that unlock your full potential
               </p>
               <button
                 className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
@@ -70,6 +71,7 @@ export default function page() {
             </div>
           </div>
         </section>
+        <FeaturesSection />
       </main>
       {/* <Footer /> */}
     </div>

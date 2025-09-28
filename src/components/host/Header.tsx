@@ -29,7 +29,7 @@ const Header = () => {
           onClick={() => {
             router.push('/pages/signin')
           }}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
         >
           Login
         </button>
@@ -37,7 +37,7 @@ const Header = () => {
           onClick={() => {
             router.push('/pages/signup')
           }}
-          className="text-gray-600 hover:text-[#3B0A45] transition-colors font-plus cursor-pointer"
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
         >
           Get Started
         </button>
