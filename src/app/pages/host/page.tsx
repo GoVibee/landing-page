@@ -85,7 +85,7 @@ export default function page() {
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Order Management System</h3>
             <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Streamline orders from kitchen to customer without delays.</p>
           </div>
-          <div className="w-full md:w-[80%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
+          <div className="w-full md:w-[100%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
             <Image
               src={orders}
               className='w-full object-contain rounded-xl'
@@ -98,7 +98,7 @@ export default function page() {
 
        <section className='flex flex-col items-center mt-32'>
         <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[80%] mx-auto">
-          <div className="w-full md:w-[80%] lg:w-[55%] bg-purple-100 rounded-3xl mb-10 md:mb-0">
+          <div className="w-full md:w-[100%] lg:w-[55%] bg-purple-100 rounded-3xl mb-10 md:mb-0">
             <Image
               src={orderscreen}
               className='w-full object-contain rounded-xl'
@@ -119,7 +119,7 @@ export default function page() {
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Customer Feedback</h3>
             <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Collect ratings and reviews to understand customer satisfaction and improve service</p>
           </div>
-          <div className="w-full md:w-[80%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
+          <div className="w-full md:w-[100%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
             <Image
               src={review}
               className='w-full object-contain rounded-xl'
