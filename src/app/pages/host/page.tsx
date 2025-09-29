@@ -8,11 +8,14 @@ import dashboard from '../../../../assets/dashboard1.png';
 import FeaturesSection from '@/components/host/FeaturesSection';
 import orders from '../../../../assets/orders.png';
 import orderscreen from '../../../../assets/orderscreen.png';
+import { useRouter } from 'next/navigation';
 import { colors } from '@/constants/colors';
 
 
 
 export default function page() {
+  const router = useRouter();
+
   return (
     <div className="bg-white">
       <Header />
@@ -65,6 +68,9 @@ export default function page() {
               </p>
               <button
                 className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-2xl hover:bg-[#3B0A45] transition-colors font-plus mx-auto"
+                onClick={() => {
+                  router.push('/pages/signup')
+                }}
               >
                 Get Started
               </button> 
@@ -91,7 +97,7 @@ export default function page() {
 
        <section className='flex flex-col items-center mt-32'>
         <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[80%] mx-auto">
-          <div className="w-full md:w-[80%] lg:w-[55%] bg-gray-100 rounded-3xl">
+          <div className="w-full md:w-[80%] lg:w-[55%] bg-purple-100 rounded-3xl">
             <Image
               src={orderscreen}
               className='w-full object-contain rounded-xl'
@@ -101,7 +107,7 @@ export default function page() {
           </div>
           <div>
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Scan & Explore</h3>
-            <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Customers scan a QR code and the GoVibe app opens directly to the restaurant’s details — menu, reviews, and more, all in one place.</p>
+            <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Scan to explore menus, reviews, and details instantly in the GoVibe app.</p>
           </div>
         </div>
        </section>
