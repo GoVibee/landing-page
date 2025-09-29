@@ -34,7 +34,7 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Order Details</h2>
+                        <h2 className="text-xl font-bold text-gray-800">Review Details</h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -42,24 +42,20 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600"> Order Id:</span>
-                        <span className="text-gray-800">{booking.orderId}</span>
-                    </div>
-                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600"> Menu:</span>
-                        <span className="text-gray-800"></span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Customer:</span>
+                        <span className="font-semibold text-gray-600"> Customer:</span>
                         <span className="text-gray-800">{booking.customer}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Order Time:</span>
-                        <span className="text-gray-800">{booking.time}</span>
+                        <span className="font-semibold text-gray-600">Rating:</span>
+                        <span className="text-gray-800">{booking.rating}</span>
+                    </div>
+                    <div className="flex justify-between gap-10">
+                        <span className="font-semibold text-gray-600">Comment:</span>
+                        <span className="text-gray-800">{booking.comment}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span className="font-semibold text-gray-600">Status:</span>
-                        <Badge status={booking.status} />
+                        <span className="font-semibold text-gray-600">Date:</span>
+                        <span className="text-gray-800">{booking.Date}</span>
                     </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
@@ -187,7 +183,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 exit="exit"
                 className="bg-white rounded-xl shadow-2xl w-full max-w-md"
             >
-                <div className="p-6 border-b">
+                <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
@@ -197,7 +193,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete booking</span>
+                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete review</span>
                     </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
@@ -301,17 +297,14 @@ export default function HomePage() {
               </div>
               <div className="flex flex-wrap items-center gap-3 font-plus">
                  <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span className="font-plus">All</span>
+                    <span className="font-plus">Rating</span>
                   </button>
-                 <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span> Pending </span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700   cursor-pointer">
+                 {/* <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700   cursor-pointer">
                     <span> In Preparation</span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
+                  </button> */}
+                 {/* <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
                     <span> Ready </span>
-                  </button>
+                  </button> */}
               </div>
             </div>
           </div>

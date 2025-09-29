@@ -8,7 +8,7 @@ import dashboard from '../../../../assets/dashboard1.png';
 import FeaturesSection from '@/components/host/FeaturesSection';
 import orders from '../../../../assets/orders.png';
 import orderscreen from '../../../../assets/orderscreen.png';
-import customer from '../../../../assets/customer.png';
+import review from '../../../../assets/review.png';
 import { useRouter } from 'next/navigation';
 import { colors } from '@/constants/colors';
 
@@ -98,7 +98,7 @@ export default function page() {
 
        <section className='flex flex-col items-center mt-32'>
         <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[80%] mx-auto">
-          <div className="w-full md:w-[80%] lg:w-[55%] bg-purple-100 rounded-3xl">
+          <div className="w-full md:w-[80%] lg:w-[55%] bg-purple-100 rounded-3xl mb-10 md:mb-0">
             <Image
               src={orderscreen}
               className='w-full object-contain rounded-xl'
@@ -113,7 +113,7 @@ export default function page() {
         </div>
        </section>
 
-       <section className='flex flex-col items-center mt-32'>
+       <section className='flex flex-col items-center mt-20  md:mt-32'>
         <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[80%] mx-auto">
           <div>
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Customer Feedback</h3>
@@ -121,7 +121,7 @@ export default function page() {
           </div>
           <div className="w-full md:w-[80%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
             <Image
-              src={customer}
+              src={review}
               className='w-full object-contain rounded-xl'
               priority
               alt="features"
