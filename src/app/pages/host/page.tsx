@@ -119,7 +119,7 @@ export default function page() {
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Customer Feedback</h3>
             <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Collect ratings and reviews to understand customer satisfaction and improve service</p>
           </div>
-          <div className="w-full md:w-[100%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
+          <div className="w-full md:w-[100%] lg:w-[50%] p-5 bg-[#C5C7E4] rounded-3xl">
             <Image
               src={review}
               className='w-full object-contain rounded-xl'
