@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { ShoppingCart, BookOpen, BarChart3, ChevronRight } from 'lucide-react';
+import { ShoppingCart, BookOpen, BarChart3, ChevronRight,ArrowUpRight } from 'lucide-react';
 import image1 from '../../../assets/2.jpg';
 import image2 from '../../../assets/3.jpg';
 import image3 from '../../../assets/3.jpg';
@@ -88,7 +88,7 @@ const FeaturesSection = () => {
                     >
                       Explore
                     </p>
-                    <ChevronRight
+                    <ArrowUpRight
                       className={`
                         transition-colors duration-300
                         ${isSecond ? 'text-white group-hover:text-[#3B0A45]' : 'text-[#3B0A45] group-hover:text-white'}
