@@ -7,6 +7,7 @@ import Image from 'next/image';
 import dashboard from '../../../../assets/dashboard1.png';
 import FeaturesSection from '@/components/host/FeaturesSection';
 import orders from '../../../../assets/orders.png';
+import orderscreen from '../../../../assets/orderscreen.png';
 import { colors } from '@/constants/colors';
 
 
@@ -75,7 +76,7 @@ export default function page() {
         <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[80%] mx-auto">
           <div>
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Order Management System</h3>
-            <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">Streamline orders from kitchen to customer without delays.</p>
+            <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Streamline orders from kitchen to customer without delays.</p>
           </div>
           <div className="w-full md:w-[80%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
             <Image
@@ -90,17 +91,17 @@ export default function page() {
 
        <section className='flex flex-col items-center mt-32'>
         <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[80%] mx-auto">
-          <div className="w-full md:w-[80%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
+          <div className="w-full md:w-[80%] lg:w-[55%] bg-gray-100 rounded-3xl">
             <Image
-              src={orders}
+              src={orderscreen}
               className='w-full object-contain rounded-xl'
               priority
               alt="features"
             />
           </div>
           <div>
-            <h3 className="text-gray-900 text-3xl font-plus font-bold">Order Management System</h3>
-            <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-600">Streamline orders from kitchen to customer without delays.</p>
+            <h3 className="text-gray-900 text-3xl font-plus font-bold">Scan & Explore</h3>
+            <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Customers scan a QR code and the GoVibe app opens directly to the restaurant’s details — menu, reviews, and more, all in one place.</p>
           </div>
         </div>
        </section>
@@ -113,7 +114,7 @@ export default function page() {
           </div>
           <div className="w-full md:w-[80%] lg:w-[50%] p-5 bg-gray-100 rounded-3xl">
             <Image
-              src={orders}
+              src={orderscreen}
               className='w-full object-contain rounded-xl'
               priority
               alt="features"
