@@ -10,6 +10,7 @@ import FeaturesSection from '@/components/host/FeaturesSection';
 import orders from '../../../../assets/orders.png';
 import orderscreen from '../../../../assets/orderscreen.png';
 import review from '../../../../assets/review.png';
+import analytics from '../../../../assets/analytics1.png';
 import { useRouter } from 'next/navigation';
 import Footer from '../../../components/homepage/Footer';
 import { colors } from '@/constants/colors';
@@ -160,8 +161,30 @@ export default function page() {
           </div>
         </div>
        </section>
-       <section>
-        
+        <section className='flex flex-col items-center my-20  md:my-32'>
+          <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[90%] mx-auto bg-[#3B0A45] rounded-3xl">
+           <div className='pl-5'>
+            <h3 className="text-white text-3xl font-plus font-bold">Ready to transform your business?</h3>
+            <p className="text-md font-plus md:text-sm max-w-xl mx-auto mb-8 text-white mt-3">Digitize your menu, streamline orders, and boost revenue with GoVibe Host.</p>
+            <button
+                className="bg-[#ffffff] cursor-pointer text-[#3B0A45] px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus flex items-center gap-3"
+              >
+                Get Started
+                <div className="bg-white p-1 rounded-3xl">
+                  <ArrowUpRight color="#3B0A45" size={20}/>
+                </div>
+              </button> 
+          </div>
+          <div className="w-full md:w-[100%] lg:w-[50%] p-4 bg-purple-100 rounded-3xl m-7">
+            <Image
+              src={analytics}
+              className='w-full object-contain rounded-xl'
+              priority
+              alt="features"
+            />
+          </div>
+            
+          </div>
        </section>
         
       </main>
