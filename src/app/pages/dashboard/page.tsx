@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2,Users, Bell, Menu, X,UserRound,CornerDownRight,Logs } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2,Users, Bell, Menu, X,UserRound,CornerDownRight,Logs,MessageSquare } from 'lucide-react';
 import StatCard from "../../../components/pages/dashboard/StatCard";
 import BookingsOverview from "../../../components/pages/bookings/bookingsOverview";
 import RecentBookingsTable from "../../../components/pages/bookings/RecentBookingsTable";
@@ -28,6 +28,7 @@ export default function HomePage() {
       { icon: LayoutDashboard, text: 'Dashboard', active: true,route: '/pages/dashboard'  },
       { icon: Calendar, text: 'Orders',route: '/pages/orders' },
       { icon: Logs, text: 'Menu',route: '/pages/menu'},
+      { icon: MessageSquare, text: 'Reviews',route: '/pages/reviews'},
       { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
       { icon: Users, text: 'Staff',route: '/pages/staff' },
       { icon: Settings, text: 'Settings',route: '/pages/settings'},

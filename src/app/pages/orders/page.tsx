@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '@/components/ui/Badge';
 import FilterDropdown from '../../../components/ui/FilterDropdown';
 import React, { useState,useEffect } from 'react';
-import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound } from 'lucide-react';
+import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
@@ -232,6 +232,7 @@ export default function HomePage() {
                   { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
                   { icon: Calendar, text: 'Orders',route: '/pages/orders',active: true   },
                   { icon: Logs, text: 'Menu',route: '/pages/menu'},
+                  { icon: MessageSquare, text: 'Reviews',route: '/pages/reviews'},
                   { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
                   { icon: Users, text: 'Staff',route: '/pages/staff'},
                   { icon: Settings, text: 'Settings',route: '/pages/settings'},
