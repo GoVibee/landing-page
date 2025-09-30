@@ -2,11 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Compass,MapPin,Calendar } from 'lucide-react';
-import image1 from '../../../assets/2.jpg';
-import image2 from '../../../assets/3.jpg';
-import image3 from '../../../assets/3.jpg';
+import { Smartphone,BookOpen,BarChart3,QrCode} from 'lucide-react';
+
 
 // Animation variants for Framer Motion
 const fadeIn = {
@@ -27,14 +24,31 @@ const staggerContainer = {
 
 // Features Section Component
 const features = [
-  { icon: Compass, title: 'Restaurant Discovery', description: 'Explore top-rated restaurants with detailed reviews and menus.',image: image1 },
-  { icon: MapPin, title: 'Club & Bar Finder', description: 'Find the hottest clubs and bars in your area with real-time availability.',image: image2 },
-  { icon: Calendar, title: "Let's Party", description: 'Turn up the vibe and dive into unforgettable nights. From rooftop raves to underground beats, your next party starts here.”.',image: image3 },
-  // { icon: Star, title: 'Live Recommendations', description: 'Get personalized recommendations based on your preferences and trending spots.',image: image },
+  {
+    id: 1,
+    icon: QrCode,
+    title: 'Scan & Discover',
+    description:
+      'Simply scan a restaurant’s QR code to unlock its menu, details, and reviews instantly.'
+  },
+  {
+    id: 2,
+    icon: BookOpen,
+    title: 'Digital Menus Made Easy',
+    description:
+      'Browse updated menus with photos, prices, and descriptions — always accurate, always fresh.'
+  },
+  {
+    id: 3,
+    icon: Smartphone,
+    title: 'Order from Your Phone',
+    description:
+      'Skip the wait for staff. Place your order directly through the app in just a few taps.'
+  },
 ];
 
 const FeaturesSection = () => (
-  <section id="features" className="py-20 bg-gray-50">
+  <section id="features" className="py-20 bg-gray-50 mt-32">
     <div className="container mx-auto px-6">
       <motion.div
         initial="hidden"
@@ -44,10 +58,10 @@ const FeaturesSection = () => (
         className="text-center"
       >
         <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-plus">
-          Explore the Best of Your City
+          Experience Dining the Smarter Way
         </motion.h2>
         <motion.p variants={fadeIn} className="text-lg text-gray-600 max-w-2xl mx-auto mb-12 font-plus">
-          GoVibe lets you discover and book the perfect places for dining, nightlife, and unforgettable moments—wherever your vibe takes you.
+          Smart dining made effortless, right from your phone
         </motion.p>
       </motion.div>
       <div className=''>
@@ -59,20 +73,48 @@ const FeaturesSection = () => (
           className='flex flex-col items-center'
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {features.map((feature, index) => (
-              <motion.div key={index} variants={fadeIn} className="">
-                <div className='w-full md:w-[300px] h-72'>
-                  <Image 
-                    src={feature.image}
-                    className="w-full h-full object-cover rounded-3xl"
-                    alt='feature'
-                    priority
+            {features.map((feature, index) => {
+              const isSecond = feature.id === 2;
+
+              return (
+                <motion.div
+                  key={index}
+                  className={`
+                    group p-10 relative rounded-4xl transition-all duration-300 shadow-2xl
+                    ${isSecond ? 'bg-[#3B0A45] text-white' : 'bg-gray-100 text-gray-800'}
+                    ${isSecond
+                      ? 'hover:bg-gray-100 hover:text-gray-800'
+                      : 'hover:bg-[#3B0A45] hover:text-white'}
+                  `}
+                  variants={fadeIn}
+                >
+                  <feature.icon
+                    className={`
+                      w-10 h-10 mb-4 transition-colors duration-300
+                      ${isSecond ? 'text-white group-hover:text-[#3B0A45]' : 'text-[#3B0A45] group-hover:text-white'}
+                    `}
                   />
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-1 mt-2 font-plus">{feature.title}</h3>
-                <p className="text-gray-600 w-[300px] font-plus">{feature.description}</p>
-              </motion.div>
-            ))}
+
+                  <h3
+                    className={`
+                      text-xl font-bold mb-1 mt-2 font-plus transition-colors duration-300
+                      ${isSecond ? 'text-white group-hover:text-gray-800' : 'text-gray-800 group-hover:text-white'}
+                    `}
+                  >
+                    {feature.title}
+                  </h3>
+
+                  <p
+                    className={`
+                      text-[15px] py-3 font-plus opacity-80 transition-colors duration-300
+                      ${isSecond ? 'text-white group-hover:text-gray-600' : 'text-gray-600 group-hover:text-white'}
+                    `}
+                  >
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

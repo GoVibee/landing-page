@@ -31,10 +31,10 @@ const HeroSection = () => (
     <div className="container mx-auto px-6 text-center relative">
       <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
         <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl font-extrabold font-plus leading-tight mb-4">
-          Find Your Vibe Tonight
+          Reimagine Dining with GoVibe
         </motion.h1>
         <motion.p variants={fadeIn} className="text-lg font-plus md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">
-          Discover the best restaurants, bars, clubs, and events in your city. Book a spot, skip the wait, and vibe your night away.
+         Give your customers a seamless dining experience , from scanning a QR code to browsing your menu, placing orders, and reviewing your restaurant, all in one app.
         </motion.p>
         <motion.div variants={fadeIn} className="flex  flex-col sm:flex-row justify-center items-center gap-4">
           <motion.button
