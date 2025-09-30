@@ -44,24 +44,24 @@ const page: NextPage = () => {
           <div className="w-full max-w-md space-y-8">
             <div>
               <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
-                Create an account
+                Create account
               </h2>
             </div>
             
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Email Input */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email or username
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                  Restaurant name
                 </label>
                 <div className="mt-2">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
+                    id="name"
+                    name="name"
+                    type="name"
+                    autoComplete="name"
                     required
-                    placeholder="Enter your business email"
+                    placeholder="restaurant name"
                     className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                   />
                 </div>
@@ -69,34 +69,34 @@ const page: NextPage = () => {
 
               {/* Password Input */}
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
+                <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                  Description
                 </label>
                 <div className="mt-2">
                   <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
+                    id="description"
+                    name="description"
+                    type="description"
+                    autoComplete="description"
                     required
-                    placeholder="Enter your password"
+                    placeholder="description"
                     className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700">
-                  Phone number
+                <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                  Location
                 </label>
                 <div className="mt-2">
                   <input
-                    id="phonenumber"
-                    name="phonenumber"
-                    type="phonenumber"
-                    autoComplete="phonenumber"
+                    id="location"
+                    name="location"
+                    type="location"
+                    autoComplete="location"
                     required
-                    placeholder="Enter your contact"
+                    placeholder="location"
                     className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                   />
                 </div>
@@ -122,20 +122,13 @@ const page: NextPage = () => {
                 <button
                   type="submit"
                   className="w-full justify-center rounded-md border border-transparent bg-[#3B0A45] py-3 px-4 text-sm font-semibold text-white shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:ring-offset-2 cursor-pointer"
-                  onClick={() => router.push('/pages/restaurant')}
+                  onClick={() => router.push('/pages/signin')}
                 >
-                  Continue
+                  Create account
                 </button>
               </div>
             </form>
             
-            {/* Sign Up Link */}
-            <p className="text-center text-sm text-gray-600">
-              Already have an account?{' '}
-              <Link href="/pages/signin" className="font-medium text-[#3B0A45] hover:text-[#3B0A45] hover:underline">
-                login
-              </Link>
-            </p>
           </div>
         </div>
       </main>
