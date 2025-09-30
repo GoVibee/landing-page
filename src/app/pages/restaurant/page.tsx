@@ -4,6 +4,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useState,useEffect,useRef } from 'react';
+import { Clock,Check } from 'lucide-react';
 
 // A simple SVG icon component for the logo
 const LogoIcon = () => (
@@ -17,6 +19,67 @@ const LogoIcon = () => (
   </svg>
 );
 
+const CustomTimePicker = ({ label, value, onChange }: any) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [hour, setHour] = useState('09');
+    const [minute, setMinute] = useState('00');
+    const [period, setPeriod] = useState('AM');
+    const pickerRef = useRef<any>(null);
+
+    useEffect(() => {
+        onChange(`${hour}:${minute} ${period}`);
+    }, [hour, minute, period]);
+
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+            if (pickerRef.current && !pickerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
+    const minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
+
+    return (
+        <div className="relative" ref={pickerRef}>
+            <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+            <button 
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full bg-gray-100/70 border border-gray-200 rounded-lg py-3 px-4 flex items-center justify-between"
+            >
+                <span className="text-gray-800">{value || 'Select time'}</span>
+                <Clock className="w-5 h-5 text-gray-400" />
+            </button>
+            {isOpen && (
+                <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 flex space-x-2">
+                    {/* Hours */}
+                    <div className="h-48 overflow-y-auto flex-1">
+                        {hours.map(h => (
+                            <div key={h} onClick={() => setHour(h)} className={`px-2 text-black  py-1 rounded cursor-pointer text-center ${hour === h ? 'bg-pink-100 text-[#3B0A45]' : 'hover:bg-gray-100'}`}>{h}</div>
+                        ))}
+                    </div>
+                    {/* Minutes */}
+                    <div className="h-48 overflow-y-auto flex-1">
+                        {minutes.map(m => (
+                            <div key={m} onClick={() => setMinute(m)} className={`px-2 py-1 text-black rounded cursor-pointer text-center ${minute === m ? 'bg-pink-100 text-[#3B0A45]' : 'hover:bg-gray-100'}`}>{m}</div>
+                        ))}
+                    </div>
+                    {/* AM/PM */}
+                    <div className="flex flex-col space-y-1">
+                        <div onClick={() => setPeriod('AM')} className={`px-3 py-1 text-black  rounded cursor-pointer ${period === 'AM' ? 'bg-pink-100 text-[3B0A45]' : 'hover:bg-gray-100'}`}>AM</div>
+                        <div onClick={() => setPeriod('PM')} className={`px-3 text-black  py-1 rounded cursor-pointer ${period === 'PM' ? 'bg-pink-100 text-[#3B0A45]' : 'hover:bg-gray-100 text-black '}`}>PM</div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+
 
 const page: NextPage = () => {
     const router = useRouter();
@@ -24,6 +87,34 @@ const page: NextPage = () => {
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
+
+    const [operatingHours, setOperatingHours] = useState<any>({
+        Monday: { checked: false, open: '', close: '' },
+        Tuesday: { checked: false, open: '', close: '' },
+        Wednesday: { checked: false, open: '', close: '' },
+        Thursday: { checked: false, open: '', close: '' },
+        Friday: { checked: false, open: '', close: '' },
+        Saturday: { checked: false, open: '', close: '' },
+        Sunday: { checked: false, open: '', close: '' },
+    });
+
+    // --- NEW: Handler for Toggling Day Checkbox ---
+    const handleDayToggle = (day: any) => {
+        setOperatingHours((prev: any) => ({
+            ...prev,
+            [day]: { ...prev[day], checked: !prev[day].checked }
+        }));
+    };
+
+    // --- NEW: Handler for Time Input Change ---
+    const handleTimeChange = (day: any, type: any, value: any) => {
+        setOperatingHours((prev: any) => ({
+            ...prev,
+            [day]: { ...prev[day], [type]: value }
+        }));
+    };
+
+
   return (
     <>
       <Head>
@@ -101,24 +192,43 @@ const page: NextPage = () => {
                   />
                 </div>
               </div>
+               <section>
+                            <h2 className="text-lg font-semibold text-gray-700 mb-4">Operating Hours</h2>
+                            <div className="space-y-4">
+                                {Object.keys(operatingHours).map((day) => (
+                                    <div key={day}>
+                                        <div className="flex items-center">
+                                            <button 
+                                                type="button" 
+                                                onClick={() => handleDayToggle(day)}
+                                                className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-colors ${operatingHours[day].checked ? 'bg-[#3B0A45] border-[#3B0A45]' : 'bg-white border-gray-300'}`}
+                                            >
+                                                {operatingHours[day].checked && <Check className="w-4 h-4 text-white" />}
+                                            </button>
+                                            <label className="ml-3 text-sm font-medium text-gray-800">{day}</label>
+                                        </div>
+                                        {operatingHours[day].checked && (
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3 ml-9">
+                                                <CustomTimePicker 
+                                                    label="Start Time"
+                                                    value={operatingHours[day].open}
+                                                    onChange={(value: any) => handleTimeChange(day, 'open', value)}
+                                                />
+                                                <CustomTimePicker 
+                                                    label="Closing Time"
+                                                    value={operatingHours[day].close}
+                                                    onChange={(value: any) => handleTimeChange(day, 'close', value)}
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
 
-              {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  {/* <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  /> */}
-                  {/* <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                    Remember me
-                  </label> */}
-                </div>
-              </div>
 
               {/* Sign In Button */}
-              <div>
+              <div className='mt-10'>
                 <button
                   type="submit"
                   className="w-full justify-center rounded-md border border-transparent bg-[#3B0A45] py-3 px-4 text-sm font-semibold text-white shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:ring-offset-2 cursor-pointer"
