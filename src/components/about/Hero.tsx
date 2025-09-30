@@ -16,7 +16,7 @@ export function Hero() {
       <div className="relative z-10 text-center max-w-2xl px-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">About GoVibe</h1>
         <p className="text-lg md:text-xl mb-8">
-          GoVibe is a smart dining and nightlife companion that helps users discover restaurants, bars, and clubs, and place orders seamlessly.
+          GoVibe is a smart dining and nightlife companion that helps users discover restaurants and place orders seamlessly.
         </p>
          <button
                         className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto flex items-center gap-3"
