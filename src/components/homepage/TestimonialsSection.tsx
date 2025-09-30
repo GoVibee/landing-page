@@ -3,10 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Compass,MapPin,Calendar } from 'lucide-react';
-import mobile1 from '../../../assets/mobile1.png';
-import mobile2 from '../../../assets/mobile2.png';
-import mobile3 from '../../../assets/mobile3.png';
+import { ArrowUpRight} from 'lucide-react';
+import mockup from '../../../assets/mobile1.png';
+
 
 // Animation variants for Framer Motion
 const fadeIn = {
@@ -24,68 +23,50 @@ const staggerContainer = {
   },
 }
 
-// Testimonials Section Component
-const testimonials = [
-  { name: 'Sophia K.', quote: 'GoVibe has completely transformed my nightlife! I’ve discovered so many hidden gems, and booking is a breeze.', image: 'https://i.pravatar.cc/150?img=1' },
-  { name: 'Ethan M.', quote: 'I love the live recommendations feature. It’s like having a personal nightlife guide in my pocket.', image: 'https://i.pravatar.cc/150?img=2' },
-  { name: 'Olivia J.', quote: 'The app is so easy to use, and I’ve never had a bad experience with any of the venues I’ve booked through GoVibe.', image: 'https://i.pravatar.cc/150?img=3' },
-];
 
-const TestimonialsSection = () => (
-  <section className="py-20 bg-purple-100">
-    <div className="container mx-auto px-6">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-        className="text-center"
-      >
-        <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-        className="text-center"
-      >
-        <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 font-plus">
-          User Friendly Mobile App
-        </motion.h2>
-      </motion.div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:grid-cols-3 w-[80%] mx-auto">
-        <motion.div variants={fadeIn} className="">
-              <Image 
-                src={mobile1}
-                className="w-[450px] h-[450px] object-contain rounded-3xl"
-                alt='feature'
-                priority
-              />  
-              </motion.div>
-               <motion.div variants={fadeIn} className="">
-              <Image 
-                src={mobile2}
-                className="w-[450px] h-[450px] object-contain rounded-3xl"
-                alt='feature'
-                priority
-              />
-              </motion.div>
-               <motion.div variants={fadeIn} className="">
-              <Image 
-                src={mobile3}
-                className="w-[450px] h-[450px] object-contain rounded-3xl"
-                alt='feature'
-                priority
-              />
-                  
-              </motion.div>
-       
-      </div>
-        
-      </motion.div>
-     
-    </div>
-  </section>
-);
+const TestimonialsSection = () => {
+  return (
+     <section className='flex flex-col items-center my-20  md:my-32'>
+          <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[90%] mx-auto bg-[#3B0A45] rounded-3xl">
+           <div className='m-5'>
+                   <h2  className="text-3xl md:text-4xl font-bold text-white mb-4 font-plus">
+                     Download The App
+                   </h2>
+                   <p  className="text-lg text-white max-w-2xl mx-auto mb-8 font-plus">
+                     Get started with GoVibe today and unlock the best restaurants, explore menus, and book unforgettable dining experiences in your city.
+                   </p>
+                   <div  className="flex flex-col sm:flex-row items-center gap-6">
+                     <button className="flex items-center gap-3 bg-black text-white px-6 py-1 rounded-lg font-semibold cursor-pointer ">
+                        <img
+                         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/App%20Store%20%E8%8B%B1%E6%96%87%20%E9%BB%91%E8%89%B2-mzVnx5Nup7Y6MoevDioYCglyFN83fG.png"
+                         alt="Download on the App Store"
+                         style={{
+                           marginBottom: 15
+                         }}
+                       
+                         />
+                     </button>
+                     <button className="flex cursor-pointer items-center gap-3 bg-black text-white px-6 py-3 rounded-lg font-semibold">
+                        <img
+                         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Google%20Play%20%E8%8B%B1%E6%96%87%20%E9%BB%91%E8%89%B2-5ip16nv7GXomrgrIDICT4vu5DL5slS.png"
+                         alt="Get it on Google Play"
+                         />
+                     </button>
+                   </div>
+                 </div>
+          <div className="w-full md:w-[100%] lg:w-[20%] p-4  rounded-3xl m-7">
+            <Image
+              src={mockup}
+              className='w-full object-contain rounded-xl'
+              priority
+              alt="features"
+            />
+          </div>
+            
+          </div>
+       </section>
+  )
+}
 
 export default TestimonialsSection;
 

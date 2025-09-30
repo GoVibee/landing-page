@@ -53,8 +53,8 @@ export default function HomePage() {
         <HowItWorksSection />
         <HeroWithDashboard />
         <TestimonialsSection />
-        <ExperienceSection />
-        <DownloadSection />
+        {/* <ExperienceSection />
+        <DownloadSection /> */}
       </main>
       <Footer />
     </div>
