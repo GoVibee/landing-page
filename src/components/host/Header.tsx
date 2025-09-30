@@ -41,6 +41,22 @@ const Header = () => {
         >
           Get Started
         </button>
+         <button
+          onClick={() => {
+            router.push('/pages/about')
+          }}
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
+        >
+          About
+        </button>
+         <button
+          onClick={() => {
+            router.push('/pages/contact')
+          }}
+          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
+        >
+          Contact
+        </button>
       </nav>
 
       {/* CTA Button */}

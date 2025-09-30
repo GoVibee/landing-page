@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -22,19 +24,24 @@ const staggerContainer = {
 
 
 // Footer Component
-const Footer = () => (
-  <footer className="bg-gray-100">
+const Footer = () => {
+  return (
+    <footer className="bg-gray-100">
     <div className="container mx-auto px-6 py-8">
       <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <p className="text-gray-500">&copy; 2025 GoVibe. All rights reserved.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
           {/* <a href="#" className="text-gray-500 hover:text-[#3B0A45]">About</a> */}
+          <a href="#" className="text-gray-500 hover:text-[#3B0A45]">About</a>
           <a href="#" className="text-gray-500 hover:text-[#3B0A45]">Privacy</a>
           <a href="#" className="text-gray-500 hover:text-[#3B0A45]">Terms</a>
+          <a href="#" className="text-gray-500 hover:text-[#3B0A45]">Contact Us</a>
+          
         </div>
       </div>
     </div>
   </footer>
-);
+  )
+};
 
 export default Footer;
