@@ -2,17 +2,15 @@
 
 :root {
   --background: #ffffff;
-   --font-sans: var(--font-plus-jakarta);
-}
-
-@theme inline {
-  --font-sans: var(--font-geist-sans);
-   --font-sans: var(--font-plus-jakarta);
+  --font-sans: var(--font-plus-jakarta); /* 👈 pick one default */
   --font-mono: var(--font-geist-mono);
 }
-body{
-  background-color:  white
+
+body {
+  background-color: white;
+  font-family: var(--font-sans); /* 👈 now consistent */
 }
+
 .font-plus {
   font-family: var(--font-plus-jakarta);
 }

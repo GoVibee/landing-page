@@ -105,6 +105,7 @@ const page: NextPage = () => {
                 <button
                   type="submit"
                   className="w-full justify-center rounded-md border border-transparent bg-[#3B0A45] py-3 px-4 text-sm font-semibold text-white shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:ring-offset-2 cursor-pointer"
+                  onClick={() => router.push('/pages/signin')}
                 >
                   Sign up
                 </button>

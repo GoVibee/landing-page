@@ -36,7 +36,7 @@ export default function page() {
               </p>
               <button
                 className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto flex items-center gap-3"
-                onClick={() => router.push('/pages/signups')}
+                onClick={() => router.push('/pages/signup')}
               >
                 Get Started
                 <div className="bg-white p-1 rounded-3xl">
