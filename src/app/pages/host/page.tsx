@@ -130,7 +130,7 @@ export default function page() {
           </div>
           <div className="w-full lg:w-[50%] p-4 bg-purple-100 rounded-3xl m-7">
             <Image
-              src={analytics}
+              src={review}
               className='w-full object-contain rounded-xl'
               priority
               alt="features"
@@ -155,7 +155,7 @@ export default function page() {
           </div>
           <div className="w-full md:w-[100%] lg:w-[50%] p-4 bg-purple-100 rounded-3xl m-7">
             <Image
-              src={review}
+              src={analytics}
               className='w-full object-contain rounded-xl'
               priority
               alt="features"

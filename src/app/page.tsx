@@ -10,6 +10,7 @@ import TestimonialsSection from '@/components/homepage/TestimonialsSection';
 import ExperienceSection from '@/components/homepage/ExperienceSection';
 import DownloadSection from '@/components/homepage/DownloadSection';
 import Footer from '@/components/homepage/Footer';
+import { HeroWithDashboard } from '@/components/homepage/HeroWithDashboard';
 
 
 // Animation variants for Framer Motion
@@ -50,6 +51,7 @@ export default function HomePage() {
         <HeroSection />
         <FeaturesSection />
         <HowItWorksSection />
+        <HeroWithDashboard />
         <TestimonialsSection />
         <ExperienceSection />
         <DownloadSection />

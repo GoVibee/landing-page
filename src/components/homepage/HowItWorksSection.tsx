@@ -23,25 +23,25 @@ export const HowItWorksSection = () => {
   const features = [
     {
       number: '01',
-      icon: <QrCode size={32} className="text-[#3B0A45]" />,
+      icon: <QrCode size={32} className="text-black" />,
       title: 'Scan & Connect',
       description: 'Scan the restaurant’s QR code with GoVibe to instantly access its menu, details, and reviews.',
     },
     {
       number: '02',
-      icon: <BookOpen size={32} className="text-[#3B0A45]" />,
+      icon: <BookOpen size={32} className="text-black" />,
       title: 'Explore the Menu',
       description: 'Browse updated dishes with photos, prices, and descriptions — always accurate and fresh.',
     },
     {
       number: '03',
-      icon: <Smartphone size={32} className="text-[#3B0A45]" />,
+      icon: <Smartphone size={32} className="text-black" />,
       title: 'Place Your Order',
       description: 'Order directly from your phone in just a few taps, skipping the wait for staff.',
     },
     {
       number: '04',
-      icon: <MessageSquare size={32} className="text-[#3B0A45]" />,
+      icon: <MessageSquare size={32} className="text-black" />,
       title: 'Enjoy & Share',
       description: 'Relax while your meal is prepared and share your dining experience with reviews in the app.',
     },
@@ -56,7 +56,7 @@ export const HowItWorksSection = () => {
         variants={staggerContainer}
         className="text-center"
       >
-        <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 font-plus">
+        <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-gray-800 font-plus">
           How It Works
         </motion.h2>
       </motion.div>
@@ -72,7 +72,7 @@ export const HowItWorksSection = () => {
           <div className="relative flex-shrink-0 w-80 h-[560px] lg:w-96 lg:h-[680px] z-10">
             {/* Blue background circle */}
             {/* <div className="absolute -top-1/4 -left-1/4 w-[150%] h-[150%] rounded-full bg-[#3B0A45] z-0 hidden lg:block"></div> */}
-            {/* <div className="absolute bottom-1 right-1/4 w-[100%] h-[40%] rounded-full bg-[#3B0A45]  z-0 hidden lg:block"></div> */}
+            <div className="absolute top-[25%]  w-[100%] h-[55%] rounded-full bg-[#3B0A45]  z-0 hidden lg:flex lg:flex-col lg:justify-center"></div>
 
 
             {/* Actual Phone frame */}
@@ -116,7 +116,7 @@ function FeatureCard({ data, align }: FeatureCardProps) {
       <span className="text-5xl font-extrabold text-gray-200 mb-2">{data.number}</span>
       <div className="flex items-center gap-3 mb-3">
         {data.icon}
-        <h3 className="text-xl font-bold text-[#3B0A45]">{data.title}</h3>
+        <h3 className="text-xl font-bold text-black">{data.title}</h3>
       </div>
       <p className={`text-gray-600 max-w-xs ${align === 'right' ? 'lg:text-right' : 'lg:text-left'}`}>
         {data.description}
