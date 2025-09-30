@@ -92,14 +92,6 @@ export default function page() {
           <div>
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Order Management System</h3>
             <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Streamline orders from kitchen to customer without delays.</p>
-            <button
-                className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus flex items-center gap-3"
-              >
-                Get Started
-                <div className="bg-white p-1 rounded-3xl">
-                  <ArrowUpRight color="#3B0A45" size={20}/>
-                </div>
-              </button> 
           </div>
           <div className="w-full md:w-[100%] lg:w-[50%] p-5 bg-purple-100 rounded-3xl">
             <Image
@@ -125,14 +117,6 @@ export default function page() {
           <div>
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Scan & Explore</h3>
             <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Scan to explore menus, reviews, and details instantly in the GoVibe app.</p>
-            <button
-                className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus flex items-center gap-3"
-              >
-                Get Started
-                <div className="bg-white p-1 rounded-3xl">
-                  <ArrowUpRight color="#3B0A45" size={20}/>
-                </div>
-              </button>
           </div>
         </div>
        </section>
@@ -142,28 +126,22 @@ export default function page() {
           <div>
             <h3 className="text-gray-900 text-3xl font-plus font-bold">Customer Feedback</h3>
             <p className="text-md font-plus md:text-lg max-w-xl mx-auto mb-8 text-gray-500">Collect ratings and reviews to understand customer satisfaction and improve service</p>
-            <button
-                className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus flex items-center gap-3"
-              >
-                Get Started
-                <div className="bg-white p-1 rounded-3xl">
-                  <ArrowUpRight color="#3B0A45" size={20}/>
-                </div>
-              </button>
+           
           </div>
-          <div className="w-full md:w-[100%] lg:w-[50%] p-5 bg-[#C7DAD6] rounded-3xl">
+          <div className="w-full lg:w-[50%] p-4 bg-purple-100 rounded-3xl m-7">
             <Image
-              src={review}
+              src={analytics}
               className='w-full object-contain rounded-xl'
               priority
               alt="features"
             />
           </div>
-        </div>
+            
+          </div>
        </section>
-        <section className='flex flex-col items-center my-20  md:my-32'>
+       <section className='flex flex-col items-center my-20  md:my-32'>
           <div className="flex flex-col md:flex-row md:items-center md:gap-10 w-[90%] mx-auto bg-[#3B0A45] rounded-3xl">
-           <div className='pl-5'>
+           <div className='pl-5 pt-5 md:py-5 lg:py-0'>
             <h3 className="text-white text-3xl font-plus font-bold">Ready to transform your business?</h3>
             <p className="text-md font-plus md:text-sm max-w-xl mx-auto mb-8 text-white mt-3">Digitize your menu, streamline orders, and boost revenue with GoVibe Host.</p>
             <button
@@ -177,7 +155,7 @@ export default function page() {
           </div>
           <div className="w-full md:w-[100%] lg:w-[50%] p-4 bg-purple-100 rounded-3xl m-7">
             <Image
-              src={analytics}
+              src={review}
               className='w-full object-contain rounded-xl'
               priority
               alt="features"
