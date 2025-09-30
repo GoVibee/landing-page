@@ -39,12 +39,12 @@ export function HeroWithDashboard() {
         {/* Dashboard Mockup Image */}
         <div className="mt-16 relative w-full max-w-5xl mx-auto px-4">
           <Image
-            src={image1} // Replace with your actual dashboard image path
+            src={image1}
             alt="AI Dashboard Mockup"
-            width={1200} // Set intrinsic width for optimization
-            height={750} // Set intrinsic height for optimization
-            layout="responsive" // Makes image responsive
-            objectFit="contain" // Ensures the entire image is visible
+            width={1200} 
+            height={750} 
+            layout="responsive" 
+            objectFit="contain" 
             className="rounded-xl shadow-2xl ring-1 ring-gray-200"
           />
         </div>
