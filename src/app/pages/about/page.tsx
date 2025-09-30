@@ -51,7 +51,6 @@ export default function HomePage() {
             
           </div>
        </section>
-        {/* <Story /> */}
       </main>
       <Footer />
     </div>
