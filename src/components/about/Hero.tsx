@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import image1 from '../../../assets/3.jpg';
 
 export function Hero() {
   return (
     <section className="relative h-[60vh] flex items-center justify-center text-white font-plus mt-32">
       <div
         className="absolute inset-0 bg-cover bg-center rounded-2xl mx-4 my-2"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop')" }}
+        style={{ backgroundImage:  `url(${image1.src})`}}
       >
         <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
       </div>
