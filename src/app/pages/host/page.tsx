@@ -36,6 +36,7 @@ export default function page() {
               </p>
               <button
                 className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus mx-auto flex items-center gap-3"
+                onClick={() => router.push('/pages/signups')}
               >
                 Get Started
                 <div className="bg-white p-1 rounded-3xl">
@@ -146,6 +147,7 @@ export default function page() {
             <p className="text-md font-plus md:text-sm max-w-xl mx-auto mb-8 text-white mt-3">Digitize your menu, streamline orders, and boost revenue with GoVibe Host.</p>
             <button
                 className="bg-[#ffffff] cursor-pointer text-[#3B0A45] px-6 py-2 rounded-full font-semibold shadow-lg  transition-colors font-plus flex items-center gap-3"
+                onClick={() => router.push('/pages/signup')}
               >
                 Get Started
                 <div className="bg-[#3B0A45] p-1 rounded-3xl">

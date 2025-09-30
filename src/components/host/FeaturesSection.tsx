@@ -78,7 +78,7 @@ const FeaturesSection = () => {
                     {feature.description}
                   </p>
 
-                  <div className="absolute bottom-4 flex gap-2 items-center cursor-pointer">
+                  {/* <div className="absolute bottom-4 flex gap-2 items-center cursor-pointer">
                     <p
                       className={`
                         transition-colors duration-300
@@ -94,7 +94,7 @@ const FeaturesSection = () => {
                         ${isSecond ? 'text-white group-hover:text-[#3B0A45]' : 'text-[#3B0A45] group-hover:text-white'}
                       `}
                     />
-                  </div>
+                  </div> */}
                 </div>
               );
             })}
