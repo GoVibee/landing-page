@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'; // For optimized image handling
+import Image from 'next/image';
 import image1 from '../../../assets/dashboard1.png';
 import { ArrowUpRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -18,8 +18,6 @@ export function HeroWithDashboard() {
       ></div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
-        {/* "Contact" pill */}
-
         {/* Main Title */}
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-8 max-w-3xl mx-auto">
           Transform Your Restaurant With Our Host Platform
@@ -36,17 +34,40 @@ export function HeroWithDashboard() {
             </div>
         </button>
 
-        {/* Dashboard Mockup Image */}
+        {/* Dashboard Mockup Image with Progressive Blur */}
         <div className="mt-16 relative w-full max-w-5xl mx-auto px-4">
-          <Image
-            src={image1}
-            alt="AI Dashboard Mockup"
-            width={1200} 
-            height={750} 
-            layout="responsive" 
-            objectFit="contain" 
-            className="rounded-xl shadow-2xl ring-1 ring-gray-200"
-          />
+          <div className="relative rounded-xl shadow-2xl ring-1 ring-gray-200 overflow-hidden">
+            {/* Base Image - Clear Top Half */}
+            <div className="relative">
+              <Image
+                src={image1}
+                alt="AI Dashboard Mockup"
+                width={1200} 
+                height={750} 
+                className="w-full h-auto"
+              />
+              
+              {/* Blur Overlay - Bottom Half */}
+              <div 
+                className="absolute inset-0"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 40%, black 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 40%, black 100%)'
+                }}
+              >
+                <Image
+                  src={image1}
+                  alt=""
+                  width={1200} 
+                  height={750} 
+                  className="w-full h-auto filter blur-3xl scale-200"
+                  style={{
+                    transform: 'translateY(-50%) scale(600)'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

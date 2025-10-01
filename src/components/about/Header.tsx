@@ -49,12 +49,6 @@ const Header = () => {
           Contact
         </button>
         <button
-          onClick={() => handleLinkClick('download')}
-          className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
-        >
-          Download App
-        </button>
-        <button
           onClick={() => router.push('/pages/host')}
           className="text-gray-600 hover:text-[#3B0A45] hover:font-bold transition-colors font-plus cursor-pointer"
         >
