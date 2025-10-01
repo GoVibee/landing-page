@@ -38,12 +38,11 @@ const TestimonialsSection = () => {
                    <div  className="flex flex-col sm:flex-row items-center gap-6">
                      <button className="flex items-center gap-3 bg-black text-white px-6 py-1 rounded-lg font-semibold cursor-pointer ">
                         <img
-                         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/App%20Store%20%E8%8B%B1%E6%96%87%20%E9%BB%91%E8%89%B2-mzVnx5Nup7Y6MoevDioYCglyFN83fG.png"
-                         alt="Download on the App Store"
-                         style={{
-                           marginBottom: 15
-                         }}
-                       
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/App%20Store%20%E8%8B%B1%E6%96%87%20%E9%BB%91%E8%89%B2-mzVnx5Nup7Y6MoevDioYCglyFN83fG.png"
+                          alt="Download on the App Store"
+                          style={{
+                            marginBottom: 15
+                          }}
                          />
                      </button>
                      <button className="flex cursor-pointer items-center gap-3 bg-black text-white px-6 py-3 rounded-lg font-semibold">
