@@ -32,7 +32,7 @@ const TestimonialsSection = () => {
                    <h2  className="text-3xl md:text-4xl font-bold text-white mb-4 font-plus">
                      Download The App
                    </h2>
-                   <p  className="text-lg text-white max-w-2xl mx-auto mb-8 font-plus">
+                   <p  className="text-md text-gray-300 max-w-2xl mx-auto mb-8 font-plus">
                      Get started with GoVibe today and unlock the best restaurants, explore menus, and book unforgettable dining experiences in your city.
                    </p>
                    <div  className="flex flex-col sm:flex-row items-center gap-6">
@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
                      </button>
                    </div>
                  </div>
-          <div className="w-full md:w-[100%] lg:w-[20%] p-4  rounded-3xl m-7">
+          <div className="mb-5 md:mb-0 mx-auto md:mx-0 w-[60%] md:w-[100%] lg:w-[20%] p-4  rounded-3xl md:m-7">
             <Image
               src={mockup}
               className='w-full object-contain rounded-xl'
