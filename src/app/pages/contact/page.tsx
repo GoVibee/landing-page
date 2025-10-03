@@ -8,22 +8,22 @@ import { ShieldCheck, CreditCard, BarChart } from 'lucide-react';
 
 export default function HomePage() {
   const features = [
-    {
-      icon: <ShieldCheck size={24} />,
-      title: 'Minimize Payment Fraud',
-      description: 'Implement advanced fraud detection tools to secure your entire payment process.',
-    },
-    {
-      icon: <CreditCard size={24} />,
-      title: 'Enhance Checkout Experience',
-      description: 'Create seamless, customer-centric payment journeys that drive conversions.',
-    },
-    {
-      icon: <BarChart size={24} />,
-      title: 'Optimize Payment Performance',
-      description: 'Achieve your goals with smart solutions built to improve payment success rates.',
-    },
-  ];
+  {
+    icon: <ShieldCheck size={24} />,
+    title: 'Seamless Ordering',
+    description: 'Skip the waiters—browse menus, place orders, and pay directly from your phone.',
+  },
+  {
+    icon: <CreditCard size={24} />,
+    title: 'Smart Dining Experience',
+    description: 'Discover restaurants, bars, and clubs tailored to your vibe and preferences.',
+  },
+  {
+    icon: <BarChart size={24} />,
+    title: 'Nightlife Made Easy',
+    description: 'Plan your night out effortlessly with curated venues and real-time updates.',
+  },
+];
 
   return (
     <div className="bg-white">
@@ -36,10 +36,10 @@ export default function HomePage() {
             <div className="space-y-12">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                  Unleash your payments potential
+                  Discover, Dine & Vibe Smarter
                 </h1>
-                <p className="mt-4 text-lg text-gray-600">
-                  Shape extraordinary commerce experiences.
+              <p className="mt-4 text-lg text-gray-600">
+                  Elevate your dining and nightlife experience with seamless ordering and curated venues.
                 </p>
               </div>
               <div className="space-y-8">
