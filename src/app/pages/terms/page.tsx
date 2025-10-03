@@ -1,8 +1,6 @@
 import React from 'react'
 import Header from '@/components/homepage/Header'
 import Footer from '@/components/homepage/Footer'
-import Link from 'next/link'
-import { Mail,Globe } from 'lucide-react'
 
 function page() {
   return (
@@ -11,7 +9,7 @@ function page() {
      <main className="flex-grow container mx-auto px-6 py-12 md:py-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 my-8">
-            Privacy Policy
+            Terms Of Conditions
           </h1>
           <div className="prose prose-lg max-w-none text-gray-700 mb-12 border-b pb-8">
             <p className="lead !text-xl !text-gray-800">Welcome to GoVibe!</p>
@@ -170,162 +168,6 @@ function page() {
               <h2 id="usage" className="mt-10 font-bold text-xl">8. Changes To Policy</h2>
               <div>
                 <h4 className="mt-3 font-bold">We may update this Privacy Policy at any time. Updates will be posted here with a new “Last Updated” date.</h4>
-              </div>
-
-              {/*Contact */}
-              <h2 id="usage" className="mt-10 font-bold text-xl">9. Contact</h2>
-              <div>
-                <h4 className="mt-3 font-bold">GoVibe Privacy Team</h4>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700 flex gap-5 mt-5">
-                    <Mail />
-                    <span className='font-bold'>Email</span>: [support@govibe.com]
-                  </li>
-                  <li className="text-gray-700 flex gap-5 mt-5">
-                    <Globe size={20}/>
-                    <Link href="https://govibe-six.vercel.app/">
-                      <span className='font-bold'>Website</span>: [https://govibe-six.vercel.app/]
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-          </div>
-        </div>
-         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 my-8">
-            Terms Of Service
-          </h1>
-          <div className="prose prose-lg max-w-none text-gray-700 mb-12 border-b pb-8">
-           
-          </div>
-
-          <div className="prose prose-lg max-w-none text-gray-700">
-            {/* Section 1 */}
-            <h2 id="collection" className='font-bold text-xl'>1. Acceptance Of Terms</h2>
-            <div>
-              <h3>By using GoVibe (for Users) or GoVibe Host (for Hosts), you agree to these Terms of Service. If you don’t agree, please stop using our platform. </h3>
-            </div>
-
-            {/* Section 2 */}
-            <h2 id="usage" className="mt-10 font-bold text-xl">2. Eligibility</h2>
-            <div>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700">
-                    Users must be 18 years or older to create an account.
-                  </li>
-                  <li className="text-gray-700">
-                    Hosts must be legally registered businesses to join GoVibe Host.
-                  </li>
-                </ul>
-              </div>
-            {/* Section 3 */}
-            <h2 id="sharing" className="mt-10 font-bold text-xl">3. Accounts</h2>
-            <div>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700">
-                    You are responsible for keeping your account credentials safe.
-                  </li>
-                  <li className="text-gray-700">
-                    You must provide accurate and truthful information.
-                  </li>
-                  <li className="text-gray-700">
-                    We may suspend or terminate accounts that violate these terms.
-                  </li>
-                </ul>
-              </div>
-
-            {/* Section 4 */}
-            <h2 id="sharing" className="mt-10 font-bold text-xl">4. Use Of Service</h2>
-            <div>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700">
-                    <span className="font-bold">Users</span>: You may browse restaurants, make bookings, and order through the platform. Misuse (fraud, spamming, fake bookings) is prohibited.
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-bold">Hosts</span>: You may list your venue, upload menus/photos, and manage bookings. Content must be accurate and not misleading.
-                  </li>
-                </ul>
-              </div>
-
-            {/* Your rights*/}
-             <h2 id="usage" className="mt-10 font-bold text-xl">5. Payments</h2>
-            <div>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700">
-                    Users agree to pay for bookings/orders made through GoVibe.
-                  </li>
-                  <li className="text-gray-700">
-                    Hosts agree to GoVibe’s fees, subscription charges, or commission rates (where applicable)
-                  </li>
-                  <li className="text-gray-700">
-                    All payments are processed securely through third-party providers
-                  </li>
-                </ul>
-              </div>
-
-               <h2 id="usage" className="mt-10 font-bold text-xl">6. Content</h2>
-              <div>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700">
-                    Users and Hosts may post reviews, images, or menus.
-                  </li>
-                  <li className="text-gray-700">
-                    You grant GoVibe a non-exclusive license to display this content within the platform.
-                  </li>
-                  <li className="text-gray-700">
-                    Inappropriate, offensive, or illegal content may be removed.
-                  </li>
-                </ul>
-              </div>
-
-               <h2 id="sharing" className="mt-10 font-bold text-xl">7. Prohibited Activities</h2>
-            <div>
-                <h4 className="mt-3 font-bold"> You may not:</h4>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700">
-                    Misuse the platform for fraudulent or harmful purposes.
-                  </li>
-                  <li className="text-gray-700">
-                    Reverse-engineer or hack GoVibe systems.
-                  </li>
-                  <li className="text-gray-700">
-                    Post unlawful, discriminatory, or defamatory content..
-                  </li>
-                </ul>
-              </div>
-
-              {/*Changes To Policy */}
-              <h2 id="usage" className="mt-10 font-bold text-xl">8. Limitation of Liability</h2>
-              <div>
-                <h4 className="mt-3 font-bold">GoVibe is a platform provider. We do not control restaurant operations, food safety, or experiences. We are not liable for issues with reservations, meals, or customer interactions.</h4>
-              </div>
-
-              <h2 id="usage" className="mt-10 font-bold text-xl">9. Termination</h2>
-              <div>
-                <h4 className="mt-3 font-bold">We may suspend or terminate accounts if you violate these terms. You may also delete your account at any time.</h4>
-              </div>
-
-              <h2 id="usage" className="mt-10 font-bold text-xl">10. Governing Law</h2>
-              <div>
-                <h4 className="mt-3 font-bold">These Terms are governed by the Laws of Ghana. Disputes will be resolved in the Supreme Court.</h4>
-              </div>
-
-              {/*Contact */}
-              <h2 id="usage" className="mt-10 font-bold text-xl">11. Contact</h2>
-              <div>
-                <h4 className="mt-3 font-bold">GoVibe Privacy Team</h4>
-                <ul className="list-disc list-inside space-y-2">
-                  <li className="text-gray-700 flex gap-5 mt-5">
-                    <Mail />
-                    <span className='font-bold'>Email</span>: [support@govibe.com]
-                  </li>
-                  <li className="text-gray-700 flex gap-5 mt-5">
-                    <Globe size={20}/>
-                    <Link href="https://govibe-six.vercel.app/">
-                      <span className='font-bold'>Website</span>: [https://govibe-six.vercel.app/]
-                    </Link>
-                  </li>
-                </ul>
               </div>
           </div>
         </div>
