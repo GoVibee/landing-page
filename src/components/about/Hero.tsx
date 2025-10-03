@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import image1 from '../../../assets/3.jpg';
+import image1 from '../../../assets/hero1.jpg';
 
 export function Hero() {
   return (
@@ -16,7 +16,7 @@ export function Hero() {
 
       <div className="relative z-10 text-center max-w-2xl px-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">About GoVibe</h1>
-        <p className="text-lg md:text-xl mb-8">
+        <p className="text-lg md:text-lg font-semibold mb-8">
           GoVibe is a smart dining and nightlife companion that helps users discover restaurants and place orders seamlessly.
         </p>
          <button
