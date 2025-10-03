@@ -77,7 +77,7 @@ function page() {
             </div>
 
             {/* Section 2 */}
-            <h2 id="usage" className="mt-10 font-bold text-xl">2. How We Use Information We Collect</h2>
+            <h2 id="usage" className="mt-10 font-bold text-xl">2. How We Use Information</h2>
             <div>
                 <h4 className="mt-3 font-bold">We use your information to:</h4>
                 <ul className="list-disc list-inside space-y-2">
@@ -102,24 +102,73 @@ function page() {
                 </ul>
               </div>
             {/* Section 3 */}
-            <h2 id="sharing">3. Information We Share</h2>
-            <p>
-              We do not share personal information with companies, organizations, and individuals outside of GoVibe unless one of the following circumstances applies:
-            </p>
-            <h3>With Your Consent</h3>
-            <p>
-              We will share personal information with companies, organizations, or individuals outside of GoVibe when we have your consent to do so.
-            </p>
-            <h3>For External Processing</h3>
-            <p>
-              We provide personal information to our affiliates or other trusted businesses or persons to process it for us, based on our instructions and in compliance with our Privacy Policy and any other appropriate confidentiality and security measures.
-            </p>
+            <h2 id="sharing" className="mt-10 font-bold text-xl">3. Sharing of Information</h2>
+            <div>
+                <h4 className="mt-3 font-bold">We do not sell your personal data. We may share it only:</h4>
+                <ul className="list-disc list-inside space-y-2">
+                  <li className="text-gray-700">
+                   With other Users or Hosts (restaurant profiles, menus, booking confirmations).
+                  </li>
+                  <li className="text-gray-700">
+                    With service providers (hosting, payment processors, analytics tools).
+                  </li>
+                  <li className="text-gray-700">
+                    For legal compliance (if required by law, regulation, or legal process).
+                  </li>
+                  <li className="text-gray-700">
+                   Process payments securely.
+                  </li>
+                  <li className="text-gray-700">
+                   During a business transfer (merger, acquisition, restructuring).
+                  </li>
+                </ul>
+              </div>
 
             {/* Section 4 */}
-            <h2 id="rights">4. Your Rights</h2>
-            <p>
-              You have the right to access, correct, or delete your personal information. You can also object to or restrict certain processing of your information. To exercise these rights, please contact us at privacy@govibe.com.
-            </p>
+            <h2 id="rights" className="mt-10 font-bold text-xl">4. Data Security</h2>
+            <div>
+                <h4 className="mt-3 font-bold">We use encryption, access controls, and other safeguards to protect your information. Still, no system is 100% secure. Please protect your password and account details</h4>
+                
+            </div>
+
+            {/* Your rights*/}
+             <h2 id="usage" className="mt-10 font-bold text-xl">5. Your rights</h2>
+            <div>
+                <h4 className="mt-3 font-bold">You may have rights under applicable law to:</h4>
+                <ul className="list-disc list-inside space-y-2">
+                  <li className="text-gray-700">
+                    Access the personal information we hold about you.
+                  </li>
+                  <li className="text-gray-700">
+                    Request corrections or deletion.
+                  </li>
+                  <li className="text-gray-700">
+                    Restrict or object to processing.
+                  </li>
+                  <li className="text-gray-700">
+                   Export your data (data portability)
+                  </li>
+                </ul>
+                 <h4 className="mt-3 font-bold">Requests can be sent to [support@govibe.com].</h4>
+              </div>
+
+              {/* Retention of data*/}
+              <h2 id="usage" className="mt-10 font-bold text-xl">6. Retention Of Data</h2>
+              <div>
+                <h4 className="mt-3 font-bold">We retain your data while your account is active. If you delete your account, some data may be kept for legal or business reasons.</h4>
+              </div>
+
+              {/* Children's Privacy*/}
+              <h2 id="usage" className="mt-10 font-bold text-xl">7. Children's Privacy</h2>
+              <div>
+                <h4 className="mt-3 font-bold">GoVibe and GoVibe Host are not directed at individuals under 18. We do not knowingly collect data from minors.</h4>
+              </div>
+
+              {/*Changes To Policy */}
+              <h2 id="usage" className="mt-10 font-bold text-xl">8. Changes To Policy</h2>
+              <div>
+                <h4 className="mt-3 font-bold">We may update this Privacy Policy at any time. Updates will be posted here with a new “Last Updated” date.</h4>
+              </div>
           </div>
         </div>
       </main>
