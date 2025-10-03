@@ -15,12 +15,13 @@ const Header = () => {
    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
       <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        <div
-          className="text-2xl font-bold text-gray-800 cursor-pointer"
+        <a
+          className="text-2xl font-bold text-gray-800 cursor-pointer curspr-pointer"
+          href='/'
         >
           <span className="text-[#3B0A45]">Go</span>
           <span className="font-plus">Vibe</span>
-        </div>
+        </a>
       </button>
 
       {/* Navigation */}
