@@ -8,7 +8,7 @@ const InputField = ({ id, label, type = 'text' }: any) => (
       id={id}
       type={type}
       placeholder={`Your ${label.toLowerCase()}`}
-      className="block w-full px-4 py-2 bg-gray-100 rounded-md  focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+      className="block w-full px-4 py-3 bg-white rounded-md  focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
     />
   </div>
 );
@@ -21,7 +21,7 @@ const TextAreaField = ({ id, label, rows = 5 }: any) => (
       name={id}
       rows={rows}
       placeholder="Enter your message"
-      className="block w-full px-4 py-3 bg-gray-100 border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45] resize-y"
+      className="block w-full px-4 py-3 bg-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45] resize-y"
     ></textarea>
   </div>
 );

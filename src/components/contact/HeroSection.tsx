@@ -6,7 +6,7 @@ import image1 from '../../../assets/hero.png';
 
 export function HeroSection() {
   return (
-    <section className="relative h-[60vh] flex items-center justify-center text-white font-plus mt-32">
+    <section className="relative h-[330px] lg:h-[60vh] flex items-center justify-center text-white font-plus mt-32">
       <div
         className="absolute inset-0 bg-cover bg-center rounded-2xl mx-4 my-2"
         style={{ backgroundImage:  `url(${image1.src})`}}
