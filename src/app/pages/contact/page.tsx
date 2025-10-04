@@ -3,7 +3,7 @@ import { FeatureBlock } from '../../../components/contact/FeatureBlock';
 import { ContactForm } from '../../../components/contact/ContactForm';
 import Footer from '@/components/homepage/Footer';
 import { HeroSection } from '@/components/contact/HeroSection';
-import { ShieldCheck, CreditCard, BarChart } from 'lucide-react';
+import { ShieldCheck, CreditCard, BarChart,Mail, Phone } from 'lucide-react';
 
 
 export default function HomePage() {
@@ -52,7 +52,21 @@ export default function HomePage() {
                   />
                 ))}
               </div>
+              <div className='space-y-5'>
+                <h3> Get in touch with us  </h3>
+                <ul className="list-disc list-inside space-y-2">
+                  <li className="text-gray-700 flex gap-5 mt-5">
+                    <Mail />
+                    <span className='font-bold'>Email</span>: [support@govibe.com]
+                  </li>
+                  <li className="text-gray-700 flex gap-5 mt-5">
+                     <Phone />
+                    <span className='font-bold'>Contact</span>: [0540656226]
+                  </li>
+                </ul>
             </div>
+            </div>
+            
 
             {/* Right Column: Form */}
             <div>
