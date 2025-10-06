@@ -88,15 +88,6 @@ export default function CreateRestaurantPage() {
           <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-10 text-white">
             <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl">
                <p className="text-lg mb-6">"GoVibe helps us reach a new generation of diners. The platform is intuitive, and managing our profile, menu, and bookings has never been easier."</p>
-                {/* <div>
-                  <p className="font-bold text-xl">Jonathan Lee</p>
-                  <p className="text-sm">The Golden Spoon</p>
-                  <p className="text-xs text-gray-200">Owner & Head Chef</p>
-                </div> */}
-                 {/* <div className="flex items-center justify-end gap-4 mt-6">
-                  <button className="p-2 rounded-full border border-white/30 hover:bg-white/20"><ArrowLeft size={20} /></button>
-                  <button className="p-2 rounded-full border border-white/30 hover:bg-white/20"><ArrowRight size={20} /></button>
-                </div> */}
             </div>
           </div>
         </div>
