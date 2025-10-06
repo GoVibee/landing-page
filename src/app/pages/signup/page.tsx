@@ -54,14 +54,14 @@ export default function AuthPage() {
             <div className="flex items-center text-sm border border-gray-200 rounded-full p-1">
               <button
                 onClick={() => setIsLoginView(true)}
-                className={`px-4 py-1 rounded-full transition-colors ${isLoginView ? 'bg-gray-100 text-gray-800 font-semibold' : 'text-gray-500'}`}
+                className={`px-4 py-1 rounded-full transition-colors ${isLoginView ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-500'}`}
               >
                 <LogIn size={16} className="inline mr-1" />
                 Login
               </button>
               <button
                 onClick={() => setIsLoginView(false)}
-                className={`px-4 py-1 rounded-full transition-colors ${!isLoginView ? 'bg-gray-100 text-gray-800 font-semibold' : 'text-gray-500'}`}
+                className={`px-4 py-1 rounded-full transition-colors ${!isLoginView ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-500'}`}
               >
                 <User size={16} className="inline mr-1" />
                 Sign Up
@@ -80,16 +80,16 @@ export default function AuthPage() {
           <form className="space-y-6" onSubmit={handleSubmit}> {/* <-- ATTACH handleSubmit */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
-              <input type="email" id="email" placeholder="Enter your email address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800" required />
+              <input type="email" id="email" placeholder="Enter your email address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
             </div>
             <div className="relative">
               <label htmlFor="password"  className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-              <input type={passwordVisible ? "text" : "password"} id="password" placeholder="Enter your password" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800" required />
+              <input type={passwordVisible ? "text" : "password"} id="password" placeholder="Enter your password" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
               <button type="button" onClick={() => setPasswordVisible(!passwordVisible)} className="absolute right-3 top-10 text-gray-500">
                 {passwordVisible ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
-            <button type="submit" className="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+            <button type="submit" className="w-full bg-[#3B0A45] text-white font-semibold py-3 rounded-lg  transition-colors">
               {isLoginView ? 'Sign in' : 'Create an account'}
             </button>
           </form>
