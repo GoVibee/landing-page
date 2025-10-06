@@ -9,14 +9,14 @@ import Image1 from '../../../../assets/hero-3.jpg';
 const InputField = ({ label, id, placeholder, type = "text" }: any) => (
   <div className='font-plus'>
     <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
-    <input type={type} id={id} placeholder={placeholder} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800" />
+    <input type={type} id={id} placeholder={placeholder} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" />
   </div>
 );
 
 const TextAreaField = ({ label, id, placeholder }: any) => (
   <div className='font-plus'>
     <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
-    <textarea id={id} placeholder={placeholder} rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800 resize-y" />
+    <textarea id={id} placeholder={placeholder} rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45] resize-y" />
   </div>
 );
 
@@ -152,30 +152,35 @@ export default function CreateRestaurantPage() {
                         <div key={category.id} className="p-4 border border-gray-200 rounded-lg bg-white">
                             <div className="flex items-center justify-between mb-4">
                                 <input type="text" placeholder={`Category ${catIndex + 1} (e.g., Appetizers)`} className="w-full text-lg font-semibold border-b border-gray-300 focus:outline-none focus:border-gray-800" />
-                                <button type="button" onClick={() => removeMenuCategory(category.id)} className="ml-4 text-red-500 hover:text-red-700"><Trash2 size={18} /></button>
+                                <button type="button" onClick={() => removeMenuCategory(category.id)} className="ml-4 text-red-500 hover:text-red-700 cursor-pointer"><Trash2 size={18} /></button>
                             </div>
                             <div className="space-y-4">
                                 {category.items.map((item, itemIndex) => (
-                                    <div key={item.id} className="grid grid-cols-1 md:grid-cols-12 gap-3">
-                                        <input type="text" placeholder={`Item ${itemIndex + 1} Name`} className="md:col-span-5 px-3 py-2 border rounded-md text-sm" />
-                                        <input type="text" placeholder="Price" className="md:col-span-2 px-3 py-2 border rounded-md text-sm" />
-                                        <input type="text" placeholder="Description" className="md:col-span-4 px-3 py-2 border rounded-md text-sm" />
-                                        <button type="button" onClick={() => removeMenuItem(category.id, item.id)} className="md:col-span-1 flex justify-center items-center text-red-500 hover:text-red-700"><Trash2 size={16} /></button>
+                                  <div key={item.id}>
+                                    <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+                                        <input type="text" placeholder={`Item ${itemIndex + 1} Name`} className="md:col-span-5 px-3 py-2 border border-gray-300 rounded-md text-sm" />
+                                        <input type="text" placeholder="Price" className="md:col-span-2 px-3 py-2 border border-gray-300 rounded-md text-sm" />
+                                       
+                                        <button type="button" onClick={() => removeMenuItem(category.id, item.id)} className="md:col-span-1 flex justify-center items-center text-red-500 hover:text-red-700 cursor-pointer"><Trash2 size={16} /></button>
                                     </div>
+                                    <div className='mt-5'>
+                                       <TextAreaField label="Description(Optional)" id="description" placeholder="A juicy burger with melted cheese and crispy fries" />
+                                    </div>
+                                  </div>
                                 ))}
-                                <button type="button" onClick={() => addMenuItem(category.id)} className="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900 font-medium">
+                                <button type="button" onClick={() => addMenuItem(category.id)} className="flex items-center gap-2 text-sm text-gray-700 hover:text-green-700 font-medium">
                                     <PlusCircle size={16} /> Add Menu Item
                                 </button>
                             </div>
                         </div>
                     ))}
-                    <button type="button" onClick={addMenuCategory} className="w-full flex items-center justify-center gap-2 py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-800 hover:text-gray-800 transition">
+                    <button type="button" onClick={addMenuCategory} className="w-full flex items-center justify-center gap-2 py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-green-700 hover:text-green-700 transition">
                        <PlusCircle size={18} /> Add Category
                     </button>
                 </div>
             </div>
 
-            <button type="submit" className="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+            <button type="submit" className="cursor-pointer w-full bg-[#3B0A45] text-white font-semibold py-3 rounded-lg  transition-colors">
               Submit Restaurant
             </button>
           </form>
