@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight, UploadCloud, PlusCircle, Trash2 } from 'lucide-react';
+import { UploadCloud} from 'lucide-react';
 import Image1 from '../../../../assets/hero-3.jpg';
 
 // --- Reusable Form Field Components ---
@@ -28,49 +28,12 @@ export default function CreateRestaurantPage() {
     daysOfWeek.reduce((acc, day) => ({ ...acc, [day]: false }), {})
   );
 
-  const [menu, setMenu] = useState([
-    { id: 1, name: 'Appetizers', items: [{ id: 1, name: '', price: '', description: '' }] }
-  ]);
 
-  const handleCategoryImageUpload = (e: any, categoryId: any) => {
-    const file = e.target.files[0];
-    if (file) {
-      setMenu(prev => prev.map(cat => 
-        cat.id === categoryId 
-          ? { ...cat, categoryImage: file }
-          : cat
-      ));
-    }
-  };
-  
   // --- Handler Functions for Dynamic Menu ---
   const handleDayToggle = (day: any) => {
     setOperatingDays((prev: any) => ({ ...prev, [day]: !prev[day] }));
   };
-
-  const addMenuCategory = () => {
-    setMenu(prev => [...prev, { id: Date.now(), name: '', items: [{ id: Date.now(), name: '', price: '', description: '' }] }]);
-  };
-  
-  const removeMenuCategory = (categoryId: any) => {
-    setMenu(prev => prev.filter(cat => cat.id !== categoryId));
-  };
-  
-  const addMenuItem = (categoryId: any) => {
-    setMenu(prev => prev.map(cat => 
-      cat.id === categoryId 
-        ? { ...cat, items: [...cat.items, { id: Date.now(), name: '', price: '', description: '' }] }
-        : cat
-    ));
-  };
-
-  const removeMenuItem = (categoryId: any, itemId: any) => {
-    setMenu(prev => prev.map(cat =>
-      cat.id === categoryId
-        ? { ...cat, items: cat.items.filter(item => item.id !== itemId) }
-        : cat
-    ));
-  };
+ 
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 font-plus">
@@ -143,59 +106,6 @@ export default function CreateRestaurantPage() {
                 </div>
               </div>
             </div>
-
-            {/* Dynamic Menu Builder */}
-            <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Menu Builder</label>
-                <div className="space-y-6">
-                    {menu.map((category, catIndex) => (
-                        <div key={category.id} className="p-4 border border-gray-200 rounded-lg bg-white">
-                            <div className="flex items-center justify-between mb-4">
-                                <input type="text" placeholder={`Category ${catIndex + 1} (e.g., Appetizers)`} className="w-full text-lg font-semibold border-b border-gray-300 focus:outline-none focus:border-gray-800" />
-                                <button type="button" onClick={() => removeMenuCategory(category.id)} className="ml-4 text-red-500 hover:text-red-700 cursor-pointer"><Trash2 size={18} /></button>
-                            </div>
-                            <div className="space-y-4">
-                                {category.items.map((item, itemIndex) => (
-                                  <div key={item.id}>
-                                    <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
-                                        <input type="text" placeholder={`Item ${itemIndex + 1} Name`} className="md:col-span-7 px-3 py-2 focus:outline-none focus:ring-[#3B0A45] focus:ring-2 border border-gray-300 rounded-md text-sm" />
-                                        <input type="text" placeholder="Price" className="md:col-span-4 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-[#3B0A45] focus:ring-2" />
-                                       
-                                        <button type="button" onClick={() => removeMenuItem(category.id, item.id)} className="md:col-span-1 flex justify-center items-center text-red-500 hover:text-red-700 cursor-pointer"><Trash2 size={16} /></button>
-                                    </div>
-                                    <div className='my-5'>
-                                       <TextAreaField label="Description(Optional)" id="description" placeholder="A juicy burger with melted cheese and crispy fries" />
-                                    </div>
-                                    <div className='mt-5'>
-                                       <p className="block text-sm font-medium text-gray-700 mb-1">Upload menu category image</p>
-                                      <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                                        <div className="text-center">
-                                          <UploadCloud className="mx-auto h-12 w-12 text-gray-400" />
-                                          <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                                            <label htmlFor="file-upload" className="relative cursor-pointer rounded-md bg-white font-semibold text-gray-800 focus-within:outline-none focus-within:ring-2 focus-within:ring-gray-700 focus-within:ring-offset-2 hover:text-gray-900">
-                                              <span>Upload files</span>
-                                              <input id="file-upload" name="file-upload" type="file" className="sr-only" multiple />
-                                            </label>
-                                            <p className="pl-1">or drag and drop</p>
-                                          </div>
-                                          <p className="text-xs leading-5 text-gray-500">PNG, JPG, GIF up to 10MB; MP4 up to 50MB</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                ))}
-                                <button type="button" onClick={() => addMenuItem(category.id)} className="flex items-center gap-2 text-sm text-gray-700 hover:text-green-700 font-medium">
-                                    <PlusCircle size={16} /> Add Menu Item
-                                </button>
-                            </div>
-                        </div>
-                    ))}
-                    <button type="button" onClick={addMenuCategory} className="w-full flex items-center justify-center gap-2 py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-green-700 hover:text-green-700 transition">
-                       <PlusCircle size={18} /> Add Category
-                    </button>
-                </div>
-            </div>
-
             <button type="submit" className="cursor-pointer w-full bg-[#3B0A45] text-white font-semibold py-3 rounded-lg  transition-colors">
               Submit Restaurant
             </button>
