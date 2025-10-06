@@ -40,14 +40,14 @@ export function ContactForm() {
       
        <div className="flex items-center justify-between">
           <div className="w-5/12"/>
-           <button
-              className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus flex items-center gap-3"
-            >
-                Contact us
-                <div className="bg-white p-1 rounded-3xl">
-                  <ArrowUpRight color="#3B0A45" size={20}/>
-                </div>
-              </button> 
+          <button
+            className="bg-[#3B0A45] cursor-pointer text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#3B0A45] transition-colors font-plus flex items-center gap-3"
+          >
+            Contact us
+            <div className="bg-white p-1 rounded-3xl">
+              <ArrowUpRight color="#3B0A45" size={20}/>
+            </div>
+          </button> 
        </div>
       </form>
     </div>

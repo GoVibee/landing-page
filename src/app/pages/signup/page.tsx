@@ -1,146 +1,122 @@
-'use client'
+"use client";
 
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-
-// A simple SVG icon component for the logo
-const LogoIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="h-6 w-6 text-gray-800"
-  >
-    <path d="M12.001 2.003c-2.338 0-4.533 1.01-6.08 2.68l6.08 6.22 6.08-6.22C16.534 3.013 14.339 2.003 12.001 2.003zM3.73 6.133c-1.127 1.52-.443 3.68.785 5.86l7.486-7.66c-2.03.6-3.95 2.15-5.32 4.35- .79 1.26-1.46 2.5-1.95 3.45zM20.27 6.133c-1.37-2.2-3.29-3.75-5.32-4.35l7.486 7.66c1.228-2.18 1.912-4.34.785-5.86-.49-.95-1.16-2.19-1.95-3.45zM12.001 15.223l-7.408 7.58c5.49 1.41 10.93-1.01 14.816-7.58H12.001z" />
-  </svg>
-);
+import { useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation'; // <-- IMPORT useRouter
+import {Eye, EyeOff, User, LogIn} from 'lucide-react';
+import Image1 from '../../../../assets/hero-3.jpg';
 
 
-const page: NextPage = () => {
-    const router = useRouter();
+export default function AuthPage() {
+  const [isLoginView, setIsLoginView] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const router = useRouter(); // <-- INITIALIZE useRouter
 
-    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+  // Function to handle form submission
+  const handleSubmit = (e: any) => {
+    e.preventDefault(); // Prevent default form submission
+    if (!isLoginView) {
+      // If it's the sign-up form, navigate to the create-restaurant page
+      router.push('/pages/restaurant');
+    } else {
+      // Handle login logic here
+      router.push('/pages/dashboard');
     }
+  };
+
   return (
-    <>
-      <Head>
-        <title>Sign up - Host Dashboard</title>
-      </Head>
-
-      <main className="flex min-h-screen w-full flex-col bg-slate-50 font-plus">
-        {/* Header */}
-        <header className="absolute top-0 left-0 w-full p-6 sm:p-8">
-          <div className="flex items-center space-x-2">
-            <LogoIcon />
-            <h1 className="text-xl font-semibold text-gray-800">Host Dashboard</h1>
-          </div>
-        </header>
-
-        {/* Main Content */}
-        <div className="flex flex-1 items-center justify-center p-4">
-          <div className="w-full max-w-md space-y-8">
-            <div>
-              <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
-                Create an account
-              </h2>
-            </div>
-            
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              {/* Email Input */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email or username
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    placeholder="Enter your business email"
-                    className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
-                  />
-                </div>
-              </div>
-
-              {/* Password Input */}
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                    placeholder="Enter your password"
-                    className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700">
-                  Phone number
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="phonenumber"
-                    name="phonenumber"
-                    type="phonenumber"
-                    autoComplete="phonenumber"
-                    required
-                    placeholder="Enter your contact"
-                    className="w-full text-sm rounded-md border border-[#E5DBE3] p-3 text-gray-900 placeholder-gray-400 focus:border-[#3B0A45] focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
-                  />
-                </div>
-              </div>
-
-              {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  {/* <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  /> */}
-                  {/* <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                    Remember me
-                  </label> */}
-                </div>
-              </div>
-
-              {/* Sign In Button */}
-              <div>
-                <button
-                  type="submit"
-                  className="w-full justify-center rounded-md border border-transparent bg-[#3B0A45] py-3 px-4 text-sm font-semibold text-white shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:ring-offset-2 cursor-pointer"
-                  onClick={() => router.push('/pages/restaurant')}
-                >
-                  Continue
+    <div className="min-h-screen flex items-center justify-center p-4 font-plus">
+      <div className="w-full max-w-6xl flex  overflow-hidden">
+        
+        {/* Left Column: Testimonial */}
+        <div className="hidden lg:block w-1/2 relative">
+          {/* ... (testimonial content remains the same) */}
+          <Image
+            src={Image1}
+            alt="Luxury villa"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-l-2xl"
+          />
+          <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-10 text-white">
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl">
+              <p className="text-lg mb-6">
+                "GoVibe helps us reach a new generation of diners. The platform is intuitive, and managing our profile, menu, and bookings has never been easier."
+              </p>
+              {/* <div>
+                <p className="font-bold text-xl">Isabella Garcia</p>
+                <p className="text-sm">Layers Capital</p>
+                <p className="text-xs text-gray-200">Global Real Estate Investment Firm</p>
+              </div> */}
+              {/* <div className="flex items-center justify-end gap-4 mt-6">
+                <button className="p-2 rounded-full border border-white/30 hover:bg-white/20">
+                  <ArrowLeft size={20} />
                 </button>
-              </div>
-            </form>
-            
-            {/* Sign Up Link */}
-            <p className="text-center text-sm text-gray-600">
-              Already have an account?{' '}
-              <Link href="/pages/signin" className="font-medium text-[#3B0A45] hover:text-[#3B0A45] hover:underline">
-                login
-              </Link>
-            </p>
+                <button className="p-2 rounded-full border border-white/30 hover:bg-white/20">
+                  <ArrowRight size={20} />
+                </button>
+              </div> */}
+            </div>
           </div>
         </div>
-      </main>
-    </>
-  );
-};
 
-export default page;
+        {/* Right Column: Auth Form */}
+        <div className="w-full lg:w-1/2 p-8 md:p-12">
+          {/* ... (tabs, title, social buttons, OR divider remain the same) */}
+           {/* Login/Sign Up TABS */}
+           <div className="flex justify-end mb-6">
+            <div className="flex items-center text-sm border border-gray-200 rounded-full p-1">
+              <button
+                onClick={() => setIsLoginView(true)}
+                className={`px-4 py-1 rounded-full transition-colors ${isLoginView ? 'bg-gray-100 text-gray-800 font-semibold' : 'text-gray-500'}`}
+              >
+                <LogIn size={16} className="inline mr-1" />
+                Login
+              </button>
+              <button
+                onClick={() => setIsLoginView(false)}
+                className={`px-4 py-1 rounded-full transition-colors ${!isLoginView ? 'bg-gray-100 text-gray-800 font-semibold' : 'text-gray-500'}`}
+              >
+                <User size={16} className="inline mr-1" />
+                Sign Up
+              </button>
+            </div>
+          </div>
+          
+          {/* Title and Subtitle */}
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            {isLoginView ? 'Welcome Back!' : 'Create an account'}
+          </h1>
+          <p className="text-gray-600 mb-8">
+            {isLoginView ? 'Please enter your details to sign in.' : 'Please enter your details to create an account.'}
+          </p>
+
+          <form className="space-y-6" onSubmit={handleSubmit}> {/* <-- ATTACH handleSubmit */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+              <input type="email" id="email" placeholder="Enter your email address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800" required />
+            </div>
+            <div className="relative">
+              <label htmlFor="password"  className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+              <input type={passwordVisible ? "text" : "password"} id="password" placeholder="Enter your password" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800" required />
+              <button type="button" onClick={() => setPasswordVisible(!passwordVisible)} className="absolute right-3 top-10 text-gray-500">
+                {passwordVisible ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+            <button type="submit" className="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+              {isLoginView ? 'Sign in' : 'Create an account'}
+            </button>
+          </form>
+
+          <p className="text-center text-sm text-gray-600 mt-8">
+            {isLoginView ? "Don't have an account?" : "Already have an account?"}
+            <button onClick={() => setIsLoginView(!isLoginView)} className="font-semibold text-gray-800 hover:underline ml-1">
+              {isLoginView ? 'Sign up' : 'Sign in'}
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
