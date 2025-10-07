@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../../../components/ui/Badge';
 import React, { useState,useEffect } from 'react';
-import { Calendar, LayoutDashboard,Logs, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare } from 'lucide-react';
+import { Calendar, LayoutDashboard,Logs, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,Plus } from 'lucide-react';
 import { useRouter,usePathname } from 'next/navigation';
 
 
@@ -76,7 +76,7 @@ const AddCategorylModal = ({ onClose }: any) => {
                 exit="exit"
                 className="bg-white rounded-xl shadow-2xl w-full max-w-md"
             >
-                <div className="p-6 border-b border-gray-300">
+                <div className="p-6">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-gray-800">Add Category</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
@@ -278,12 +278,13 @@ export default function HomePage() {
         <div >
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-              <h1 className="text-3xl font-plus font-bold mb-4 sm:mb-0"> Menu Category </h1>
+              <h1 className="text-3xl font-plus font-semibold mb-4 sm:mb-0"> Menu Category </h1>
               <button 
-                className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors"
+                className="bg-[#3B0A45] flex items-center gap-2 font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-medium shadow-md  transition-colors"
                 onClick={() => setAddCategory(true)}
                 >
                 Add  Category
+                <Plus />
               </button>
           </div>
 

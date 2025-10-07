@@ -257,7 +257,7 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="Search menu..."
+                  placeholder="search menu..."
                   className="w-full pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
