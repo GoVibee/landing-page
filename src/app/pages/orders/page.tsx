@@ -34,7 +34,7 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Order Details</h2>
+                        <h2 className="text-2xl font-semibold text-gray-800">Order Details</h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -62,16 +62,10 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
                         <Badge status={booking.status} />
                     </div>
                 </div>
-                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+                <div className="p-3 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
-                    {/* <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
-                        Decline
-                    </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
-                        Confirm
-                    </button> */}
                 </div>
             </motion.div>
         </div>
@@ -114,7 +108,7 @@ const ConfirmOrderModal = ({ booking, onClose, onUpdateStatus }: any) => {
             >
                 <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Update Order Status</h2>
+                        <h2 className="text-2xl font-semibold text-gray-800">Update Order Status</h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -189,7 +183,7 @@ const CancelDetailModal = ({ onClose }: any) => {
             >
                 <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-semibold text-gray-800">Confirm </h2>
+                        <h2 className="text-2xl font-semibold text-gray-800">Confirm </h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -200,7 +194,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                         <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete order</span>
                     </div>
                 </div>
-                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+                <div className="p-3 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
