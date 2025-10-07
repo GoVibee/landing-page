@@ -33,7 +33,7 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                 <div className="p-6 border-b border-gray-300">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-gray-800">Category Details</h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
@@ -51,6 +51,43 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                 <div className="p-3 rounded-b-xl flex flex-col sm:flex-row justify-end">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
+                    </button>
+                   
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+const AddCategorylModal = ({ onClose }: any) => {
+
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="bg-white rounded-xl shadow-2xl w-full max-w-md"
+            >
+                <div className="p-6 border-b border-gray-300">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-bold text-gray-800">Add Category</h2>
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
+                            <X size={24} />
+                        </button>
+                    </div>
+                </div>
+                
+                <div className="p-3 rounded-b-xl flex flex-col">
+                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white transition-colors">
+                        Add category
                     </button>
                    
                 </div>
@@ -79,7 +116,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 <div className="p-6 border-b border-gray-300">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
@@ -148,6 +185,7 @@ export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState<any>(null);
   const [deletebooking, setDeleteBooking] = useState<any>(false);
+  const [addcategory,setAddCategory] = useState<any>(false);
   const [showCategories, setShowCategories] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const router = useRouter();
@@ -237,7 +275,10 @@ export default function HomePage() {
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <h1 className="text-3xl font-plus font-bold mb-4 sm:mb-0"> Menu Category </h1>
-              <button className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors">
+              <button 
+                className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors"
+                onClick={() => setAddCategory(true)}
+                >
                 Add  Category
               </button>
           </div>
@@ -316,6 +357,11 @@ export default function HomePage() {
        <AnimatePresence>
         {deletebooking && (
             <CancelDetailModal  onClose={() => setDeleteBooking(false)} />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {addcategory && (
+            <AddCategorylModal onClose={() => setAddCategory(false)} />
         )}
       </AnimatePresence>
     </div>
