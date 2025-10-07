@@ -258,7 +258,7 @@ export default function HomePage() {
           {/* Search and Filter Section */}
           <div className="mb-6">
             <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
-              <div className="relative w-[40%]">
+              <div className="relative md:w-1/2 lg:w-[40%]">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
@@ -303,11 +303,9 @@ export default function HomePage() {
                         <ChevronRight size={20} color='#fff' className='cursor-pointer'/>
                       </div>
                     </div>
-
                   </div>
                 ))
               }
-
             </div>
 
           </div>
