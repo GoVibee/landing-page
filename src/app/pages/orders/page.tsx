@@ -187,7 +187,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 exit="exit"
                 className="bg-white rounded-xl shadow-2xl w-full max-w-md"
             >
-                <div className="p-6 border-b">
+                <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
