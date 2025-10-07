@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../../components/ui/Badge';
 import FilterDropdown from '../../../components/ui/FilterDropdown';
 import React, { useState,useEffect } from 'react';
-import { Home, Calendar, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound,MessageSquare } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound,MessageSquare,Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
@@ -31,10 +31,10 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                 exit="exit"
                 className="bg-white rounded-xl shadow-2xl w-full max-w-md"
             >
-                <div className="p-6 border-b">
+                <div className="p-4 border-b border-gray-300">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Booking Details</h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <h2 className="text-xl font-semibold text-gray-800">Dish Overview</h2>
+                        <button onClick={onClose} className="cursor-pointer text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
@@ -56,17 +56,6 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                         <span className="font-semibold text-gray-600">Status:</span>
                         <Badge status={booking.status} />
                     </div>
-                </div>
-                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
-                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-                        Close
-                    </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
-                        Decline
-                    </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
-                        Confirm
-                    </button>
                 </div>
             </motion.div>
         </div>
@@ -244,9 +233,10 @@ export default function HomePage() {
         <div >
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-              <h1 className="text-3xl font-plus font-bold mb-4 sm:mb-0"> Menu </h1>
-              <button className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors">
+              <h1 className="text-3xl font-plus font-semibold mb-4 sm:mb-0"> Menu </h1>
+              <button className="bg-[#3B0A45] flex gap-3 font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-medium shadow-md  transition-colors">
                 Add  Item
+                <Plus />
               </button>
           </div>
 
