@@ -100,6 +100,47 @@ const AddCategorylModal = ({ onClose }: any) => {
     );
 };
 
+const EditCategorylModal = ({ onClose }: any) => {
+
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="bg-white rounded-xl shadow-2xl w-full max-w-md"
+            >
+                <div className="p-6">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-semibold text-gray-800">Edit Category</h2>
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
+                            <X size={24} />
+                        </button>
+                    </div>
+                    <div className="mt-5">
+                      {/* <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label> */}
+                      <input type="email" id="email" placeholder="pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
+                </div>
+                
+                <div className="p-3 rounded-b-xl flex flex-col">
+                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-medium bg-[#3B0A45] text-white transition-colors">
+                        Edit category
+                    </button>
+                   
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
 const CancelDetailModal = ({ onClose }: any) => {
 
     const modalVariants = {
@@ -190,6 +231,7 @@ export default function HomePage() {
   const [selectedBooking, setSelectedBooking] = useState<any>(null);
   const [deletebooking, setDeleteBooking] = useState<any>(false);
   const [addcategory,setAddCategory] = useState<any>(false);
+  const [editcategory,setEditCategory] = useState<any>(false);
   const [showCategories, setShowCategories] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const router = useRouter();
@@ -340,7 +382,7 @@ export default function HomePage() {
                                 <h3>Delete</h3>
                             </button>
                             <span className="text-black mx-1"> | </span>
-                             <button onClick={() => setSelectedBooking(booking)} className="text-[#3B0A45] cursor-pointer">
+                             <button onClick={() => setEditCategory(true)} className="text-[#3B0A45] cursor-pointer">
                                 Edit
                             </button>
                         
@@ -367,6 +409,11 @@ export default function HomePage() {
       <AnimatePresence>
         {addcategory && (
             <AddCategorylModal onClose={() => setAddCategory(false)} />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {editcategory && (
+            <EditCategorylModal onClose={() => setEditCategory(false)} />
         )}
       </AnimatePresence>
     </div>
