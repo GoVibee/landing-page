@@ -83,6 +83,10 @@ const AddCategorylModal = ({ onClose }: any) => {
                             <X size={24} />
                         </button>
                     </div>
+                    <div className="mt-5">
+                      {/* <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label> */}
+                      <input type="email" id="email" placeholder="pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
                 </div>
                 
                 <div className="p-3 rounded-b-xl flex flex-col">
@@ -167,7 +171,7 @@ const MenuCategorySublink = ({ categories, activeCategory, onSelect }: any) => {
           onSelect(categories.text);
         }}
         href={categories.route}
-        className={`text-left cursor-pointer px-3 py-1 rounded-lg mb-1 transition-colors ${
+        className={`text-left cursor-pointer px-3 py-2 rounded-lg mb-1 transition-colors ${
           pathname == '/pages/menu/category'
             ? 'bg-purple-200 text-[#3B0A45] font-semibold'
             : 'text-gray-700 hover:bg-gray-100'

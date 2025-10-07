@@ -140,7 +140,7 @@ const MenuCategorySublink = ({ categories, activeCategory, onSelect }: any) => (
           onSelect(categories.text);
         }}
         href={categories.route}
-        className={`text-left cursor-pointer px-3 py-1 rounded-lg mb-1 transition-colors ${
+        className={`text-left cursor-pointer px-3 py-2 rounded-lg mb-1 transition-colors ${
           activeCategory === categories.text
             ? 'bg-purple-200 text-[#3B0A45] font-semibold'
             : 'text-gray-700 hover:bg-gray-100'

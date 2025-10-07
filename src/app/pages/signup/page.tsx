@@ -89,7 +89,7 @@ export default function AuthPage() {
                 {passwordVisible ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
-            <button type="submit" className="w-full bg-[#3B0A45] text-white font-semibold py-3 rounded-l transition-colors">
+            <button type="submit" className="w-full cursor-pointer bg-[#3B0A45] text-white font-semibold py-3 rounded-l transition-colors">
               {isLoginView ? 'Sign in' : 'Continue'}
             </button>
           </form>
