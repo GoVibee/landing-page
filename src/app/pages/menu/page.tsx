@@ -2,10 +2,11 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../../components/ui/Badge';
-import FilterDropdown from '../../../components/ui/FilterDropdown';
 import React, { useState,useEffect } from 'react';
-import { Home, Calendar, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound,MessageSquare,Plus } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound,MessageSquare,Plus,ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Image1 from '../../../../assets/hero-3.jpg';
+import Image from 'next/image';
 
 
 const bookingsData = [
@@ -153,6 +154,24 @@ export default function HomePage() {
     text: 'Categories',
     route: '/pages/menu/category'
   }];
+
+  const categories = [
+    {
+      id: 1,
+      name: 'Pizza',
+      image: Image1
+    },
+    {
+      id: 2,
+      name: 'Pizza',
+      image: Image1
+    },
+    {
+      id: 3,
+      name: 'Pizza',
+      image: Image1
+    }
+  ]
   
     const sidebarNavItems = [
       { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},
@@ -234,41 +253,63 @@ export default function HomePage() {
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <h1 className="text-3xl font-plus font-semibold mb-4 sm:mb-0"> Menu </h1>
-              <button className="bg-[#3B0A45] flex gap-3 font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-medium shadow-md  transition-colors">
-                Add  Item
-                <Plus />
-              </button>
           </div>
 
           {/* Search and Filter Section */}
           <div className="mb-6">
-            <div className="bg-white p-4 rounded-lg">
-              <div className="relative mb-4">
+            <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
+              <div className="relative w-[40%]">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
                   placeholder="search menu..."
-                  className="w-full pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+                  className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
-              <div className="flex flex-wrap items-center gap-3 font-plus">
-                 <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span className="font-plus"> Pizza </span>
-                  </button>
-                 <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span> Burgers </span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700   cursor-pointer">
-                    <span> Meat Lovers</span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span> Drinks </span>
-                  </button>
-                  <button className="text-sm gap-2 bg-[#3B0A45] text-white px-4 py-2 rounded-lg cursor-pointer">
-                    <span> View all </span>
-                  </button>
-              </div>
+              <button className="bg-[#3B0A45] mt-5 md:mt-0 flex gap-3 font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-medium shadow-md  transition-colors w-1/2 md:w-1/4 lg:w-[17%]">
+                Add  Item
+                <Plus />
+              </button>
             </div>
+          </div>
+          {/* Category Content Section */}
+          <div className='my-16'>
+            <div className='flex items-center justify-between cursor-pointer'>
+               <h3 className='text-xl font-medium'>Categories</h3>
+               <div className='bg-white px-3 py-1 rounded-lg w-32 flex items-center justify-between'>
+                <p className='text-[#3B0A45]'>View All</p>
+                <div className='flex flex-col items-center justify-center bg-[#3B0A45] w-8 h-8 p-1 rounded-full'>
+                  <ChevronRight size={15} color='#fff' className='cursor-pointer'/>
+                </div>
+               </div>
+            </div>
+            <div className='mt-3 flex gap-5'>
+              {
+                categories.map((cat) => (
+                  <div className='bg-white py-3 rounded-3xl w-28 h-48' key={cat.id}>
+                    <div className='flex flex-col'>
+                      <div className='bg-purple-100 p-3 rounded-3xl w-20 mx-auto'>
+                        <Image 
+                          src={cat.image} 
+                          alt={cat.name} 
+                          className='w-14 h-14 object-cover rounded-lg mx-auto'
+                          priority
+                        />
+                      </div>
+                      <div>
+                        <h3 className='text-center mt-3 font-medium text-gray-700'> {cat.name} </h3>
+                      </div>
+                      <div className='flex flex-col items-center justify-center mt-2 bg-[#3B0A45] w-10 h-10 p-1 rounded-full mx-auto'>
+                        <ChevronRight size={20} color='#fff' className='cursor-pointer'/>
+                      </div>
+                    </div>
+
+                  </div>
+                ))
+              }
+
+            </div>
+
           </div>
 
           {/* Bookings Table Section */}
