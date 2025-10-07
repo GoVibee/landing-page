@@ -76,7 +76,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 exit="exit"
                 className="bg-white rounded-xl shadow-2xl w-full max-w-md"
             >
-                <div className="p-6 border-b">
+                <div className="p-6 border-b border-gray-300">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
@@ -86,10 +86,10 @@ const CancelDetailModal = ({ onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete booking</span>
+                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete category</span>
                     </div>
                 </div>
-                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+                <div className="p-3 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
