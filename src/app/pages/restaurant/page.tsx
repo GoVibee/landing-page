@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { UploadCloud} from 'lucide-react';
 import Image1 from '../../../../assets/hero-3.jpg';
+import { useRouter } from 'next/navigation';
 
 // --- Reusable Form Field Components ---
 const InputField = ({ label, id, placeholder, type = "text" }: any) => (
@@ -23,6 +24,14 @@ const TextAreaField = ({ label, id, placeholder }: any) => (
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 export default function CreateRestaurantPage() {
+  const router = useRouter();
+
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+    router.push('/pages/dashboard');
+
+  }
+
   // --- State Management ---
   const [operatingDays, setOperatingDays] = useState<any>(
     daysOfWeek.reduce((acc, day) => ({ ...acc, [day]: false }), {})
@@ -60,7 +69,7 @@ export default function CreateRestaurantPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Set up your Restaurant</h1>
           <p className="text-gray-600 mb-8">Fill in the details to get your restaurant on the platform.</p>
 
-          <form className="space-y-8">
+          <form className="space-y-8" onSubmit={handleSubmit}>
             <InputField label="Restaurant Name" id="restaurantName" placeholder="e.g., The Golden Spoon" />
             <InputField label="Location" id="location" placeholder="e.g., 123 Main Street, Accra" />
             <TextAreaField label="Description" id="description" placeholder="Tell us about your restaurant's vibe, cuisine, and history." />
@@ -107,7 +116,7 @@ export default function CreateRestaurantPage() {
               </div>
             </div>
             <button type="submit" className="cursor-pointer w-full bg-[#3B0A45] text-white font-semibold py-3 rounded-lg  transition-colors">
-              Submit Restaurant
+              Create Restaurant
             </button>
           </form>
         </div>

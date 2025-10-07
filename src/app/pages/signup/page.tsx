@@ -90,7 +90,7 @@ export default function AuthPage() {
               </button>
             </div>
             <button type="submit" className="w-full bg-[#3B0A45] text-white font-semibold py-3 rounded-l transition-colors">
-              {isLoginView ? 'Sign in' : 'Create an account'}
+              {isLoginView ? 'Sign in' : 'Continue'}
             </button>
           </form>
 
