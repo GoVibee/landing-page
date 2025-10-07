@@ -347,13 +347,21 @@ export default function HomePage() {
                         <span className="font-semibold text-gray-800 text-sm md:hidden mr-2">Order Time:</span>
                         {booking.time}
                       </td>
-                      <td   className="flex cursor-pointer justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
+                      <td   className="flex cursor-pointer justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap"
+                        onClick={() => {
+                          setSelectedBooking(null);
+                          setStatus(booking);
+                        }}
+                      >
                         <span className="font-semibold text-gray-800 md:hidden mr-2">Status:</span>
                         <Badge status={booking.status} />
                       </td>
                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
-                         <button onClick={() => setSelectedBooking(booking)} className="text-violet-800 cursor-pointer">
+                         <button onClick={() => {
+                          setSelectedBooking(booking);
+                          setStatus(null);
+                         }} className="text-violet-800 cursor-pointer">
                                 View
                             </button>
                         <span className="text-black mx-1"> | </span>
@@ -377,7 +385,7 @@ export default function HomePage() {
       </AnimatePresence>
       <AnimatePresence>
         {status && (
-            <ConfirmOrderModal booking={selectedBooking} onClose={() => setStatus(null)} />
+            <ConfirmOrderModal booking={status} onClose={() => setStatus(null)} />
         )}
       </AnimatePresence>
        <AnimatePresence>
