@@ -2,10 +2,9 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../../../components/ui/Badge';
-import FilterDropdown from '../../../../components/ui/FilterDropdown';
-import React, { useState } from 'react';
-import { Home, Calendar,UploadCloud, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import React, { useState,useEffect } from 'react';
+import { Calendar, LayoutDashboard,Logs, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare } from 'lucide-react';
+import { useRouter,usePathname } from 'next/navigation';
 
 
 const bookingsData = [
@@ -33,151 +32,39 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6 border-b">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Category Details</h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600 cursor-pointer">
+                        <h2 className="text-xl font-bold text-gray-800">Booking Details</h2>
+                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Category Id:</span>
+                        <span className="font-semibold text-gray-600">Customer:</span>
                         <span className="text-gray-800">{booking.customer}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Title:</span>
+                        <span className="font-semibold text-gray-600">Venue:</span>
                         <span className="text-gray-800">{booking.venue}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Description:</span>
+                        <span className="font-semibold text-gray-600">Date & Time:</span>
                         <span className="text-gray-800">{booking.date} at {booking.time}</span>
                     </div>
-                    <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Image:</span>
-                        <span className="text-gray-800">{booking.date} at {booking.time}</span>
+                    <div className="flex justify-between items-center">
+                        <span className="font-semibold text-gray-600">Status:</span>
+                        <Badge status={booking.status} />
                     </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
-                    {/* <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
+                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
                         Decline
                     </button>
                     <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
                         Confirm
-                    </button> */}
-                </div>
-            </motion.div>
-        </div>
-    );
-};
-
-const AddCategoryModal = ({onClose }: any) => {
-
-    const modalVariants = {
-        hidden: { opacity: 0, scale: 0.95 },
-        visible: { opacity: 1, scale: 1 },
-        exit: { opacity: 0, scale: 0.95 }
-    };
-
-     // State for form inputs and image preview
-    const [imagePreview, setImagePreview] = useState<string | null>(null);
-    const [imageFile, setImageFile] = useState<File | null>(null);
-
-    // Handler for image selection
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            setImageFile(file);
-            setImagePreview(URL.createObjectURL(file));
-        }
-    };
-
-    // Handler to remove the selected image
-    const removeImage = () => {
-        setImageFile(null);
-        setImagePreview(null);
-    };
-
-    return (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 font-plus">
-            <motion.div
-                variants={modalVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="bg-white rounded-xl shadow-2xl w-full max-w-md"
-            >
-                <div className="p-6 border-b border-gray-200">
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Category</h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-                            <X size={24} />
-                        </button>
-                    </div>
-                </div>
-                 <div className="p-6 space-y-5">
-                    {/* Category Name Input */}
-                    <div>
-                        <label htmlFor="categoryName" className="block text-sm font-medium text-gray-700 mb-1">
-                            Category Name
-                        </label>
-                        <input
-                            type="text"
-                            id="categoryName"
-                            className="w-full rounded-lg border border-gray-300 p-2.5 text-gray-900 shadow-sm focus:outline-none focus:border-[#3B0A45] focus:ring-1 focus;ring-[#3B0A45] transition"
-                            placeholder="e.g., Appetizers"
-                        />
-                    </div>
-
-                    {/* Description Textarea */}
-                    <div>
-                        <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
-                            Description
-                        </label>
-                        <textarea
-                            id="description"
-                            rows={3}
-                            className="w-full rounded-lg border border-gray-300 p-2.5 text-gray-900 shadow-sm focus:border-[#3B0A45] focus:ring-1 focus;ring-[#3B0A45] focus:outline-none  transition"
-                            placeholder="Enter a short description..."
-                        ></textarea>
-                    </div>
-
-                    {/* Image Uploader */}
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Category Image
-                        </label>
-                        {!imagePreview ? (
-                             <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
-                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <UploadCloud className="w-8 h-8 mb-2 text-gray-500" />
-                                    <p className="mb-1 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p className="text-xs text-gray-500">PNG, JPG, or GIF (MAX. 800x400px)</p>
-                                </div>
-                                <input id="file-upload" type="file" className="hidden" onChange={handleImageChange} accept="image/png, image/jpeg, image/gif"/>
-                            </label>
-                        ) : (
-                            // Image Preview
-                            <div className="mt-2 relative">
-                                <img src={imagePreview} alt="Image Preview" className="w-24 h-24 rounded-lg object-cover" />
-                                <button
-                                    onClick={removeImage}
-                                    className="absolute top-2 right-2 bg-white/70 rounded-full p-1.5 text-gray-800 hover:bg-white transition"
-                                >
-                                    <X size={18} />
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                </div>
-                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
-                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-                        Close
-                    </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white  transition-colors">
-                        Add category
                     </button>
                 </div>
             </motion.div>
@@ -212,7 +99,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete category</span>
+                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete booking</span>
                     </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
@@ -228,41 +115,109 @@ const CancelDetailModal = ({ onClose }: any) => {
     );
 };
 
-const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
-  <a href={route} className={`flex font-plus items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
-    <Icon className="w-5 h-5" />
-    <span className="flex-1">{text}</span>
-  </a>
-);
+const SidebarLink = ({ icon: Icon, text, active,route,onClick,setShowCategories }: any) => {
+  useEffect(() => {
+    setShowCategories(true);
+  },[])
+
+  return (
+  <div>
+    <a href={route} className={`flex font-plus items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+      <Icon className="w-5 h-5" />
+      <span className="flex-1">{text}</span>
+    </a>
+  </div>
+  )
+};
+
+const MenuCategorySublink = ({ categories, activeCategory, onSelect }: any) => {
+  const pathname = usePathname();
+  
+  return (
+    <div 
+      className="flex flex-col ml-8 mt-2"
+    >
+      <a
+        key={categories.text}
+        onClick={() => {
+          onSelect(categories.text);
+        }}
+        href={categories.route}
+        className={`text-left cursor-pointer px-3 py-1 rounded-lg mb-1 transition-colors ${
+          pathname == '/pages/menu/category'
+            ? 'bg-purple-200 text-[#3B0A45] font-semibold'
+            : 'text-gray-700 hover:bg-gray-100'
+        }`}
+      >
+        {categories.text}
+      </a>
+  </div>
+
+  )
+};
+
 
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-   const [selectedBooking, setSelectedBooking] = useState<any>(null);
-   const [category, setCategory] = useState<any>(null);
-    const [deletebooking, setDeleteBooking] = useState<any>(false);
-   const router = useRouter();
+  const [selectedBooking, setSelectedBooking] = useState<any>(null);
+  const [deletebooking, setDeleteBooking] = useState<any>(false);
+  const [showCategories, setShowCategories] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const router = useRouter();
+
+  const menuCategories = [{
+    text: 'Categories',
+    route: '/pages/menu/category'
+  }];
   
     const sidebarNavItems = [
-                  { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},
-                  { icon: Calendar, text: 'Orders',route: '/pages/orders'},
-                  { icon: Logs, text: 'Menu',route: '/pages/menus',active: true },
-                  { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
-                  { icon: Users, text: 'Staff',route: '/pages/staff'},
-                  { icon: Settings, text: 'Settings',route: '/pages/settings'},
-                ];
+      { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},
+      { icon: Calendar, text: 'Orders',route: '/pages/orders'},
+      {
+        icon: Logs,
+        text: 'Menu',
+        route: '/pages/menu',
+        active: true,
+        hasSublink: true,
+      },
+      { icon: MessageSquare, text: 'Reviews',route: '/pages/reviews'},
+      { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
+      { icon: Users, text: 'Staff',route: '/pages/staff'},
+      { icon: Settings, text: 'Settings',route: '/pages/settings'},
+    ];
 
   return (
-    <div className="lg:flex min-h-screen bg-[#F2F0F5] w-full">
+    <div className="lg:flex min-h-screen bg-gray-100 w-full">
      <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-             <div className="p-6 flex items-center space-x-2 border-b">
+             <div className="p-6 flex items-center space-x-2 border-b border-gray-300">
                <div className="text-2xl font-bold text-gray-800">
                  <span className="text-[#3B0A45]">Go</span>Vibe
                </div>
              </div>
              <nav className="flex-1 p-4 space-y-2">
-               {sidebarNavItems.map(item => (
-                 <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route} />
-               ))}
+              {sidebarNavItems.map(item => (
+            <div key={item.text}>
+              <SidebarLink
+                icon={item.icon}
+                text={item.text}
+                active={item.active}
+                route={item.route}
+                onClick={item.hasSublink ? () => setShowCategories(!showCategories) : undefined}
+                setShowCategories={setShowCategories}
+              />
+              {/* Show sublinks for Menu */}
+              {item.hasSublink && showCategories && menuCategories.map((cat) => (
+                (
+                <MenuCategorySublink
+                  categories={cat}
+                  activeCategory={activeCategory}
+                  onSelect={(cat: any) => setActiveCategory(cat)}
+                  key={cat.text}
+                />
+              )
+              ))}
+            </div>
+          ))}
              </nav>
            </aside>
            
@@ -294,14 +249,9 @@ export default function HomePage() {
         <div >
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-              <h1 className="text-3xl font-plus font-bold mb-4 sm:mb-0"> Menu Cateory </h1>
-              <button 
-                className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors"
-                onClick={() => {
-                  setCategory(true);
-                }}
-              >
-                Add  Item
+              <h1 className="text-3xl font-plus font-bold mb-4 sm:mb-0"> Menu Category </h1>
+              <button className="bg-[#3B0A45] font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors">
+                Add  Category
               </button>
           </div>
 
@@ -312,11 +262,10 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="Search menu..."
+                  placeholder="search menu category..."
                   className="w-full pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
-              </div>
-
+              </div> 
             </div>
           </div>
 
@@ -327,9 +276,8 @@ export default function HomePage() {
                 {/* Desktop Table Header */}
                 <thead className="border-b border-gray-200 hidden md:table-header-group">
                   <tr>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Category Id</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Catgeory Id</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Category</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Description</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Actions</th>
                   </tr>
                 </thead>
@@ -347,10 +295,6 @@ export default function HomePage() {
                         <div>
                           <div className="text-gray-800 text-sm">{booking.category}</div>
                         </div>
-                      </td>
-                      <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Description:</span>
-                        <span className="font-normal text-sm ">{booking.description}</span>
                       </td>
                      
                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -381,12 +325,6 @@ export default function HomePage() {
         {selectedBooking && (
             <BookingDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
         )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {
-          category && <AddCategoryModal  onClose={() => setCategory(null)} />
-        }
-         
       </AnimatePresence>
        <AnimatePresence>
         {deletebooking && (

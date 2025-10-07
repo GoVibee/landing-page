@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../../components/ui/Badge';
 import FilterDropdown from '../../../components/ui/FilterDropdown';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Home, Calendar, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound,MessageSquare } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -116,28 +116,70 @@ const CancelDetailModal = ({ onClose }: any) => {
     );
 };
 
-const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
-  <a href={route} className={`flex font-plus items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
-    <Icon className="w-5 h-5" />
-    <span className="flex-1">{text}</span>
-  </a>
+const SidebarLink = ({ icon: Icon, text, active,route,onClick,setShowCategories }: any) => {
+  useEffect(() => {
+    setShowCategories(true);
+  },[])
+
+  return (
+  <div 
+  >
+    <a href={route} className={`flex font-plus items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+      <Icon className="w-5 h-5" />
+      <span className="flex-1">{text}</span>
+    </a>
+  </div>
+  )
+};
+
+const MenuCategorySublink = ({ categories, activeCategory, onSelect }: any) => (
+  <div className="flex flex-col ml-8 mt-2">
+      <a
+        key={categories.text}
+        onClick={() => {
+          onSelect(categories.text);
+        }}
+        href={categories.route}
+        className={`text-left cursor-pointer px-3 py-1 rounded-lg mb-1 transition-colors ${
+          activeCategory === categories.text
+            ? 'bg-purple-200 text-[#3B0A45] font-semibold'
+            : 'text-gray-700 hover:bg-gray-100'
+        }`}
+      >
+        {categories.text}
+      </a>
+  </div>
 );
+
 
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-   const [selectedBooking, setSelectedBooking] = useState<any>(null);
-    const [deletebooking, setDeleteBooking] = useState<any>(false);
-   const router = useRouter();
+  const [selectedBooking, setSelectedBooking] = useState<any>(null);
+  const [deletebooking, setDeleteBooking] = useState<any>(false);
+  const [showCategories, setShowCategories] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const router = useRouter();
+
+  const menuCategories = [{
+    text: 'Categories',
+    route: '/pages/menu/category'
+  }];
   
     const sidebarNavItems = [
-                  { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},
-                  { icon: Calendar, text: 'Orders',route: '/pages/orders'},
-                  { icon: Logs, text: 'Menu',route: '/pages/menus',active: true },
-                  { icon: MessageSquare, text: 'Reviews',route: '/pages/reviews'},
-                  { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
-                  { icon: Users, text: 'Staff',route: '/pages/staff'},
-                  { icon: Settings, text: 'Settings',route: '/pages/settings'},
-                ];
+      { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},
+      { icon: Calendar, text: 'Orders',route: '/pages/orders'},
+      {
+        icon: Logs,
+        text: 'Menu',
+        route: '/pages/menu',
+        active: true,
+        hasSublink: true,
+      },
+      { icon: MessageSquare, text: 'Reviews',route: '/pages/reviews'},
+      { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
+      { icon: Users, text: 'Staff',route: '/pages/staff'},
+      { icon: Settings, text: 'Settings',route: '/pages/settings'},
+    ];
 
   return (
     <div className="lg:flex min-h-screen bg-gray-100 w-full">
@@ -148,9 +190,29 @@ export default function HomePage() {
                </div>
              </div>
              <nav className="flex-1 p-4 space-y-2">
-               {sidebarNavItems.map(item => (
-                 <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route} />
-               ))}
+              {sidebarNavItems.map(item => (
+            <div key={item.text}>
+              <SidebarLink
+                icon={item.icon}
+                text={item.text}
+                active={item.active}
+                route={item.route}
+                onClick={item.hasSublink ? () => setShowCategories(!showCategories) : undefined}
+                setShowCategories={setShowCategories}
+              />
+              {/* Show sublinks for Menu */}
+              {item.hasSublink && showCategories && menuCategories.map((cat) => (
+                (
+                <MenuCategorySublink
+                  categories={cat}
+                  activeCategory={activeCategory}
+                  onSelect={(cat: any) => setActiveCategory(cat)}
+                  key={cat.text}
+                />
+              )
+              ))}
+            </div>
+          ))}
              </nav>
            </aside>
            
