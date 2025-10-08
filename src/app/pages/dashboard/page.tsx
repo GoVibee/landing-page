@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <DashboardLayout>
       <div className=" lg:flex min-h-screen bg-gray-100 w-full font-plus">
-        <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+        <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
           <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
             <div className="text-2xl font-bold text-gray-800">
               <span className="text-[#3B0A45]">Go</span>Vibe
@@ -59,28 +59,28 @@ export default function HomePage() {
         
         {/* Backdrop for mobile sidebar */}
         {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
-      <main className="flex-1 p-6 lg:p-10">
+      <main className="flex-1 p-6 lg:p-10 overflow-y-auto h-screen">
           <header className="flex justify-between items-center mb-8">
-        <div className="flex items-center space-x-4">
-                        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
-                            {isSidebarOpen ? <X/> : <Menu />}
-                        </button>
-                    </div>
+            <div className="flex items-center space-x-4">
+                            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                {isSidebarOpen ? <X/> : <Menu />}
+                            </button>
+            </div>
           {/* <div className="w-40"/> */}
-        <div className="flex items-center gap-6">
-          <button className="relative">
-            <Bell size={24} className="text-gray-500" />
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-              3
-            </span>
-          </button>
-        <div onClick={() => {
-                        router.push('/pages/settings')
-                        }} className='cursor-pointer'>
-                        <UserRound size={20} color='#000'/>
-                        </div>
-        </div>
-      </header>
+            <div className="flex items-center gap-6">
+              <button className="relative">
+                <Bell size={24} className="text-gray-500" />
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  3
+                </span>
+              </button>
+            <div onClick={() => {
+                            router.push('/pages/settings')
+                            }} className='cursor-pointer'>
+                            <UserRound size={20} color='#000'/>
+                            </div>
+            </div>
+          </header>
 
           <div className="space-y-8">
             {/* Stat Cards Section */}
