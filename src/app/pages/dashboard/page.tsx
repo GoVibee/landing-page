@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2,Users, Bell, Menu, X,UserRound,CornerDownRight,Logs,MessageSquare } from 'lucide-react';
+import { Calendar, LayoutDashboard, Settings, BarChart2,Users, Bell, Menu, X,UserRound,CornerDownRight,Logs,MessageSquare,ShoppingBag,Utensils,DollarSign } from 'lucide-react';
 import StatCard from "../../../components/pages/dashboard/StatCard";
 import BookingsOverview from "../../../components/pages/bookings/bookingsOverview";
 import RecentBookingsTable from "../../../components/pages/bookings/RecentBookingsTable";
@@ -81,12 +81,32 @@ export default function HomePage() {
           <div className="space-y-8">
             {/* Stat Cards Section */}
             <section
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6"
             >
-              <div><StatCard title="Total Menu" value="1,250" /></div>
-              <div><StatCard title="Total Orders" value="320" /></div>
-              <div><StatCard title="Income" value="$15,000" /></div>
-              <div><StatCard title="Customers" value="850" /></div>
+              <StatCard
+                title="Total Menu"
+                value="1,250"
+                icon={<Utensils size={20} className="text-purple-600" />}
+                iconBg="bg-purple-100"
+              />
+              <StatCard
+                title="Total Orders"
+                value="320"
+                icon={<ShoppingBag size={20} className="text-blue-600" />}
+                iconBg="bg-blue-100"
+              />
+              <StatCard
+                title="Income"
+                value="$15,000"
+                icon={<DollarSign size={20} className="text-green-600" />}
+                iconBg="bg-green-100"
+              />
+              <StatCard
+                title="Customers"
+                value="850"
+                icon={<Users size={20} className="text-pink-600" />}
+                iconBg="bg-pink-100"
+              />
             </section>
 
             {/* This motion.div will animate its children when they enter the viewport */}
