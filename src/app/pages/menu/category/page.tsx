@@ -321,31 +321,34 @@ export default function HomePage() {
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <h1 className="text-3xl font-plus font-semibold mb-4 sm:mb-0"> Menu Category </h1>
-              <button 
-                className="bg-[#3B0A45] flex items-center gap-2 font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-medium shadow-md  transition-colors"
-                onClick={() => setAddCategory(true)}
-                >
-                Add  Category
-                <Plus />
-              </button>
+              <div className='w-24'/>
           </div>
 
           {/* Search and Filter Section */}
           <div className="mb-6">
-            <div className="bg-white p-4 rounded-lg">
-              <div className="relative mb-4">
+            <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
+              <div className="relative md:w-1/2 lg:w-[40%]">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="search menu category..."
-                  className="w-full pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+                  placeholder="search menu..."
+                  className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
-              </div> 
+              </div>
+              <div className='w-1/2 md:w-1/3 lg:w-1/4 bg-[#3B0A45] px-1 py-2 rounded-lg mt-4 md:mt-0'>
+                <button 
+                  className="flex  mx-auto gap-3 font-plus cursor-pointer text-white font-medium shadow-md  transition-colors"
+                  onClick={() => setAddCategory(true)}
+                >
+                  Add  category
+                  <Plus />
+                </button>
+              </div>
             </div>
-          </div>
+            </div>
 
           {/* Bookings Table Section */}
-          <div className="bg-white rounded-lg overflow-hidden font-plus">
+          <div className="bg-white rounded-lg overflow-hidden font-plus mt-20 md:mt-24">
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 {/* Desktop Table Header */}

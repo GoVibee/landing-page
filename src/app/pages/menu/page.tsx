@@ -303,7 +303,7 @@ export default function HomePage() {
             <div className='mt-3 flex gap-5'>
               {
                 categories.map((cat) => (
-                  <div className='bg-white py-3 rounded-xl w-16 h-24' key={cat.id}>
+                  <div className='bg-white py-3 rounded-xl w-16 h-24 cursor-pointer' key={cat.id}>
                     <div className='flex flex-col'>
                       <div className='bg-purple-100 w-11 h-11 rounded-4xl mx-auto'>
                         <div className='flex items-center justify-center h-full'>
@@ -318,9 +318,6 @@ export default function HomePage() {
                       <div className='mt-2'>
                         <h3 className='text-center font-medium text-gray-800 text-sm'> {cat.name} </h3>
                       </div>
-                      {/* <div className='flex flex-col items-center justify-center mt-3 bg-[#3B0A45] w-7 h-7 p-1 rounded-full mx-auto'>
-                        <ChevronRight size={17} color='#fff' className='cursor-pointer'/>
-                      </div> */}
                     </div>
                   </div>
                 ))
