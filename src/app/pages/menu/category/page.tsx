@@ -32,7 +32,7 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6 border-b border-gray-300">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Category Details</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Category Details</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -78,7 +78,7 @@ const AddCategorylModal = ({ onClose }: any) => {
             >
                 <div className="p-6">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Add Category</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Add Category</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -160,7 +160,7 @@ const CancelDetailModal = ({ onClose }: any) => {
             >
                 <div className="p-6 border-b border-gray-300">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Confirm </h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -331,7 +331,7 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="search menu..."
+                  placeholder="search menu category..."
                   className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
