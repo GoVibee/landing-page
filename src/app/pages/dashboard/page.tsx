@@ -2,13 +2,17 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import { Calendar, LayoutDashboard, Settings, BarChart2,Users, Bell, Menu, X,UserRound,CornerDownRight,Logs,MessageSquare,ShoppingBag,Utensils,DollarSign } from 'lucide-react';
+import { Calendar, LayoutDashboard, Settings, BarChart2,Users, Bell, Menu, X,UserRound,CornerDownRight,Logs,MessageSquare,ShoppingBag,Utensils,DollarSign,ChevronDown,SlidersHorizontal } from 'lucide-react';
 import StatCard from "../../../components/pages/dashboard/StatCard";
-import BookingsOverview from "../../../components/pages/bookings/bookingsOverview";
 import RecentBookingsTable from "../../../components/pages/bookings/RecentBookingsTable";
 import PopularVenuesTable from "../../../components/pages/venues/PopularVenuesTable";
 import { useRouter } from "next/navigation";
 import DashboardLayout from "./layout";
+import { ChartContainer} from './../../../components/pages/dashboard/ChartContainer';
+import {TotalOrdersChart} from '../../../components/pages/dashboard/TotalOrdersChart';
+import {TotalRevenueChart} from '../../../components/pages/dashboard/TotalRevenueChart';
+
+
 
 
 // --- Reusable Components ---
@@ -86,33 +90,60 @@ export default function HomePage() {
               <StatCard
                 title="Total Menu"
                 value="1,250"
-                icon={<Utensils size={20} className="text-purple-600" />}
+                icon={<Utensils size={20} className="text-[#3B0A45]" />}
                 iconBg="bg-purple-100"
               />
               <StatCard
                 title="Total Orders"
                 value="320"
-                icon={<ShoppingBag size={20} className="text-blue-600" />}
+                icon={<ShoppingBag size={20} className="text-[#3B0A45]" />}
                 iconBg="bg-blue-100"
               />
               <StatCard
                 title="Income"
                 value="$15,000"
-                icon={<DollarSign size={20} className="text-green-600" />}
+                icon={<DollarSign size={20} className="text-[#3B0A45]" />}
                 iconBg="bg-green-100"
               />
               <StatCard
                 title="Customers"
                 value="850"
-                icon={<Users size={20} className="text-pink-600" />}
+                icon={<Users size={20} className="text-[#3B0A45]" />}
                 iconBg="bg-pink-100"
               />
             </section>
 
             {/* This motion.div will animate its children when they enter the viewport */}
-            <div>
-              <BookingsOverview />
+           <div className="">
+            <div className="max-w-7xl mx-auto">
+              {/* Main container for the charts */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Total Revenue Chart */}
+                <ChartContainer
+                  title="Total Revenue"
+                  button={
+                    <button className="flex items-center gap-2 text-sm text-gray-800   font-semibold rounded-md px-3 py-1.5 bg-gray-100 cursor-pointer">
+                      Filter <SlidersHorizontal size={14} />
+                    </button>
+                  }
+                >
+                  <TotalRevenueChart />
+                </ChartContainer>
+
+                {/* Total Orders Chart */}
+                <ChartContainer
+                  title="Total Orders"
+                  button={
+                    <button className="flex items-center gap-2 text-sm text-gray-800   font-semibold cursor-pointer rounded-md px-3 py-1.5 bg-gray-100">
+                      Last 6 Months <ChevronDown size={16} />
+                    </button>
+                  }
+                >
+                  <TotalOrdersChart />
+                </ChartContainer>
+              </div>
             </div>
+          </div>
 
             <div className="grid grid-cols-1 gap-8">
               <div>

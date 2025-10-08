@@ -11,7 +11,7 @@ export default function StatCard({ title, value, icon, iconBg = "bg-purple-100" 
   return (
     <div className="bg-white p-5 rounded-xl font-plus flex justify-between md:justify-normal items-center gap-6">
       {/* Icon Section */}
-      <div className={`p-3 rounded-full ${iconBg} flex items-center justify-center`}>
+      <div className={`p-3 rounded-full bg-purple-100 flex items-center justify-center`}>
         {icon}
       </div>
       {/* Text Section */}
