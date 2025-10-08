@@ -170,6 +170,21 @@ export default function HomePage() {
       id: 3,
       name: 'Pizza',
       image: Image1
+    },
+     {
+      id: 4,
+      name: 'Pizza',
+      image: Image1
+    },
+    {
+      id: 5,
+      name: 'Pizza',
+      image: Image1
+    },
+    {
+      id: 6,
+      name: 'Pizza',
+      image: Image1
     }
   ]
   
@@ -266,10 +281,12 @@ export default function HomePage() {
                   className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
-              <button className="bg-[#3B0A45] mt-5 md:mt-0 flex gap-3 font-plus cursor-pointer text-white px-5 py-2.5 rounded-lg font-medium shadow-md  transition-colors w-1/2 md:w-1/4 lg:w-[17%]">
-                Add  Item
-                <Plus />
-              </button>
+              <div className='w-1/2 md:w-1/3 lg:w-1/4 bg-[#3B0A45] px-1 py-2 rounded-lg mt-4 md:mt-0'>
+                <button className="flex  mx-auto gap-3 font-plus cursor-pointer text-white font-medium shadow-md  transition-colors">
+                  Add  Item
+                  <Plus />
+                </button>
+              </div>
             </div>
           </div>
           {/* Category Content Section */}
@@ -278,7 +295,7 @@ export default function HomePage() {
                <h3 className='text-xl font-medium'>Categories</h3>
                <div className='bg-white px-3 py-1 rounded-lg w-32 flex items-center justify-between'>
                 <p className='text-[#3B0A45]'>View All</p>
-                <div className='flex flex-col items-center justify-center bg-[#3B0A45] w-8 h-8 p-1 rounded-full'>
+                <div className='flex flex-col items-center justify-center bg-[#3B0A45] w-7 h-7 p-1 rounded-full'>
                   <ChevronRight size={15} color='#fff' className='cursor-pointer'/>
                 </div>
                </div>
@@ -286,22 +303,24 @@ export default function HomePage() {
             <div className='mt-3 flex gap-5'>
               {
                 categories.map((cat) => (
-                  <div className='bg-white py-3 rounded-3xl w-28 h-48' key={cat.id}>
+                  <div className='bg-white py-3 rounded-xl w-16 h-24' key={cat.id}>
                     <div className='flex flex-col'>
-                      <div className='bg-purple-100 p-3 rounded-3xl w-20 mx-auto'>
-                        <Image 
-                          src={cat.image} 
-                          alt={cat.name} 
-                          className='w-14 h-14 object-cover rounded-lg mx-auto'
-                          priority
-                        />
+                      <div className='bg-purple-100 w-11 h-11 rounded-4xl mx-auto'>
+                        <div className='flex items-center justify-center h-full'>
+                          <Image 
+                            src={cat.image} 
+                            alt={cat.name} 
+                            className='w-7 h-7 flex flex-col justify-center object-cover rounded-4xl mx-auto'
+                            priority
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <h3 className='text-center mt-3 font-medium text-gray-700'> {cat.name} </h3>
+                      <div className='mt-2'>
+                        <h3 className='text-center font-medium text-gray-800 text-sm'> {cat.name} </h3>
                       </div>
-                      <div className='flex flex-col items-center justify-center mt-2 bg-[#3B0A45] w-10 h-10 p-1 rounded-full mx-auto'>
-                        <ChevronRight size={20} color='#fff' className='cursor-pointer'/>
-                      </div>
+                      {/* <div className='flex flex-col items-center justify-center mt-3 bg-[#3B0A45] w-7 h-7 p-1 rounded-full mx-auto'>
+                        <ChevronRight size={17} color='#fff' className='cursor-pointer'/>
+                      </div> */}
                     </div>
                   </div>
                 ))
