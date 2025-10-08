@@ -429,12 +429,12 @@ export default function HomePage() {
             <div className='flex items-center justify-between cursor-pointer'>
                <h3 className='text-xl font-medium'>Categories</h3>
                <button 
-                className='bg-white px-3 py-1 rounded-lg w-32 flex items-center justify-between'
+                className='bg-white px-3 cursor-pointer py-1 rounded-lg w-32 flex items-center justify-between'
                 onClick={() => router.push('/pages/menu/category')}
               >
                 <p className='text-[#3B0A45]'>View All</p>
                 <div className='flex flex-col items-center justify-center bg-[#3B0A45] w-7 h-7 p-1 rounded-full'>
-                  <ChevronRight size={15} color='#fff' className='cursor-pointer'/>
+                  <ChevronRight size={15} color='#fff'/>
                 </div>
                </button>
             </div>
