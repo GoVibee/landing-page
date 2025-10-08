@@ -14,7 +14,6 @@ export default function StatCard({ title, value, icon, iconBg = "bg-purple-100" 
       <div className={`p-3 rounded-full ${iconBg} flex items-center justify-center`}>
         {icon}
       </div>
-
       {/* Text Section */}
       <div className="text-right">
         <p className="text-sm text-gray-500 mb-1">{title}</p>
