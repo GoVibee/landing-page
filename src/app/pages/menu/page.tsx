@@ -42,19 +42,19 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Customer:</span>
+                        <span className="font-semibold text-gray-600">Dish:</span>
                         <span className="text-gray-800">{booking.customer}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Venue:</span>
+                        <span className="font-semibold text-gray-600">Category:</span>
                         <span className="text-gray-800">{booking.venue}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Date & Time:</span>
+                        <span className="font-semibold text-gray-600">Price:</span>
                         <span className="text-gray-800">{booking.date} at {booking.time}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span className="font-semibold text-gray-600">Status:</span>
+                        <span className="font-semibold text-gray-600">Description:</span>
                         <Badge status={booking.status} />
                     </div>
                 </div>
@@ -80,9 +80,9 @@ const CancelDetailModal = ({ onClose }: any) => {
                 exit="exit"
                 className="bg-white rounded-xl shadow-2xl w-full max-w-md"
             >
-                <div className="p-6 border-b">
+                <div className="p-6 border-b border-gray-300">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Confirm </h2>
                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -90,15 +90,145 @@ const CancelDetailModal = ({ onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete booking</span>
+                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete menu option</span>
                     </div>
                 </div>
-                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+                <div className="p-3 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
                     <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
                         Confirm
+                    </button>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+const AddMenuOptionModal = ({ onClose }: any) => {
+  const [selectedStatus, setSelectedStatus] = useState('Pizza');
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="bg-white rounded-xl shadow-2xl w-full max-w-md"
+            >
+                <div className="p-6">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-semibold text-gray-800">Add Menu Option</h2>
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
+                            <X size={24} />
+                        </button>
+                    </div>
+                    <div className="mt-5">
+                      <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Name</label>
+                      <input type="email" id="email" placeholder="beef pizza" className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
+                    <div className="mt-5">
+                      <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Description</label>
+                      <input type="email" id="email" placeholder="bread,meat,beef" className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
+                    <div className="mt-5">
+                      <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Price</label>
+                      <input type="email" id="email" placeholder="$100" className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
+                     <div  className='mt-5'>
+                        <label htmlFor="status-select" className="block text-sm font-semibold text-gray-600 mb-2">
+                           Menu category
+                        </label>
+                        <select
+                            id="status-select"
+                            value={selectedStatus}
+                            onChange={(e) => setSelectedStatus(e.target.value)}
+                            className="w-full rounded-lg bg-gray-100 p-2.5 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition "
+                        >
+                            <option value="Pending">Pizza</option>
+                            <option value="Confirmed">Drinks</option>
+                            <option value="Declined">Desserts</option>
+                            <option value="Declined">Salads</option>
+                            <option value="Declined">Main meat</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div className="p-3 rounded-b-xl flex flex-col">
+                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white transition-colors">
+                        Add 
+                    </button>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+const EditMenuOptionModal = ({ onClose }: any) => {
+  const [selectedStatus, setSelectedStatus] = useState('Pizza');
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="bg-white rounded-xl shadow-2xl w-full max-w-md"
+            >
+                <div className="p-6">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-semibold text-gray-800">Edit Menu Option</h2>
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
+                            <X size={24} />
+                        </button>
+                    </div>
+                    <div className="mt-5">
+                      <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Name</label>
+                      <input type="email" id="email" placeholder="beef pizza" className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
+                    <div className="mt-5">
+                      <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Description</label>
+                      <input type="email" id="email" placeholder="bread,meat,beef" className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
+                    <div className="mt-5">
+                      <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Price</label>
+                      <input type="email" id="email" placeholder="$100" className="w-full bg-gray-100 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                    </div>
+                     <div  className='mt-5'>
+                        <label htmlFor="status-select" className="block text-sm font-semibold text-gray-600 mb-2">
+                           Menu category
+                        </label>
+                        <select
+                            id="status-select"
+                            value={selectedStatus}
+                            onChange={(e) => setSelectedStatus(e.target.value)}
+                            className="w-full rounded-lg bg-gray-100 p-2.5 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition "
+                        >
+                            <option value="Pending">Pizza</option>
+                            <option value="Confirmed">Drinks</option>
+                            <option value="Declined">Desserts</option>
+                            <option value="Declined">Salads</option>
+                            <option value="Declined">Main meat</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div className="p-3 rounded-b-xl flex flex-col">
+                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white transition-colors">
+                        Edit
                     </button>
                 </div>
             </motion.div>
@@ -148,6 +278,8 @@ export default function HomePage() {
   const [deletebooking, setDeleteBooking] = useState<any>(false);
   const [showCategories, setShowCategories] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [addmenuoption, setAddMenuOption] = useState<any>(false);
+  const [editmenuoption,setEditMenuOption] = useState<any>(false);
   const router = useRouter();
 
   const menuCategories = [{
@@ -282,8 +414,11 @@ export default function HomePage() {
                 />
               </div>
               <div className='w-1/2 md:w-1/3 lg:w-1/4 bg-[#3B0A45] px-1 py-2 rounded-lg mt-4 md:mt-0'>
-                <button className="flex  mx-auto gap-3 font-plus cursor-pointer text-white font-medium shadow-md  transition-colors">
-                  Add  Item
+                <button 
+                  className="flex  mx-auto gap-3 font-plus cursor-pointer text-white font-medium shadow-md  transition-colors"
+                  onClick={() => setAddMenuOption(true)}
+                  >
+                  Add  menu option
                   <Plus />
                 </button>
               </div>
@@ -293,12 +428,15 @@ export default function HomePage() {
           <div className='my-16'>
             <div className='flex items-center justify-between cursor-pointer'>
                <h3 className='text-xl font-medium'>Categories</h3>
-               <div className='bg-white px-3 py-1 rounded-lg w-32 flex items-center justify-between'>
+               <button 
+                className='bg-white px-3 py-1 rounded-lg w-32 flex items-center justify-between'
+                onClick={() => router.push('/pages/menu/category')}
+              >
                 <p className='text-[#3B0A45]'>View All</p>
                 <div className='flex flex-col items-center justify-center bg-[#3B0A45] w-7 h-7 p-1 rounded-full'>
                   <ChevronRight size={15} color='#fff' className='cursor-pointer'/>
                 </div>
-               </div>
+               </button>
             </div>
             <div className='mt-3 flex gap-5'>
               {
@@ -333,7 +471,7 @@ export default function HomePage() {
                 {/* Desktop Table Header */}
                 <thead className="border-b border-gray-200 hidden md:table-header-group">
                   <tr>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Item</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Dish</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800"> Category</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Price</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Description</th>
@@ -374,7 +512,7 @@ export default function HomePage() {
                                 <h3>Delete</h3>
                             </button>
                             <span className="text-black mx-1"> | </span>
-                             <button onClick={() => setSelectedBooking(booking)} className="text-[#3B0A45] cursor-pointer">
+                             <button onClick={() => setEditMenuOption(true)} className="text-[#3B0A45] cursor-pointer">
                                 Edit
                             </button>
                         
@@ -396,6 +534,16 @@ export default function HomePage() {
        <AnimatePresence>
         {deletebooking && (
             <CancelDetailModal  onClose={() => setDeleteBooking(false)} />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {addmenuoption && (
+          <AddMenuOptionModal onClose={() => setAddMenuOption(false)} />
+        )}
+      </AnimatePresence>
+       <AnimatePresence>
+        {editmenuoption && (
+          <EditMenuOptionModal onClose={() => setEditMenuOption(false)} />
         )}
       </AnimatePresence>
     </div>
