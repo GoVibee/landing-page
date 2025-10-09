@@ -1,7 +1,7 @@
 "use client"; // This is required for Framer Motion and other client-side hooks
 
 import { motion } from "framer-motion";
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { Calendar, LayoutDashboard, Settings, BarChart2,Users, Bell, Menu, X,UserRound,CornerDownRight,Logs,MessageSquare,ShoppingBag,Utensils,DollarSign,ChevronDown,SlidersHorizontal } from 'lucide-react';
 import StatCard from "../../../components/pages/dashboard/StatCard";
 import RecentBookingsTable from "../../../components/pages/bookings/RecentBookingsTable";

@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '@/components/ui/Badge';
-import FilterDropdown from '../../../components/ui/FilterDropdown';
 import React, { useState,useEffect } from 'react';
 import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -217,8 +216,8 @@ const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState<any>(null);
-  const [deletebooking, setDeleteBooking] = useState<any>(false);
   const [status,setStatus] = useState<any>(null)
+  const [deletebooking, setDeleteBooking] = useState<any>(false);
 
   const router = useRouter();
   
