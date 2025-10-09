@@ -39,7 +39,7 @@ export default function HomePage() {
     ];
   return (
     <DashboardLayout>
-      <div className=" lg:flex min-h-screen bg-gray-100 w-full font-plus">
+      <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
         <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
           <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
             <div className="text-2xl font-bold text-gray-800">

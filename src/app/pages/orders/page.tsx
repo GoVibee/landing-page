@@ -9,6 +9,10 @@ import { useRouter } from 'next/navigation';
 
 const bookingsData = [
   { orderId: 1,customer: 'Sophia Carter', time: '19:00', status: 'Confirmed' as const },
+  { orderId: 2,customer: 'Ethan Bennett', time: '10:00', status: 'Pending' as const },
+  { orderId: 1,customer: 'Sophia Carter', time: '19:00', status: 'Confirmed' as const },
+  { orderId: 2,customer: 'Ethan Bennett', time: '10:00', status: 'Pending' as const },
+  { orderId: 1,customer: 'Sophia Carter', time: '19:00', status: 'Confirmed' as const },
   { orderId: 2,customer: 'Ethan Bennett', time: '10:00', status: 'Pending' as const }
 ];
 
@@ -232,23 +236,27 @@ export default function HomePage() {
                 ];
 
   return (
-    <div className="lg:flex min-h-screen bg-gray-100 w-full">
-     <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-             <div className="p-6 flex items-center space-x-2 border-b border-gray-300">
-               <div className="text-2xl font-bold text-gray-800">
-                 <span className="text-[#3B0A45]">Go</span>Vibe
-               </div>
-             </div>
-             <nav className="flex-1 p-4 space-y-2">
-               {sidebarNavItems.map(item => (
-                 <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route} />
-               ))}
-             </nav>
-           </aside>
+    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
+      <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+          <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
+            <div className="text-2xl font-bold text-gray-800">
+              <span className="text-[#3B0A45]">Go</span>Vibe
+            </div>
+          </div>
+          <nav className="flex-1 p-4 space-y-2">
+            {sidebarNavItems.map(item => (
+              <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
+            ))}
+          </nav>
+          {/* <div  className="p-4 border-t">
+            <CornerDownRight size={24} color="#000"/> 
+            <button> Logout </button>
+          </div> */}
+        </aside>
            
            {/* Backdrop for mobile sidebar */}
            {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-y-auto h-screen">
          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
                       <div className="flex items-center space-x-4">
                                      <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
@@ -288,8 +296,8 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="Search orders..."
-                  className="w-full pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+                  placeholder="search orders..."
+                  className="w-full md:w-1/2 pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
               <div className="flex flex-wrap items-center gap-3 font-plus">
