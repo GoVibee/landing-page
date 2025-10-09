@@ -149,9 +149,9 @@ export default function HomePage() {
               <div>
                 <RecentBookingsTable />
               </div>
-              <div>
+              {/* <div>
                 <PopularVenuesTable />
-              </div>
+              </div> */}
             </div>
           </div>
           
