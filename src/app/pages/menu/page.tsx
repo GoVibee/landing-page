@@ -337,7 +337,7 @@ export default function HomePage() {
     ];
 
   return (
-    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus ">
+    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
      <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
              <div className="p-6 flex items-center space-x-2 border-b border-gray-300">
                <div className="text-2xl font-bold text-gray-800">
@@ -377,7 +377,7 @@ export default function HomePage() {
          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
                       <div className="flex items-center space-x-4">
                                      <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
-                                         {isSidebarOpen ? <X/> : <Menu />}
+                                        {isSidebarOpen ? <X/> : <Menu />}
                                      </button>
                                   </div>
                        {/* <div className="w-40"/> */}

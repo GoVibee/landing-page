@@ -8,7 +8,11 @@ import { useRouter,usePathname } from 'next/navigation';
 
 
 const bookingsData = [
-  { item: 'beef pizza',category: 'Pizza',price: '$100',description: 'meat , bread , flavour' }
+  { item: '1',category: 'Pizza',price: '$100',description: 'meat , bread , flavour' },
+  { item: '2',category: 'Desserts',price: '$100',description: 'meat , bread , flavour' },
+  { item: '3',category: 'Drinks',price: '$100',description: 'meat , bread , flavour' },
+  { item: '4',category: 'Salads',price: '$100',description: 'meat , bread , flavour' },
+  { item: '5',category: 'Soups',price: '$100',description: 'meat , bread , flavour' }
 ];
 
 // --- Booking Detail Modal Component ---
@@ -258,11 +262,11 @@ export default function HomePage() {
     ];
 
   return (
-    <div className="lg:flex min-h-screen bg-gray-100 w-full">
-     <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
+     <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
              <div className="p-6 flex items-center space-x-2 border-b border-gray-300">
                <div className="text-2xl font-bold text-gray-800">
-                 <span className="text-[#3B0A45]">Go</span>Vibe
+                <span className="text-[#3B0A45]">Go</span>Vibe
                </div>
              </div>
              <nav className="flex-1 p-4 space-y-2">
@@ -294,7 +298,7 @@ export default function HomePage() {
            
            {/* Backdrop for mobile sidebar */}
            {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-y-auto h-screen">
          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
                       <div className="flex items-center space-x-4">
                                      <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
