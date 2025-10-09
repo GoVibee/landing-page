@@ -202,8 +202,8 @@ const CancelDetailModal = ({ onClose }: any) => {
             >
                 <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-2xl font-semibold text-gray-800">Confirm </h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <h2 className="text-xl font-semibold text-gray-800">Confirm </h2>
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
