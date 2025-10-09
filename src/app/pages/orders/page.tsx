@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '@/components/ui/Badge';
 import React, { useState,useEffect } from 'react';
-import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare } from 'lucide-react';
+import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,SlidersHorizontal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
@@ -37,8 +37,8 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-2xl font-semibold text-gray-800">Order Details</h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <h2 className="text-xl font-semibold text-gray-800">Order Details</h2>
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
@@ -49,12 +49,20 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
                         <span className="text-gray-800">{booking.orderId}</span>
                     </div>
                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600"> Menu:</span>
+                        <span className="font-semibold text-gray-600"> Category:</span>
+                        <span className="text-gray-800"></span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600"> Dish:</span>
                         <span className="text-gray-800"></span>
                     </div>
                     <div className="flex justify-between">
                         <span className="font-semibold text-gray-600">Customer:</span>
                         <span className="text-gray-800">{booking.customer}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600"> email:</span>
+                        <span className="text-gray-800"></span>
                     </div>
                     <div className="flex justify-between">
                         <span className="font-semibold text-gray-600">Order Time:</span>
@@ -111,8 +119,8 @@ const ConfirmOrderModal = ({ booking, onClose, onUpdateStatus }: any) => {
             >
                 <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-2xl font-semibold text-gray-800">Update Order Status</h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <h2 className="text-xl font-semibold text-gray-800">Update Order Status</h2>
+                        <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
@@ -126,6 +134,14 @@ const ConfirmOrderModal = ({ booking, onClose, onUpdateStatus }: any) => {
                     <div className="flex justify-between">
                         <span className="font-semibold text-gray-600">Customer:</span>
                         <span className="text-gray-800">{booking.customer}</span>
+                    </div>
+                     <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Dish:</span>
+                        <span className="text-gray-800">{}</span>
+                    </div>
+                     <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Category:</span>
+                        <span className="text-gray-800">{}</span>
                     </div>
 
                     {/* MODIFICATION: Replaced static Badge with a dropdown */}
@@ -290,30 +306,43 @@ export default function HomePage() {
           </div>
 
           {/* Search and Filter Section */}
-          <div className="mb-6">
-            <div className="bg-white p-4 rounded-lg">
-              <div className="relative mb-4">
+         <div className="mb-6">
+            <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
+              <div className="relative md:w-1/2 lg:w-[40%]">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="search orders..."
-                  className="w-full md:w-1/2 pl-12 text-black pr-4 py-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+                  placeholder="search order..."
+                  className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
-              <div className="flex flex-wrap items-center gap-3 font-plus">
-                 <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span className="font-plus">All</span>
-                  </button>
-                 <button className="text-sm hover:bg-[#3B0A45] hover:text-white gap-2 px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span> Pending </span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700   cursor-pointer">
-                    <span> In Preparation</span>
-                  </button>
-                 <button className="text-sm gap-2 hover:bg-[#3B0A45] hover:text-white px-4 py-2 bg-gray-100 rounded-lg  text-gray-700 cursor-pointer">
-                    <span> Ready </span>
-                  </button>
+              <div className='w-1/3 md:w-1/5 lg:w-1/6 cursor-pointer bg-white hover:bg-[#3B0A45] py-2 rounded-lg mt-4 md:mt-0 text-[#3B0A45]  hover:text-white'>
+                <button 
+                  className="flex  mx-auto gap-3 font-plus cursor-pointer font-medium transition-colors"
+                >
+                  Filter
+                  <SlidersHorizontal />
+                </button>
               </div>
+            </div>
+          </div>
+
+           <div className='mb-16'>
+            <div className='mt-3 flex gap-5'>
+              <div className='bg-purple-100 hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
+                <h3 className='text-sm'>All</h3>
+              </div>
+              <div className='bg-white hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
+                <h3 className='text-sm'>Pending</h3>
+              </div>
+              <div className='bg-white hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/7'>
+                <h3 className='text-sm'>In Preparation</h3>
+              </div>
+              <div className='bg-white hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
+                <h3 className='text-sm'> Ready</h3>
+              </div>
+              
+              
             </div>
           </div>
 
@@ -362,7 +391,7 @@ export default function HomePage() {
                          <button onClick={() => {
                           setSelectedBooking(booking);
                           setStatus(null);
-                         }} className="text-violet-800 cursor-pointer">
+                         }} className="text-[#3B0A45] cursor-pointer">
                                 View
                             </button>
                         <span className="text-black mx-1"> | </span>
