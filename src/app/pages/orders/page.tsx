@@ -149,7 +149,7 @@ const ConfirmOrderModal = ({ booking, onClose, onUpdateStatus }: any) => {
                     </div>
                     <div className="flex justify-between">
                         <span className="font-semibold text-gray-600">Date:</span>
-                        <span className="text-gray-800">{booking.date}</span>
+                        <span className="text-gray-800">{}</span>
                     </div>
 
                     {/* MODIFICATION: Replaced static Badge with a dropdown */}
@@ -337,20 +337,18 @@ export default function HomePage() {
 
            <div className='mb-16'>
             <div className='mt-3 flex gap-5'>
-              <div className='bg-purple-100 hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
+              <div className='bg-purple-100 hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
                 <h3 className='text-sm'>All</h3>
               </div>
-              <div className='bg-white hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
+              <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
                 <h3 className='text-sm'>Pending</h3>
               </div>
-              <div className='bg-white hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/7'>
+              <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/7'>
                 <h3 className='text-sm'>In Preparation</h3>
               </div>
-              <div className='bg-white hover:bg-[#3B0A45] text-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
+              <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center w-1/9'>
                 <h3 className='text-sm'> Ready</h3>
               </div>
-              
-              
             </div>
           </div>
 

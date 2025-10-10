@@ -9,11 +9,7 @@ import { p } from 'framer-motion/client';
 
 
 const bookingsData = [
-  { item: '1',category: 'Pizza',price: '$100',description: 'meat , bread , flavour' },
-  { item: '2',category: 'Desserts',price: '$100',description: 'meat , bread , flavour' },
-  { item: '3',category: 'Drinks',price: '$100',description: 'meat , bread , flavour' },
-  { item: '4',category: 'Salads',price: '$100',description: 'meat , bread , flavour' },
-  { item: '5',category: 'Soups',price: '$100',description: 'meat , bread , flavour' }
+  { item: '1',category: 'Pizza',price: '$100',description: 'meat , bread , flavour' }
 ];
 
 // --- Booking Detail Modal Component ---
@@ -281,6 +277,8 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const router = useRouter();
 
+  const [toggle,setToggle] = useState(false);
+
   const menuCategories = [{
     text: 'Categories',
     route: '/pages/menu/category'
@@ -407,6 +405,7 @@ export default function HomePage() {
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Dish</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Price</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Description</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Active</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Actions</th>
                   </tr>
                 </thead>
@@ -441,6 +440,13 @@ export default function HomePage() {
                         <span className="text-gray-800 text-sm block">
                           meat, beef, onion, tomatoes, meat, beef, onion, tomatoes
                         </span>
+                      </td>
+
+                      <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-normal break-words md:max-w-[200px]">
+                        <span className="font-semibold text-gray-600 md:hidden mr-2">Active:</span>
+                        <button className={`bg-gray-300  border-[#aaaaaa] rounded-[99px] w-[50px] h-[28px] cursor-pointer transition-colors shadow-sm duration-[200ms] ease-in relative ${toggle ? 'bg-green-600' : ''}`} onClick={() => setToggle(!toggle)}>
+                          <div className={`w-[20px] h-[20px] bg-white rounded-[99px] translate-x-0 absolute left-1 top-1/2 -translate-y-1/2 transition-[left] duration-150 ease-in-out ${toggle ? 'absolute left-[calc(50px-25px)]' : ''}`}></div>
+                        </button>
                       </td>
 
                       {/* Actions */}
