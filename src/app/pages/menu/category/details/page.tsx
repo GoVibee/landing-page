@@ -295,7 +295,7 @@ export default function HomePage() {
         hasSublink: true,
       },
       { icon: MessageSquare, text: 'Reviews',route: '/pages/reviews'},
-      { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
+      // { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
       { icon: Users, text: 'Staff',route: '/pages/staff'},
       { icon: Settings, text: 'Settings',route: '/pages/settings'},
     ];
