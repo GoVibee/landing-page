@@ -441,7 +441,11 @@ export default function HomePage() {
             <div className='mt-3 flex gap-5'>
               {
                 categories.map((cat) => (
-                  <div className='bg-white py-3 rounded-xl w-16 h-24 cursor-pointer' key={cat.id}>
+                  <div 
+                    className='bg-white py-3 rounded-xl w-16 h-24 cursor-pointer' 
+                    key={cat.id}
+                    onClick={() => router.push('/pages/menu/category')}
+                  >
                     <div className='flex flex-col'>
                       <div className='bg-purple-100 w-11 h-11 rounded-4xl mx-auto'>
                         <div className='flex items-center justify-center h-full'>
