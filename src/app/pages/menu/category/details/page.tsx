@@ -83,20 +83,35 @@ const AddCategorylModal = ({ onClose }: any) => {
             >
                 <div className="p-6">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-semibold text-gray-800">Add Category</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Add menu option</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
                     <div className="mt-5">
                       {/* <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label> */}
-                      <input type="email" id="email" placeholder="pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                      <div>
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label>
+                        <input type="email" id="email" placeholder="pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                      </div>
+                      <div className='mt-4'>
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish name</label>
+                        <input type="email" id="email" placeholder="beef pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                      </div>
+                       <div className='mt-4'>
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish price</label>
+                         <input type="email" id="email" placeholder="$100" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                       </div>
+                       <div className='mt-4'>
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Ingredients</label>
+                         <input type="email" id="email" placeholder="beef,onion,meat" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                       </div>
                     </div>
                 </div>
                 
                 <div className="p-3 rounded-b-xl flex flex-col">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white transition-colors">
-                        Add category
+                        Add menu option
                     </button>
                    
                 </div>
