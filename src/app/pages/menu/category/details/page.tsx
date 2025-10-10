@@ -414,7 +414,7 @@ export default function HomePage() {
                   {bookingsData.map((booking, index) => (
                     <tr
                       key={index}
-                      className="block md:table-row bg-white md:bg-transparent rounded-lg md:rounded-none shadow-sm md:shadow-none mb-4 md:mb-0 border border-gray-100 md:border-b-gray-200 last:border-none"
+                      className="block md:table-row bg-white md:bg-transparent rounded-lg md:rounded-none md:shadow-none mb-4 md:mb-0 border border-gray-100 md:border-b-gray-200 last:border-none"
                     >
                       {/* Dish ID */}
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">

@@ -33,7 +33,7 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-semibold text-gray-800">New Staff</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Staff</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -145,7 +145,7 @@ const EditCategorylModal = ({ onClose }: any) => {
             >
                 <div className="p-6">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-semibold text-gray-800">Edit New Staff</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Edit Staff</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -367,7 +367,7 @@ export default function HomePage() {
                   {bookingsData.map((booking, index) => (
                     <tr
                       key={index}
-                      className="block md:table-row bg-white md:bg-transparent rounded-lg md:rounded-none shadow-sm md:shadow-none mb-4 md:mb-0 border border-gray-100 md:border-b-gray-200 last:border-none"
+                      className="block md:table-row bg-white md:bg-transparent rounded-lg md:rounded-none md:shadow-none mb-4 md:mb-0 border border-gray-100 md:border-b-gray-200 last:border-none"
                     >
                       {/* Dish ID */}
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
@@ -397,7 +397,7 @@ export default function HomePage() {
 
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-normal break-words md:max-w-[200px]">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Active:</span>
-                        <button className={`bg-gray-300  border-[#aaaaaa] rounded-[99px] w-[50px] h-[28px] cursor-pointer transition-colors shadow-sm duration-[200ms] ease-in relative ${toggle ? 'bg-green-600' : ''}`} onClick={() => setToggle(!toggle)}>
+                        <button className={`bg-gray-300  border-[#aaaaaa] rounded-[99px] w-[50px] h-[28px] cursor-pointer transition-colors duration-[200ms] ease-in relative ${toggle ? 'bg-green-600' : ''}`} onClick={() => setToggle(!toggle)}>
                           <div className={`w-[20px] h-[20px] bg-white rounded-[99px] translate-x-0 absolute left-1 top-1/2 -translate-y-1/2 transition-[left] duration-150 ease-in-out ${toggle ? 'absolute left-[calc(50px-25px)]' : ''}`}></div>
                         </button>
                       </td>
