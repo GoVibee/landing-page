@@ -335,7 +335,7 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="search menu category..."
+                  placeholder="search category..."
                   className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
@@ -366,7 +366,7 @@ export default function HomePage() {
                 <tbody className="divide-y divide-gray-200 font-plus">
                   {bookingsData.map((booking, index) => (
                     // On mobile, each row is a card. On desktop, it's a standard table row.
-                    <tr key={index} className="block md:table-row p-4 md:p-0 border-b border-[#E3DBE5] last:border-none">
+                    <tr key={index} className="block md:table-row p-4 md:p-0 border-b border-[#E3DBE5] last:border-none hover:bg-gray-100 cursor-pointer">
                       {/* Mobile Label + Data */}
                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Item:</span>
@@ -381,7 +381,12 @@ export default function HomePage() {
                      
                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
-                         <button onClick={() => setSelectedBooking(booking)} className="text-[#3B0A45] cursor-pointer">
+                         <button 
+                          onClick={() => {
+                            router.push('/pages/menu/category/details');
+                          }} 
+                          className="text-[#3B0A45] cursor-pointer"
+                        >
                                 View
                             </button>
                         <span className="text-black mx-1"> | </span>
