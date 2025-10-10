@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import Badge from '../../../../../components/ui/Badge';
+import Badge from '../../../components/ui/Badge';
 import React, { useState,useEffect } from 'react';
 import { Calendar, LayoutDashboard,Logs, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,Plus,ChevronRight } from 'lucide-react';
 import { useRouter,usePathname } from 'next/navigation';
@@ -23,7 +23,7 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
             <motion.div
                 variants={modalVariants}
                 initial="hidden"
@@ -33,7 +33,7 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
             >
                 <div className="p-6">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-semibold text-gray-800"> Menu option</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">New Staff</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -41,27 +41,27 @@ const BookingDetailModal = ({ booking, onClose }: any) => {
                     <div className="mt-5">
                       {/* <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label> */}
                       <div>
-                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label>
-                        <input type="email" id="email" placeholder="pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Name</label>
+                        <input type="email" id="email" placeholder="flynn" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
                       </div>
                       <div className='mt-4'>
-                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish name</label>
-                        <input type="email" id="email" placeholder="beef pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Phone Number</label>
+                        <input type="email" id="email" placeholder="0540656226" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
                       </div>
                        <div className='mt-4'>
-                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish price</label>
-                         <input type="email" id="email" placeholder="$100" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Email</label>
+                         <input type="email" id="email" placeholder="fe43699@gmail.com" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
                        </div>
                        <div className='mt-4'>
-                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Ingredients</label>
-                         <input type="email" id="email" placeholder="beef,onion,meat" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Password</label>
+                         <input type="email" id="email" placeholder="*******s" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
                        </div>
                     </div>
                 </div>
                 
                 {/* <div className="p-3 rounded-b-xl flex flex-col">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white transition-colors">
-                        Edit menu optionn
+                        Add new member
                     </button>
                    
                 </div> */}
@@ -89,7 +89,7 @@ const AddCategorylModal = ({ onClose }: any) => {
             >
                 <div className="p-6">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-semibold text-gray-800">Add menu option</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Add New Staff</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -97,27 +97,27 @@ const AddCategorylModal = ({ onClose }: any) => {
                     <div className="mt-5">
                       {/* <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label> */}
                       <div>
-                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label>
-                        <input type="email" id="email" placeholder="pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Name</label>
+                        <input type="email" id="email" placeholder="flynn" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
                       </div>
                       <div className='mt-4'>
-                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish name</label>
-                        <input type="email" id="email" placeholder="beef pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Phone Number</label>
+                        <input type="email" id="email" placeholder="0540656226" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
                       </div>
                        <div className='mt-4'>
-                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish price</label>
-                         <input type="email" id="email" placeholder="$100" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Email</label>
+                         <input type="email" id="email" placeholder="fe43699@gmail.com" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
                        </div>
                        <div className='mt-4'>
-                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Ingredients</label>
-                         <input type="email" id="email" placeholder="beef,onion,meat" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Password</label>
+                         <input type="email" id="email" placeholder="*******s" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
                        </div>
                     </div>
                 </div>
                 
                 <div className="p-3 rounded-b-xl flex flex-col">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white transition-colors">
-                        Add menu option
+                        Add new member
                     </button>
                    
                 </div>
@@ -135,7 +135,7 @@ const EditCategorylModal = ({ onClose }: any) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
             <motion.div
                 variants={modalVariants}
                 initial="hidden"
@@ -145,7 +145,7 @@ const EditCategorylModal = ({ onClose }: any) => {
             >
                 <div className="p-6">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-semibold text-gray-800">Edit menu option</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">Edit New Staff</h2>
                         <button onClick={onClose} className="text-gray-400 cursor-pointer hover:text-gray-600">
                             <X size={24} />
                         </button>
@@ -153,27 +153,27 @@ const EditCategorylModal = ({ onClose }: any) => {
                     <div className="mt-5">
                       {/* <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label> */}
                       <div>
-                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Category name</label>
-                        <input type="email" id="email" placeholder="pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Name</label>
+                        <input type="email" id="email" placeholder="flynn" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
                       </div>
                       <div className='mt-4'>
-                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish name</label>
-                        <input type="email" id="email" placeholder="beef pizza" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
+                        <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Phone Number</label>
+                        <input type="email" id="email" placeholder="0540656226" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required /> 
                       </div>
                        <div className='mt-4'>
-                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Dish price</label>
-                         <input type="email" id="email" placeholder="$100" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Email</label>
+                         <input type="email" id="email" placeholder="fe43699@gmail.com" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
                        </div>
                        <div className='mt-4'>
-                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Ingredients</label>
-                         <input type="email" id="email" placeholder="beef,onion,meat" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+                         <label htmlFor="email" className="block my-2 text-sm font-medium text-gray-600 mb-1"> Password</label>
+                         <input type="email" id="email" placeholder="*******s" className="w-full bg-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
                        </div>
                     </div>
                 </div>
                 
                 <div className="p-3 rounded-b-xl flex flex-col">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-[#3B0A45] text-white transition-colors">
-                        Edit menu optionn
+                        Edit member
                     </button>
                    
                 </div>
@@ -209,7 +209,7 @@ const CancelDetailModal = ({ onClose }: any) => {
                 </div>
                 <div className="p-6 space-y-4">
                     <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete menu option</span>
+                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete staff member</span>
                     </div>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
@@ -225,10 +225,7 @@ const CancelDetailModal = ({ onClose }: any) => {
     );
 };
 
-const SidebarLink = ({ icon: Icon, text, active,route,onClick,setShowCategories }: any) => {
-  useEffect(() => {
-    setShowCategories(true);
-  },[])
+const SidebarLink = ({ icon: Icon, text, active,route,onClick}: any) => {
 
   return (
   <div>
@@ -240,31 +237,6 @@ const SidebarLink = ({ icon: Icon, text, active,route,onClick,setShowCategories 
   )
 };
 
-const MenuCategorySublink = ({ categories, activeCategory, onSelect }: any) => {
-  const pathname = usePathname();
-  
-  return (
-    <div 
-      className="flex flex-col ml-8 mt-2"
-    >
-      <a
-        key={categories.text}
-        onClick={() => {
-          onSelect(categories.text);
-        }}
-        href={categories.route}
-        className={`text-left cursor-pointer px-3 py-2 rounded-lg mb-1 transition-colors ${
-          pathname == '/pages/menu/category'|| pathname == '/pages/menu/category/details'
-            ? 'bg-purple-200 text-[#3B0A45] font-semibold'
-            : 'text-gray-700 hover:bg-gray-100'
-        }`}
-      >
-        {categories.text}
-      </a>
-  </div>
-
-  )
-};
 
 
 export default function HomePage() {
@@ -273,30 +245,22 @@ export default function HomePage() {
   const [deletebooking, setDeleteBooking] = useState<any>(false);
   const [addcategory,setAddCategory] = useState<any>(false);
   const [editcategory,setEditCategory] = useState<any>(false);
-  const [showCategories, setShowCategories] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+
   const router = useRouter();
 
   const [toggle,setToggle] = useState(false);
 
-  const menuCategories = [{
-    text: 'Categories',
-    route: '/pages/menu/category'
-  }];
-  
     const sidebarNavItems = [
       { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},
       { icon: Calendar, text: 'Orders',route: '/pages/orders'},
       {
         icon: Logs,
         text: 'Menu',
-        route: '/pages/menu',
-        active: true,
-        hasSublink: true,
+        route: '/pages/menu'
       },
       { icon: MessageSquare, text: 'Reviews',route: '/pages/reviews'},
       // { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
-      { icon: Users, text: 'Staff',route: '/pages/staff'},
+      { icon: Users, text: 'Staff',route: '/pages/staff',active: true,},
       { icon: Settings, text: 'Settings',route: '/pages/settings'},
     ];
 
@@ -312,24 +276,13 @@ export default function HomePage() {
               {sidebarNavItems.map(item => (
             <div key={item.text}>
               <SidebarLink
-                icon={item.icon}
-                text={item.text}
-                active={item.active}
+                key={item.text} 
+                icon={item.icon} 
+                text={item.text} 
+                active={item.active} 
                 route={item.route}
-                onClick={item.hasSublink ? () => setShowCategories(!showCategories) : undefined}
-                setShowCategories={setShowCategories}
               />
               {/* Show sublinks for Menu */}
-              {item.hasSublink && showCategories && menuCategories.map((cat) => (
-                (
-                <MenuCategorySublink
-                  categories={cat}
-                  activeCategory={activeCategory}
-                  onSelect={(cat: any) => setActiveCategory(cat)}
-                  key={cat.text}
-                />
-              )
-              ))}
             </div>
           ))}
              </nav>
@@ -363,10 +316,10 @@ export default function HomePage() {
         <div >
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-              <div className='flex items-end'>
-                <h1 className="text-3xl font-plus font-semibold  sm:mb-0"> Category Details </h1>
-                <ChevronRight className='inline mx-2' size={30}/>
-                <span className='text-gray-700 font-plus'>Pizza</span>
+              <div>
+                <h1 className="text-3xl font-plus font-semibold  sm:mb-0"> Staff </h1>
+                {/* <ChevronRight className='inline mx-2' size={30}/>
+                <span className='text-gray-700 font-plus'>Pizza</span> */}
               </div>
               <div className='w-24'/>
           </div>
@@ -378,7 +331,7 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="search detail..."
+                  placeholder="search staff..."
                   className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                 />
               </div>
@@ -387,8 +340,8 @@ export default function HomePage() {
                   className="flex  mx-auto gap-3 font-plus cursor-pointer text-white font-medium shadow-md  transition-colors"
                   onClick={() => setAddCategory(true)}
                 >
-                  Add  option
                   <Plus />
+                  Add  New Member
                 </button>
               </div>
             </div>
@@ -401,10 +354,10 @@ export default function HomePage() {
               {/* Desktop Table Header */}
                 <thead className="border-b border-gray-200 hidden md:table-header-group">
                   <tr>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Id</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Dish</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Price</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Description</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Staff Id</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Name</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Phone Number</th>
+                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Email</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Active</th>
                     <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Actions</th>
                   </tr>
@@ -418,27 +371,27 @@ export default function HomePage() {
                     >
                       {/* Dish ID */}
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Dish Id:</span>
-                        <span className="font-normal text-sm">{booking.item}</span>
+                        <span className="font-semibold text-gray-600 md:hidden mr-2">Staff Id:</span>
+                        <span className="font-normal text-sm">{1}</span>
                       </td>
 
                       {/* Dish Name */}
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Dish:</span>
-                        <span className="font-normal text-sm">{'Beef Pizza'}</span>
+                        <span className="font-semibold text-gray-600 md:hidden mr-2">Name:</span>
+                        <span className="font-normal text-sm">{'flynn'}</span>
                       </td>
 
                       {/* Price */}
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Price:</span>
-                        <span className="text-gray-800 text-sm">$100</span>
+                        <span className="font-semibold text-gray-600 md:hidden mr-2">Phone Number:</span>
+                        <span className="text-gray-800 text-sm">0540656226</span>
                       </td>
 
                       {/* Description */}
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-normal break-words md:max-w-[200px]">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Description:</span>
+                        <span className="font-semibold text-gray-600 md:hidden mr-2">Email:</span>
                         <span className="text-gray-800 text-sm block">
-                          meat, beef, onion, tomatoes, meat, beef, onion, tomatoes
+                         fe4369@gmail.com
                         </span>
                       </td>
 
