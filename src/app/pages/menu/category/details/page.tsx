@@ -407,15 +407,15 @@ export default function HomePage() {
                       <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap text-sm font-medium">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
                         <div className="flex items-center space-x-2">
-                          <button onClick={() => setSelectedBooking(booking)} className="text-[#3B0A45]">
+                          <button onClick={() => setSelectedBooking(booking)} className="text-[#3B0A45] cursor-pointer">
                             View
                           </button>
                           <span className="text-gray-500">|</span>
-                          <button onClick={() => setDeleteBooking(true)} className="text-red-700">
+                          <button onClick={() => setDeleteBooking(true)} className="text-red-700 cursor-pointer">
                             Delete
                           </button>
                           <span className="text-gray-500">|</span>
-                          <button onClick={() => setEditCategory(true)} className="text-[#3B0A45]">
+                          <button onClick={() => setEditCategory(true)} className="text-[#3B0A45] cursor-pointer">
                             Edit
                           </button>
                         </div>
