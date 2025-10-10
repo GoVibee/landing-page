@@ -71,6 +71,14 @@ const ConfirmOrderModal = ({ booking, onClose, onUpdateStatus }: any) => {
                         <span className="font-semibold text-gray-600">Customer:</span>
                         <span className="text-gray-800">{booking.customer}</span>
                     </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Menu category:</span>
+                        <span className="text-gray-800">{}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Dish:</span>
+                        <span className="text-gray-800">{}</span>
+                    </div>
                      <div className="flex justify-between">
                         <span className="font-semibold text-gray-600">Price:</span>
                         <span className="text-gray-800 font-mono">{booking.price}</span>

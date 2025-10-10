@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '@/components/ui/Badge';
 import React, { useState,useEffect } from 'react';
-import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,SlidersHorizontal } from 'lucide-react';
+import { Calendar, LayoutDashboard,Logs,Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,SlidersHorizontal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
@@ -143,6 +143,14 @@ const ConfirmOrderModal = ({ booking, onClose, onUpdateStatus }: any) => {
                         <span className="font-semibold text-gray-600">Category:</span>
                         <span className="text-gray-800">{}</span>
                     </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Price:</span>
+                        <span className="text-gray-800">$100</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Date:</span>
+                        <span className="text-gray-800">{booking.date}</span>
+                    </div>
 
                     {/* MODIFICATION: Replaced static Badge with a dropdown */}
                     <div>
@@ -249,7 +257,7 @@ export default function HomePage() {
                   { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
                   { icon: Users, text: 'Staff',route: '/pages/staff'},
                   { icon: Settings, text: 'Settings',route: '/pages/settings'},
-                ];
+    ];
 
   return (
     <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
