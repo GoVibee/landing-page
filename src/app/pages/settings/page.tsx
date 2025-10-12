@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState,useEffect } from 'react';
-import { Home, Calendar, LayoutDashboard,UserRound, Settings, BarChart2, Users,Logs, Bell, Menu, X, User,MessageSquare} from 'lucide-react';
+import { Home, Calendar,BellRing,CreditCard,ChevronRight, LayoutDashboard,UserRound, Settings, BarChart2, Users,Logs, Bell, Menu, X, User,MessageSquare} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Oval } from 'react-loader-spinner';
@@ -15,6 +15,19 @@ const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
     <span className="flex-1">{text}</span>
   </a>
 );
+
+const SettingsItem = ({ icon: Icon, title, description }: any) => (
+    <a href="#" className="flex items-center p-4 bg-gray-50/50 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+        <div className="bg-white p-3 rounded-lg border border-gray-200 mr-4">
+            <Icon className="w-6 h-6 text-gray-600" />
+        </div>
+        <div className="flex-1">
+            <h3 className="font-semibold text-gray-800">{title}</h3>
+            <p className="text-sm text-gray-500">{description}</p>
+        </div>
+        <ChevronRight className="w-5 h-5 text-gray-400" />
+    </a>
+)
 
 const FormInput = ({ label, placeholder, type = 'text',value,onChange }: any) => (
     <div>
@@ -88,21 +101,22 @@ export default function SettingsPage() {
           title: 'Account',
           items: [
               { icon: User, title: 'Account details', description: 'Manage your account details' },
+               { icon: User, title: 'Restaurant details', description: 'Manage your restaurant details' },
               // { icon: Users2, title: 'Team members', description: 'Manage your team members' },
           ]
       },
-    //   {
-    //       title: 'Notifications',
-    //       items: [
-    //           { icon: BellRing, title: 'Notification settings', description: 'Manage your notification preferences' },
-    //       ]
-    //   },
-    //   {
-    //       title: 'Payments',
-    //       items: [
-    //           { icon: CreditCard, title: 'Payment methods', description: 'Manage your payment methods' },
-    //       ]
-    //   },
+      {
+          title: 'Notifications',
+          items: [
+              { icon: BellRing, title: 'Notification settings', description: 'Manage your notification preferences' },
+          ]
+      },
+      {
+          title: 'Payments',
+          items: [
+              { icon: CreditCard, title: 'Payment methods', description: 'Manage your payment methods' },
+          ]
+      },
     //   {
     //       title: 'Policies',
     //       items: [
@@ -112,26 +126,30 @@ export default function SettingsPage() {
   ]
 
   return (
-    <div className=" lg:flex min-h-screen bg-gray-50 w-full font-plus">
+    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
       {/* --- Sidebar --- */}
-     <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-        <div className="p-6 flex items-center space-x-2 border-b">
-          <div className="text-2xl font-bold text-gray-800">
-            <span className="text-[#3B0A45]">Go</span>Vibe
+     <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+          <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
+            <div className="text-2xl font-bold text-gray-800">
+              <span className="text-[#3B0A45]">Go</span>Vibe
+            </div>
           </div>
-        </div>
-        <nav className="flex-1 p-4 space-y-2">
-          {sidebarNavItems.map(item => (
-            <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active}  route={item.route}/>
-          ))}
-        </nav>
-      </aside>
+          <nav className="flex-1 p-4 space-y-2">
+            {sidebarNavItems.map(item => (
+              <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
+            ))}
+          </nav>
+          {/* <div  className="p-4 border-t">
+            <CornerDownRight size={24} color="#000"/> 
+            <button> Logout </button>
+          </div> */}
+        </aside>
       
       {/* Backdrop for mobile sidebar */}
       {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
 
       {/* --- Main Content --- */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-y-auto h-screen">
         {/* --- Top Header --- */}
             <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
              <div className="flex items-center space-x-4">
@@ -161,7 +179,7 @@ export default function SettingsPage() {
             <h1 className="text-3xl font-bold text-gray-800 mb-8">Settings</h1>
 
             <div className="max-w-4xl mx-auto space-y-10">
-                {/* {settingsSections.map(section => (
+                {settingsSections.map(section => (
                     <section key={section.title} className='cursor-pointer' onClick={() => {
                       router.push('/pages/settings/profile')
                     }}>
@@ -172,15 +190,15 @@ export default function SettingsPage() {
                             ))}
                         </div>
                     </section>
-                ))} */}
-                 <h2 className="text-xl font-semibold text-gray-800 mb-4">Account Profile </h2>
+                ))}
+                 {/* <h2 className="text-xl font-semibold text-gray-800 mb-4">Account Profile </h2>
                 <div className="grid md:grid-cols-2 gap-4">
                         <FormInput label="Email" placeholder="123@gmail.com" value={user.email}/>
-                        {/* <FormInput label="Password" placeholder="*******" type="tel" />
-                        <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" /> */}
-                    </div>
-                    <h3 className='text-black'>Change pasword </h3>
-                    <form >
+                        <FormInput label="Password" placeholder="*******" type="tel" />
+                        <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" />
+                    </div> */}
+                    {/* <h3 className='text-black'>Change pasword </h3> */}
+                    {/* <form >
                       <div className="grid md:grid-cols-2 gap-4 -mt-4">
                         <FormInput 
                           label="Old password" 
@@ -211,7 +229,7 @@ export default function SettingsPage() {
                                             ) : 'Save changes'}
                       </button>
                       </div>
-                    </form>
+                    </form> */}
                 </div>
             </div>
         </main>
