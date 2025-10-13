@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Image1 from '../../../../../../assets/3.jpg';
 import Image from 'next/image';
 import { Search, Plus, Minus, ShoppingCart } from 'lucide-react';
+import {useRouter} from 'next/navigation';
 
 // --- Sample Data ---
 const categories = [
@@ -41,6 +42,7 @@ function Page() {
     const [activeCategory, setActiveCategory] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
     const [order, setOrder] = useState<{ [key: number]: number }>({});
+    const router = useRouter();
 
     const handleAddToOrder = (itemId: number) => {
         setOrder(prevOrder => ({ ...prevOrder, [itemId]: (prevOrder[itemId] || 0) + 1 }));
@@ -151,12 +153,16 @@ function Page() {
 
             {totalItemsInOrder > 0 && (
                 <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md">
-                    <button className="w-full bg-[#3B0A45] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3  transition-all transform hover:scale-105">
+                    <button 
+                        className="w-full bg-[#3B0A45] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3  transition-all transform hover:scale-105"
+                        onClick={() => router.push('/pages/settings/restaurant/1/details')}
+                    >
                         <ShoppingCart size={20} />
                         View Order ({totalItemsInOrder} {totalItemsInOrder > 1 ? 'items' : 'item'})
                     </button>
                 </div>
             )}
+            
         </div>
     )
 }

@@ -65,6 +65,10 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
                         <span className="text-gray-800"></span>
                     </div>
                     <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600"> notes:</span>
+                        <span className="text-gray-800"></span>
+                    </div>
+                    <div className="flex justify-between">
                         <span className="font-semibold text-gray-600">Order Time:</span>
                         <span className="text-gray-800">{booking.time}</span>
                     </div>
