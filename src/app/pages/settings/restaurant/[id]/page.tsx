@@ -157,7 +157,7 @@ function Page() {
                         className="w-full bg-[#3B0A45] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3  transition-all transform cursor-pointer"
                         onClick={() => router.push('/pages/settings/restaurant/1/details')}
                     >
-                        <ShoppingCart size={20} />
+                        {/* <ShoppingCart size={20} /> */}
                         View Order ({totalItemsInOrder} {totalItemsInOrder > 1 ? 'items' : 'item'})
                     </button>
                 </div>
