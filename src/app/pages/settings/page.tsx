@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState,useEffect } from 'react';
-import {Calendar,BellRing,CreditCard,ChevronRight, LayoutDashboard,UserRound, Settings, Users,Logs, Bell, Menu, X, User,MessageSquare,Utensils} from 'lucide-react';
+import {Calendar,BellRing,CreditCard,ChevronRight, LayoutDashboard,UserRound, Settings, Users,Logs, Bell, Menu, X, User,MessageSquare,Utensils,QrCode} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Oval } from 'react-loader-spinner';
@@ -105,12 +105,12 @@ export default function SettingsPage() {
               // { icon: Users2, title: 'Team members', description: 'Manage your team members' },
           ]
       },
-      // {
-      //     title: 'Notifications',
-      //     items: [
-      //         { icon: BellRing, title: 'Notification settings', description: 'Manage your notification preferences' },
-      //     ]
-      // },
+      {
+          title: 'Qr Code',
+          items: [
+              { icon: QrCode, title: 'Qr Code settings', description: 'Manage your Qr Code preferences',route: '/pages/settings/restaurant/1' },
+          ]
+      },
       // {
       //     title: 'Payments',
       //     items: [
