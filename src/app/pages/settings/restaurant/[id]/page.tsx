@@ -85,7 +85,7 @@ function Page() {
             {/* --- START: STICKY HEADER --- */}
             <div className='sticky top-0 bg-white z-40 py-4'>
                 <div className='mt-4'>
-                    <h3 className='text-lg text-gray-800 font-semibold mb-3'>Categories</h3>
+                    <h3 className='text-xl text-gray-800 font-semibold mb-3'>Categories</h3>
                     <div className='flex gap-3 items-center overflow-x-auto whitespace-nowrap py-2 scrollbar-hide'>
                         {categories.map((cat) => (
                             <button
@@ -93,7 +93,7 @@ function Page() {
                                 onClick={() => setActiveCategory(cat.id)}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                                     activeCategory === cat.id
-                                        ? 'bg-gray-800 text-white'
+                                        ? 'bg-[#3B0A45] text-white'
                                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                                 }`}
                             >
@@ -109,14 +109,14 @@ function Page() {
                         placeholder="Search menu items..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-12 pr-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800"
+                        className="w-full pl-12 pr-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
                     />
                 </div>
             </div>
             {/* --- END: STICKY HEADER --- */}
 
             <div className='mt-8'>
-                <h3 className='text-lg text-gray-800 font-semibold mb-3'>Menu Items</h3>
+                <h3 className='text-xl text-gray-800 font-semibold mb-3'>Menu Items</h3>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {filteredMenuItems.length > 0 ? (
                         filteredMenuItems.map(item => (
@@ -130,13 +130,13 @@ function Page() {
                                     <div className="flex items-center gap-2">
                                         {order[item.id] > 0 && (
                                             <>
-                                                <button onClick={() => handleRemoveFromOrder(item.id)} className="p-1.5 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">
+                                                <button onClick={() => handleRemoveFromOrder(item.id)} className="p-1.5 bg-[#3B0A45] rounded-full text-white">
                                                     <Minus size={16} />
                                                 </button>
                                                 <span className="font-semibold w-6 text-center">{order[item.id]}</span>
                                             </>
                                         )}
-                                        <button onClick={() => handleAddToOrder(item.id)} className="p-1.5 bg-gray-800 rounded-full text-white hover:bg-gray-700">
+                                        <button onClick={() => handleAddToOrder(item.id)} className="p-1.5 bg-[#3B0A45] rounded-full text-white hover:bg-gray-700">
                                             <Plus size={16} />
                                         </button>
                                     </div>
@@ -151,7 +151,7 @@ function Page() {
 
             {totalItemsInOrder > 0 && (
                 <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md">
-                    <button className="w-full bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 hover:bg-gray-800 transition-all transform hover:scale-105">
+                    <button className="w-full bg-[#3B0A45] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3  transition-all transform hover:scale-105">
                         <ShoppingCart size={20} />
                         View Order ({totalItemsInOrder} {totalItemsInOrder > 1 ? 'items' : 'item'})
                     </button>
