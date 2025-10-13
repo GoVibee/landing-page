@@ -162,7 +162,6 @@ function Page() {
                     </button>
                 </div>
             )}
-            
         </div>
     )
 }
