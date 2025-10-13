@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { ArrowLeft, CreditCard,CircleArrowRight } from 'lucide-react';
+import { ArrowLeft, CreditCard,CircleArrowRight,Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 // Reusable input field component
@@ -24,13 +24,17 @@ function OrderDetailsPage() {
         <div className="min-h-screen bg-[#F8FAFC]">
             <div className='mx-auto w-[90%] max-w-2xl py-8'>
                 <div className="flex items-center mb-8">
-                    <button onClick={() => router.back()} className="p-2 rounded-full hover:bg-gray-200">
+                    <button onClick={() => router.back()} className="p-2 rounded-full hover:bg-gray-200 cursor-pointer">
                         <ArrowLeft size={24} className="text-gray-700" />
                     </button>
                     <h1 className='flex-grow text-center text-2xl text-gray-800 font-semibold'>
                         Confirm Your Details
                     </h1>
-                    <div className="w-8"></div> {/* Spacer to balance the back button */}
+                    <div 
+                        className='cursor-pointer'
+                    >
+                        <Trash2 size={24} className='text-red-800'/>
+                    </div>
                 </div>
 
                 <div className="bg-white p-8 rounded-lg shadow-md">
@@ -52,7 +56,7 @@ function OrderDetailsPage() {
 
                         <button
                             type="submit"
-                            className="w-full bg-[#3B0A45] text-white font-semibold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transition-all transform hover:scale-105"
+                            className="w-full bg-[#3B0A45] text-white font-semibold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transition-all transform cursor-pointer"
                         >
                             <CircleArrowRight size={20} />
                             Place Order

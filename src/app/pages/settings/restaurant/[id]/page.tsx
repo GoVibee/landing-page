@@ -154,7 +154,7 @@ function Page() {
             {totalItemsInOrder > 0 && (
                 <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md">
                     <button 
-                        className="w-full bg-[#3B0A45] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3  transition-all transform hover:scale-105"
+                        className="w-full bg-[#3B0A45] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3  transition-all transform cursor-pointer"
                         onClick={() => router.push('/pages/settings/restaurant/1/details')}
                     >
                         <ShoppingCart size={20} />
