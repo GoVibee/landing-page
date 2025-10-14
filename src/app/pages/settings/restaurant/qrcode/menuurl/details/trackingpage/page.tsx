@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Check, ChefHat, Bell, UtensilsCrossed, ArrowLeft } from 'lucide-react';
-import Image1 from '../../../../../../../../assets/3.jpg';
+import Image1 from '../../../../../../../../../assets/3.jpg';s
 import Image from 'next/image';
 
 const statuses = [

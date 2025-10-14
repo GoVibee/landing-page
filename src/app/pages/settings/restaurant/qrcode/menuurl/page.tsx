@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react';
-import Image1 from '../../../../../../assets/3.jpg';
+import Image1 from '../../../../../../../assets/3.jpg';
 import Image from 'next/image';
 import { Search, Plus, Minus, ShoppingCart } from 'lucide-react';
 import {useRouter} from 'next/navigation';
@@ -74,7 +74,7 @@ function Page() {
                 <h1 className='text-center text-2xl text-gray-800 font-semibold'>CoCo Vanilla - East legon</h1>
             </div>
             <div className='mt-5'>
-                <div>
+                <div className='bg-gray-100 rounded-lg'>
                     <Image
                         src={Image1}
                         alt='restaurant-image'
@@ -155,7 +155,7 @@ function Page() {
                 <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md">
                     <button 
                         className="w-full bg-[#3B0A45] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3  transition-all transform cursor-pointer"
-                        onClick={() => router.push('/pages/settings/restaurant/1/details')}
+                        onClick={() => router.push('/pages/settings/restaurant/qrcode/menuurl/details')}
                     >
                         {/* <ShoppingCart size={20} /> */}
                         View Order ({totalItemsInOrder} {totalItemsInOrder > 1 ? 'items' : 'item'})
