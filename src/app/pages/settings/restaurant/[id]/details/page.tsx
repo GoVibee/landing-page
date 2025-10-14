@@ -55,8 +55,9 @@ function OrderDetailsPage() {
                         </div>
 
                         <button
-                            type="submit"
+                            type="button"
                             className="w-full bg-[#3B0A45] text-white font-semibold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transition-all transform cursor-pointer"
+                            onClick={() => router.push('/pages/settings/restaurant/1/details/trackingpage')}
                         >
                             <CircleArrowRight size={20} />
                             Place Order
