@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Check, ChefHat, Bell, UtensilsCrossed, ArrowLeft } from 'lucide-react';
+import Image1 from '../../../../../../../../assets/3.jpg';
+import Image from 'next/image';
 
 const statuses = [
     { name: 'Order Placed', icon: Check, description: 'We have received your order.' },
@@ -67,6 +69,17 @@ function OrderStatusPage() {
                         Order Tracking
                     </h1>
                     <div className="w-8"></div>
+                </div>
+
+                 <div className='my-5'>
+                    <div>
+                        <Image
+                            src={Image1}
+                            alt='restaurant-image'
+                            className='w-full h-auto max-h-[400px] object-cover rounded-lg'
+                            priority
+                        />
+                    </div>
                 </div>
 
                 {/* --- Order Details Summary --- */}
