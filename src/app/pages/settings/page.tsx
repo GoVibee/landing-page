@@ -108,7 +108,7 @@ export default function SettingsPage() {
       {
           title: 'Qr Code',
           items: [
-              { icon: QrCode, title: 'Qr Code settings', description: 'Manage your Qr Code preferences',route: '/pages/settings/restaurant/1' },
+              { icon: QrCode, title: 'Qr Code settings', description: 'Manage your Qr Code preferences',route: '/pages/settings/restaurant/qrcode' },
           ]
       },
       // {
