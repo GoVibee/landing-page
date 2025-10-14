@@ -90,38 +90,37 @@ export default function HomePage() {
                      </div>
                    </header>
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div>
-          {/* Header Section */}
-          <div  className="flex flex-col font-plus md:flex-row md:items-center md:justify-between mb-8 gap-4">
-            <h1 className="text-3xl font-bold text-gray-900">Notifications </h1>
-            <div className="w-40"/>
-          </div>
+            <div>
+            {/* Header Section */}
+            <div  className="flex flex-col font-plus md:flex-row md:items-center md:justify-between mb-8 gap-4">
+                <h1 className="text-3xl font-bold text-gray-900">Notifications </h1>
+                <div className="w-40"/>
+            </div>
 
 
-          {/* Bookings Table Section */}
-          <div className="overflow-hidden font-plus">
-            <div className="overflow-x-auto">
-                <h3 className='my-3 text-gray-500'>Today</h3>
-                <div className=''>
-                    {
-                        notifications.map((n) => (
-                            <div key={n.id} className='bg-white rounded-lg  mb-4 px-2 py-1'>
-                                <div className='md:w-[90%] md:mx-auto flex items-center justify-between gap-4'>
-                                    <div>
-                                        <h3 className='font-medium'>{n.title}</h3>
-                                        <h4 className='text-sm text-gray-600'>{n.description}</h4>
+            {/* Bookings Table Section */}
+            <div className="overflow-hidden font-plus">
+                <div className="overflow-x-auto">
+                    <h3 className='my-3 text-gray-500'>Today</h3>
+                    <div className=''>
+                        {
+                            notifications.map((n) => (
+                                <div key={n.id} className='bg-white rounded-lg  mb-4 px-2 py-1'>
+                                    <div className='md:w-[90%] md:mx-auto flex items-center justify-between gap-4'>
+                                        <div>
+                                            <h3 className='font-medium'>{n.title}</h3>
+                                            <h4 className='text-sm text-gray-600'>{n.description}</h4>
+                                        </div>
+                                        <div className='cursor-pointer text-[#3B0A45] font-semibold'> View </div>
                                     </div>
-                                    <div className='cursor-pointer text-[#3B0A45] font-semibold'> View </div>
                                 </div>
-                            </div>
-                        ))
-                    }
-                
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
-          </div>
-        </div>
-      </main>
+            </div>
+        </main>
       </div>
     </div>
     
