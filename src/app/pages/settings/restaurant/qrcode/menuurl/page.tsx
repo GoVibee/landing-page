@@ -69,7 +69,7 @@ function Page() {
     }, [activeCategory, searchTerm]);
 
     return (
-        <div className='mx-auto w-[90%] mt-5 relative pb-24'>
+        <div className='mx-auto w-[90%] mt-5 relative pb-24 font-plus'>
             <div>
                 <h1 className='text-center text-2xl text-gray-800 font-semibold'>CoCo Vanilla - East legon</h1>
             </div>
