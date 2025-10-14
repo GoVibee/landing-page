@@ -82,6 +82,16 @@ function OrderStatusPage() {
                     </div>
                 </div>
 
+                {/*User data */}
+                <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+                    <h2 className="text-lg font-bold text-gray-800 mb-4">Customer Info</h2>
+                    <div className="space-y-3 text-gray-600">
+                        <div className="flex justify-between"><span>Name:</span> <span>John Doe</span></div>
+                        <div className="flex justify-between"><span>Phone:</span> <span>024 123 4567</span></div>
+                        <div className="flex justify-between"><span>Email:</span> <span>johndoe@example.com</span></div>
+                        <div className="flex justify-between"><span>Table:</span> <span>5</span></div>
+                    </div>
+                </div>
             
 
                 {/* --- Order Status Timeline --- */}
