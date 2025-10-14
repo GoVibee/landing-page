@@ -62,7 +62,7 @@ function OrderStatusPage() {
         <div className="min-h-screen bg-[#F8FAFC]">
             <div className='mx-auto w-[90%] max-w-2xl py-8'>
                 <div className="flex items-center mb-8">
-                     <button onClick={() => router.push('/')} className="p-2 rounded-full hover:bg-gray-200">
+                     <button onClick={() => router.back()} className="p-2 rounded-full hover:bg-gray-200">
                         <ArrowLeft size={24} className="text-gray-700" />
                     </button>
                     <h1 className='flex-grow text-center text-2xl text-gray-800 font-semibold'>
