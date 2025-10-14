@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Check, ChefHat, Bell, UtensilsCrossed, ArrowLeft } from 'lucide-react';
-import Image1 from '../../../../../../../../../assets/3.jpg';s
+import Image1 from '../../../../../../../../../assets/3.jpg';
 import Image from 'next/image';
 
 const statuses = [
@@ -71,7 +71,7 @@ function OrderStatusPage() {
                     <div className="w-8"></div>
                 </div>
 
-                 <div className='my-5'>
+                 <div className='my-5 bg-gray-100 rounded-lg'>
                     <div>
                         <Image
                             src={Image1}
