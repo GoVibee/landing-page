@@ -268,7 +268,10 @@ export default function HomePage() {
                                   </div>
                        {/* <div className="w-40"/> */}
                      <div className="flex items-center gap-6">
-                       <button className="relative">
+                       <button 
+                        className="relative cursor-pointer"
+                        onClick={() => router.push('/pages/notifications')}
+                      >
                          <Bell size={24} className="text-gray-500" />
                          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
                            3
