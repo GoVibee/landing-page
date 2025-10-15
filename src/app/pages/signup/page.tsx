@@ -18,10 +18,10 @@ export default function AuthPage() {
     e.preventDefault(); // Prevent default form submission
     if (!isLoginView) {
       // If it's the sign-up form, navigate to the create-restaurant page
-      router.push('/pages/restaurant');
+      router.push('/pages/dashboard');
     } else {
       // Handle login logic here
-      router.push('/pages/dashboard');
+      router.push('/pages/restaurant');
     }
   };
 
@@ -53,15 +53,15 @@ export default function AuthPage() {
            <div className="flex justify-end mb-6">
             <div className="flex items-center text-sm border border-gray-200 rounded-full p-1">
               <button
-                onClick={() => setIsLoginView(true)}
-                className={`px-4 py-1 rounded-full transition-colors ${isLoginView ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-500'}`}
+                onClick={() => setIsLoginView(false)}
+                className={`px-4 py-1 rounded-full transition-colors ${!isLoginView ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-500'}`}
               >
                 <LogIn size={16} className="inline mr-1" />
                 Login
               </button>
               <button
-                onClick={() => setIsLoginView(false)}
-                className={`px-4 py-1 rounded-full transition-colors ${!isLoginView ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-500'}`}
+                onClick={() => setIsLoginView(true)}
+                className={`px-4 py-1 rounded-full transition-colors ${isLoginView ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-500'}`}
               >
                 <User size={16} className="inline mr-1" />
                 Sign Up
@@ -71,10 +71,10 @@ export default function AuthPage() {
           
           {/* Title and Subtitle */}
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {isLoginView ? 'Welcome Back!' : 'Create an account'}
+            {isLoginView ? 'Create your account' : 'Welcome Back!'}
           </h1>
           <p className="text-gray-600 mb-8">
-            {isLoginView ? 'Please enter your details to sign in.' : 'Please enter your details to create an account.'}
+            {isLoginView ? 'Please enter your details to create an account.' : 'Please enter your details to sign in.'}
           </p>
 
           <form className="space-y-6" onSubmit={handleSubmit}> {/* <-- ATTACH handleSubmit */}
@@ -90,14 +90,14 @@ export default function AuthPage() {
               </button>
             </div>
             <button type="submit" className="w-full cursor-pointer bg-[#3B0A45] text-white font-semibold py-3 rounded-l transition-colors">
-              {isLoginView ? 'Sign in' : 'Continue'}
+              {isLoginView ? 'Continue' : 'Sign in'}
             </button>
           </form>
 
           <p className="text-center text-sm text-gray-600 mt-8">
             {isLoginView ? "Don't have an account?" : "Already have an account?"}
             <button onClick={() => setIsLoginView(!isLoginView)} className="font-semibold text-gray-800 hover:underline ml-1">
-              {isLoginView ? 'Sign up' : 'Sign in'}
+              {isLoginView ? 'Sign in' : 'Sign up '}
             </button>
           </p>
         </div>
