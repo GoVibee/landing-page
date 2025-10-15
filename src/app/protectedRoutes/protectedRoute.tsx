@@ -10,7 +10,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     const token = localStorage.getItem("token");
 
     if (!token) {
-      router.push("/"); // redirect if not logged in
+      router.push("/pages/signup"); // redirect if not logged in
     }
   }, [router]);
 

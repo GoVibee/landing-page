@@ -5,22 +5,22 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation'; // <-- IMPORT useRouter
 import {Eye, EyeOff, User, LogIn} from 'lucide-react';
 import Image1 from '../../../../assets/hero-3.jpg';
+import { Oval } from 'react-loader-spinner';
 
 
 export default function AuthPage() {
   const [isLoginView, setIsLoginView] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [loading,setLoading] = useState(false);
   const router = useRouter(); // <-- INITIALIZE useRouter
 
   // Function to handle form submission
   const handleSubmit = (e: any) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
     if (!isLoginView) {
-      // If it's the sign-up form, navigate to the create-restaurant page
       router.push('/pages/dashboard');
     } else {
-      // Handle login logic here
       router.push('/pages/restaurant');
     }
   };
