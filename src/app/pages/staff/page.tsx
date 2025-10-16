@@ -6,6 +6,7 @@ import React, { useState,useEffect } from 'react';
 import { Calendar, LayoutDashboard,Logs, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,Plus,ChevronRight } from 'lucide-react';
 import { useRouter,usePathname } from 'next/navigation';
 import { p } from 'framer-motion/client';
+import StaffLayout from './layout';
 
 
 const bookingsData = [
@@ -265,191 +266,193 @@ export default function HomePage() {
     ];
 
   return (
-    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
-     <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-             <div className="p-6 flex items-center space-x-2 border-b border-gray-300">
-               <div className="text-2xl font-bold text-gray-800">
-                <span className="text-[#3B0A45]">Go</span>Vibe
-               </div>
-             </div>
-             <nav className="flex-1 p-4 space-y-2">
-              {sidebarNavItems.map(item => (
-            <div key={item.text}>
-              <SidebarLink
-                key={item.text} 
-                icon={item.icon} 
-                text={item.text} 
-                active={item.active} 
-                route={item.route}
-              />
-              {/* Show sublinks for Menu */}
-            </div>
-          ))}
-             </nav>
-           </aside>
-           
-           {/* Backdrop for mobile sidebar */}
-           {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
-      <div className="flex-1 flex flex-col overflow-y-auto h-screen">
-         <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
-                      <div className="flex items-center space-x-4">
-                                     <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
-                                         {isSidebarOpen ? <X/> : <Menu />}
-                                     </button>
-                                  </div>
-                       {/* <div className="w-40"/> */}
-                     <div className="flex items-center gap-6">
-                       <button className="relative">
-                         <Bell size={24} className="text-gray-500" />
-                         <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                           3
-                         </span>
-                       </button>
-                        <div onClick={() => {
-                                       router.push('/pages/settings')
-                                      }} className='cursor-pointer'>
-                                       <UserRound size={20} color='#000'/>
-                                      </div>
-                        </div>
-                   </header>
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div >
-          {/* Header Section */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-              <div>
-                <h1 className="text-3xl font-plus font-semibold  sm:mb-0"> Staff </h1>
-                {/* <ChevronRight className='inline mx-2' size={30}/>
-                <span className='text-gray-700 font-plus'>Pizza</span> */}
+    <StaffLayout>
+      <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
+      <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+              <div className="p-6 flex items-center space-x-2 border-b border-gray-300">
+                <div className="text-2xl font-bold text-gray-800">
+                  <span className="text-[#3B0A45]">Go</span>Vibe
+                </div>
               </div>
-              <div className='w-24'/>
-          </div>
-
-          {/* Search and Filter Section */}
-          <div className="mb-6">
-            <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
-              <div className="relative md:w-1/2 lg:w-[40%]">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="search staff..."
-                  className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+              <nav className="flex-1 p-4 space-y-2">
+                {sidebarNavItems.map(item => (
+              <div key={item.text}>
+                <SidebarLink
+                  key={item.text} 
+                  icon={item.icon} 
+                  text={item.text} 
+                  active={item.active} 
+                  route={item.route}
                 />
+                {/* Show sublinks for Menu */}
               </div>
-              <div className='w-1/2 md:w-1/3 lg:w-1/4 bg-[#3B0A45] px-1 py-2 rounded-lg mt-4 md:mt-0'>
-                <button 
-                  className="flex  mx-auto gap-3 font-plus cursor-pointer text-white font-medium shadow-md  transition-colors"
-                  onClick={() => setAddCategory(true)}
-                >
-                  <Plus />
-                  Add  New Member
-                </button>
-              </div>
-            </div>
-            </div>
-
-          {/* Bookings Table Section */}
-          <div className="bg-white rounded-lg overflow-hidden font-plus mt-20 md:mt-24">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-              {/* Desktop Table Header */}
-                <thead className="border-b border-gray-200 hidden md:table-header-group">
-                  <tr>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Staff Id</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Name</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Phone Number</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Email</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Active</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Actions</th>
-                  </tr>
-                </thead>
-
-                <tbody className="divide-y divide-gray-200 font-plus">
-                  {bookingsData.map((booking, index) => (
-                    <tr
-                      key={index}
-                      className="block md:table-row bg-white md:bg-transparent rounded-lg md:rounded-none md:shadow-none mb-4 md:mb-0 border border-gray-100 md:border-b-gray-200 last:border-none"
-                    >
-                      {/* Dish ID */}
-                      <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Staff Id:</span>
-                        <span className="font-normal text-sm">{1}</span>
-                      </td>
-
-                      {/* Dish Name */}
-                      <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Name:</span>
-                        <span className="font-normal text-sm">{'flynn'}</span>
-                      </td>
-
-                      {/* Price */}
-                      <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Phone Number:</span>
-                        <span className="text-gray-800 text-sm">0540656226</span>
-                      </td>
-
-                      {/* Description */}
-                      <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-normal break-words md:max-w-[200px]">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Email:</span>
-                        <span className="text-gray-800 text-sm block">
-                         fe4369@gmail.com
-                        </span>
-                      </td>
-
-                      <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-normal break-words md:max-w-[200px]">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Active:</span>
-                        <button className={`bg-gray-300  border-[#aaaaaa] rounded-[99px] w-[50px] h-[28px] cursor-pointer transition-colors duration-[200ms] ease-in relative ${toggle ? 'bg-green-600' : ''}`} onClick={() => setToggle(!toggle)}>
-                          <div className={`w-[20px] h-[20px] bg-white rounded-[99px] translate-x-0 absolute left-1 top-1/2 -translate-y-1/2 transition-[left] duration-150 ease-in-out ${toggle ? 'absolute left-[calc(50px-25px)]' : ''}`}></div>
+            ))}
+              </nav>
+            </aside>
+            
+            {/* Backdrop for mobile sidebar */}
+            {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
+        <div className="flex-1 flex flex-col overflow-y-auto h-screen">
+          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
+                        <div className="flex items-center space-x-4">
+                                      <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                          {isSidebarOpen ? <X/> : <Menu />}
+                                      </button>
+                                    </div>
+                        {/* <div className="w-40"/> */}
+                      <div className="flex items-center gap-6">
+                        <button className="relative">
+                          <Bell size={24} className="text-gray-500" />
+                          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                            3
+                          </span>
                         </button>
-                      </td>
+                          <div onClick={() => {
+                                        router.push('/pages/settings')
+                                        }} className='cursor-pointer'>
+                                        <UserRound size={20} color='#000'/>
+                                        </div>
+                          </div>
+                    </header>
+          <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div >
+            {/* Header Section */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+                <div>
+                  <h1 className="text-3xl font-plus font-semibold  sm:mb-0"> Staff </h1>
+                  {/* <ChevronRight className='inline mx-2' size={30}/>
+                  <span className='text-gray-700 font-plus'>Pizza</span> */}
+                </div>
+                <div className='w-24'/>
+            </div>
 
-                      {/* Actions */}
-                      <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap text-sm font-medium">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
-                        <div className="flex items-center space-x-2">
-                          <button onClick={() => setSelectedBooking(booking)} className="text-[#3B0A45] cursor-pointer">
-                            View
-                          </button>
-                          <span className="text-gray-500">|</span>
-                          <button onClick={() => setDeleteBooking(true)} className="text-red-700 cursor-pointer">
-                            Delete
-                          </button>
-                          <span className="text-gray-500">|</span>
-                          <button onClick={() => setEditCategory(true)} className="text-[#3B0A45] cursor-pointer">
-                            Edit
-                          </button>
-                        </div>
-                      </td>
+            {/* Search and Filter Section */}
+            <div className="mb-6">
+              <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
+                <div className="relative md:w-1/2 lg:w-[40%]">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <input
+                    type="text"
+                    placeholder="search staff..."
+                    className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+                  />
+                </div>
+                <div className='w-1/2 md:w-1/3 lg:w-1/4 bg-[#3B0A45] px-1 py-2 rounded-lg mt-4 md:mt-0'>
+                  <button 
+                    className="flex  mx-auto gap-3 font-plus cursor-pointer text-white font-medium shadow-md  transition-colors"
+                    onClick={() => setAddCategory(true)}
+                  >
+                    <Plus />
+                    Add  New Member
+                  </button>
+                </div>
+              </div>
+              </div>
+
+            {/* Bookings Table Section */}
+            <div className="bg-white rounded-lg overflow-hidden font-plus mt-20 md:mt-24">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                {/* Desktop Table Header */}
+                  <thead className="border-b border-gray-200 hidden md:table-header-group">
+                    <tr>
+                      <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Staff Id</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Name</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Phone Number</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Email</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Active</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold text-gray-800">Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
 
+                  <tbody className="divide-y divide-gray-200 font-plus">
+                    {bookingsData.map((booking, index) => (
+                      <tr
+                        key={index}
+                        className="block md:table-row bg-white md:bg-transparent rounded-lg md:rounded-none md:shadow-none mb-4 md:mb-0 border border-gray-100 md:border-b-gray-200 last:border-none"
+                      >
+                        {/* Dish ID */}
+                        <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
+                          <span className="font-semibold text-gray-600 md:hidden mr-2">Staff Id:</span>
+                          <span className="font-normal text-sm">{1}</span>
+                        </td>
+
+                        {/* Dish Name */}
+                        <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
+                          <span className="font-semibold text-gray-600 md:hidden mr-2">Name:</span>
+                          <span className="font-normal text-sm">{'flynn'}</span>
+                        </td>
+
+                        {/* Price */}
+                        <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap">
+                          <span className="font-semibold text-gray-600 md:hidden mr-2">Phone Number:</span>
+                          <span className="text-gray-800 text-sm">0540656226</span>
+                        </td>
+
+                        {/* Description */}
+                        <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-normal break-words md:max-w-[200px]">
+                          <span className="font-semibold text-gray-600 md:hidden mr-2">Email:</span>
+                          <span className="text-gray-800 text-sm block">
+                          fe4369@gmail.com
+                          </span>
+                        </td>
+
+                        <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-normal break-words md:max-w-[200px]">
+                          <span className="font-semibold text-gray-600 md:hidden mr-2">Active:</span>
+                          <button className={`bg-gray-300  border-[#aaaaaa] rounded-[99px] w-[50px] h-[28px] cursor-pointer transition-colors duration-[200ms] ease-in relative ${toggle ? 'bg-green-600' : ''}`} onClick={() => setToggle(!toggle)}>
+                            <div className={`w-[20px] h-[20px] bg-white rounded-[99px] translate-x-0 absolute left-1 top-1/2 -translate-y-1/2 transition-[left] duration-150 ease-in-out ${toggle ? 'absolute left-[calc(50px-25px)]' : ''}`}></div>
+                          </button>
+                        </td>
+
+                        {/* Actions */}
+                        <td className="flex justify-between md:table-cell px-4 md:px-6 py-3 whitespace-nowrap text-sm font-medium">
+                          <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
+                          <div className="flex items-center space-x-2">
+                            <button onClick={() => setSelectedBooking(booking)} className="text-[#3B0A45] cursor-pointer">
+                              View
+                            </button>
+                            <span className="text-gray-500">|</span>
+                            <button onClick={() => setDeleteBooking(true)} className="text-red-700 cursor-pointer">
+                              Delete
+                            </button>
+                            <span className="text-gray-500">|</span>
+                            <button onClick={() => setEditCategory(true)} className="text-[#3B0A45] cursor-pointer">
+                              Edit
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+              </div>
             </div>
           </div>
+        </main>
         </div>
-      </main>
+        <AnimatePresence>
+          {selectedBooking && (
+              <BookingDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {deletebooking && (
+              <CancelDetailModal  onClose={() => setDeleteBooking(false)} />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {addcategory && (
+              <AddCategorylModal onClose={() => setAddCategory(false)} />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {editcategory && (
+              <EditCategorylModal onClose={() => setEditCategory(false)} />
+          )}
+        </AnimatePresence>
       </div>
-       <AnimatePresence>
-        {selectedBooking && (
-            <BookingDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
-        )}
-      </AnimatePresence>
-       <AnimatePresence>
-        {deletebooking && (
-            <CancelDetailModal  onClose={() => setDeleteBooking(false)} />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {addcategory && (
-            <AddCategorylModal onClose={() => setAddCategory(false)} />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {editcategory && (
-            <EditCategorylModal onClose={() => setEditCategory(false)} />
-        )}
-      </AnimatePresence>
-    </div>
+    </StaffLayout>
     
   );
 }
