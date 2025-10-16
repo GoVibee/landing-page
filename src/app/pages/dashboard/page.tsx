@@ -51,10 +51,10 @@ export default function HomePage() {
               <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
             ))}
           </nav>
-          {/* <div  className="p-4 border-t">
-            <CornerDownRight size={24} color="#000"/> 
-            <button> Logout </button>
-          </div> */}
+          <div  className="mb-20 flex items-center space-x-3 px-4 w-64 lg:w-56 xl:w-64 mx-auto">
+            <CornerDownRight size={24} color="#000" className='text-red-700'/> 
+            <button className='cursor-pointer text-red-700 font-medium'> Logout </button>
+          </div>
         </aside>
         
         {/* Backdrop for mobile sidebar */}
