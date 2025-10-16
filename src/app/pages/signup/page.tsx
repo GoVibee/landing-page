@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'; // <-- IMPORT useRouter
 import {Eye, EyeOff, User, LogIn} from 'lucide-react';
 import Image1 from '../../../../assets/hero-3.jpg';
 import { Oval } from 'react-loader-spinner';
+import { useAuth } from '@/hooks/useAuth';
 
 
 export default function AuthPage() {
