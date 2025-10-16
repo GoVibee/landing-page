@@ -19,8 +19,13 @@ export const useAuth = () => {
         return responseData;
     }
 
+    const Logout = async() => {
+        localStorage.removeItem('token');
+    }
+
     return {
         Login,
-        SignUp
+        SignUp,
+        Logout
     }
 }
