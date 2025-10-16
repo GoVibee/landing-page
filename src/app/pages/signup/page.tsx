@@ -7,6 +7,7 @@ import {Eye, EyeOff, User, LogIn} from 'lucide-react';
 import Image1 from '../../../../assets/hero-3.jpg';
 import { Oval } from 'react-loader-spinner';
 import { useAuth } from '@/hooks/useAuth';
+import { toast } from 'react-toastify';
 
 
 export default function AuthPage() {
@@ -14,15 +15,42 @@ export default function AuthPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [loading,setLoading] = useState(false);
+  const {Login,SignUp} = useAuth();
   const router = useRouter(); // <-- INITIALIZE useRouter
 
+  const [formdata,setFormdata] = useState({
+    email: '',
+    password: ''
+  });
+
+
   // Function to handle form submission
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault(); 
     if (!isLoginView) {
-      router.push('/pages/dashboard');
+      const data = await Login(formdata)
+      if(data.manager){
+        setLoading(false);
+        setTimeout(() => {
+          router.push('/pages/dashboard')
+        },400)
+      }else {
+        toast.error(data.message)
+        setLoading(false)
+      }
     } else {
-      router.push('/pages/restaurant');
+      const data = await SignUp(formdata)
+      if(data.manager){
+        setLoading(false);
+        toast.success('Account created')
+        setTimeout(() => {
+          router.push('/pages/restaurant')
+        },400)
+      }else {
+        toast.error(data.message)
+        setLoading(false)
+      }
     }
   };
 
@@ -80,18 +108,50 @@ export default function AuthPage() {
 
           <form className="space-y-6" onSubmit={handleSubmit}> {/* <-- ATTACH handleSubmit */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
-              <input type="email" id="email" placeholder="Enter your email address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+              <label 
+                htmlFor="email" 
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >Email address</label>
+              <input 
+                type="email" 
+                id="email" 
+                placeholder="Enter your email address" 
+                value={formdata.email}
+                onChange={(e) => setFormdata({...formdata,email: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" 
+                required
+              />
             </div>
             <div className="relative">
-              <label htmlFor="password"  className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-              <input type={passwordVisible ? "text" : "password"} id="password" placeholder="Enter your password" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" required />
+              <label
+                htmlFor="password"  
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >Password</label>
+              <input 
+                type={passwordVisible ? "text" : "password"} 
+                id="password" 
+                placeholder="Enter your password" 
+                value={formdata.password}
+                onChange={(e) => setFormdata({...formdata,password:e.target.value})}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" 
+                required 
+              />
               <button type="button" onClick={() => setPasswordVisible(!passwordVisible)} className="absolute right-3 top-10 text-gray-500">
                 {passwordVisible ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
             <button type="submit" className="w-full cursor-pointer bg-[#3B0A45] text-white font-semibold py-3 rounded-l transition-colors">
-              {isLoginView ? 'Continue' : 'Sign in'}
+              {loading ? <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                                            <Oval
+                                                              visible={true}
+                                                              height="30"
+                                                              width="30"
+                                                              color="#ffffff"
+                                                              wrapperStyle={{}}
+                                                              wrapperClass=""
+                                                            />
+                                                          </div> : isLoginView ? 'Continue': 'Sign in' }
+              {/* {isLoginView ? 'Continue' : 'Sign in'} */}
             </button>
           </form>
 
