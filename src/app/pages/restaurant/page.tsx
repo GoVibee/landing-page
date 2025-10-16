@@ -72,6 +72,7 @@ export default function CreateRestaurantPage() {
           <form className="space-y-8" onSubmit={handleSubmit}>
             <InputField label="Restaurant Name" id="restaurantName" placeholder="e.g., The Golden Spoon" />
             <InputField label="Location" id="location" placeholder="e.g., 123 Main Street, Accra" />
+              <InputField label="Contact" id="contact" placeholder="e.g., 0540768798" />
             <TextAreaField label="Description" id="description" placeholder="Tell us about your restaurant's vibe, cuisine, and history." />
             
             {/* Operating Days & Hours */}
