@@ -3,9 +3,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '@/components/ui/Badge';
 import React, { useState,useEffect } from 'react';
-import { Calendar, LayoutDashboard,Logs,Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,SlidersHorizontal } from 'lucide-react';
+import { Calendar, LayoutDashboard,Logs,Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,SlidersHorizontal,CornerDownRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import OrderLayout from './layout';
+import { useAuth } from '@/hooks/useAuth';
 
 
 const bookingsData = [
@@ -28,7 +29,6 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
     };
 
     return (
-      <OrderLayout>
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
             <motion.div
                 variants={modalVariants}
@@ -86,7 +86,6 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
                 </div>
             </motion.div>
         </div>
-      </OrderLayout>
     );
 };
 
@@ -253,6 +252,7 @@ export default function HomePage() {
   const [selectedBooking, setSelectedBooking] = useState<any>(null);
   const [status,setStatus] = useState<any>(null)
   const [deletebooking, setDeleteBooking] = useState<any>(false);
+  const {Logout} = useAuth();
 
   const router = useRouter();
   
@@ -267,176 +267,184 @@ export default function HomePage() {
     ];
 
   return (
-    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
-      <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-          <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
-            <div className="text-2xl font-bold text-gray-800">
-              <span className="text-[#3B0A45]">Go</span>Vibe
-            </div>
-          </div>
-          <nav className="flex-1 p-4 space-y-2">
-            {sidebarNavItems.map(item => (
-              <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
-            ))}
-          </nav>
-          {/* <div  className="p-4 border-t">
-            <CornerDownRight size={24} color="#000"/> 
-            <button> Logout </button>
-          </div> */}
-        </aside>
-           
-           {/* Backdrop for mobile sidebar */}
-           {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
-      <div className="flex-1 flex flex-col overflow-y-auto h-screen">
-         <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
-                      <div className="flex items-center space-x-4">
-                                     <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
-                                         {isSidebarOpen ? <X/> : <Menu />}
-                                     </button>
-                                  </div>
-                       {/* <div className="w-40"/> */}
-                     <div className="flex items-center gap-6">
-                        <button className="relative">
-                          <Bell size={24} className="text-gray-500" />
-                          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                            3
-                          </span>
-                        </button>
-                        <div onClick={() => {
-                          router.push('/pages/settings')
-                        }} className='cursor-pointer'>
-                          <UserRound size={20} color='#000'/>
-                        </div>
-                     </div>
-                   </header>
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div >
-          {/* Header Section */}
-          <div  className="flex flex-col font-plus md:flex-row md:items-center md:justify-between mb-8 gap-4">
-            <h1 className="text-3xl font-bold text-gray-900">Orders</h1>
-            {/* <button className="bg-violet-600 cursor-pointer text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:bg-violet-700 transition-colors self-start md:self-auto">
-              New Booking
-            </button> */}
-            <div className="w-40"/>
-          </div>
-
-          {/* Search and Filter Section */}
-         <div className="mb-6">
-            <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
-              <div className="relative md:w-1/2 lg:w-[40%]">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="search order..."
-                  className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
-                />
+    <OrderLayout>
+      <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
+        <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+            <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
+              <div className="text-2xl font-bold text-gray-800">
+                <span className="text-[#3B0A45]">Go</span>Vibe
               </div>
-              <div className='w-1/3 md:w-1/5 lg:w-1/6 cursor-pointer bg-white hover:bg-[#3B0A45] py-2 rounded-lg mt-4 md:mt-0 text-[#3B0A45]  hover:text-white'>
+            </div>
+            <nav className="flex-1 p-4 space-y-2">
+              {sidebarNavItems.map(item => (
+                <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
+              ))}
+            </nav>
+          <div  className="mt-20 lg:mb-20 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+              <CornerDownRight size={24} className='text-red-700'/> 
                 <button 
-                  className="flex  mx-auto gap-3 font-plus cursor-pointer font-medium transition-colors"
-                >
-                  Filter
-                  <SlidersHorizontal />
-                </button>
+                  className='cursor-pointer text-red-700 font-medium'
+                  onClick={() => {
+                    Logout();
+                    router.push('/pages/signup')
+                  }}
+            > Logout </button>
+            </div>
+          </aside>
+            
+            {/* Backdrop for mobile sidebar */}
+            {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
+        <div className="flex-1 flex flex-col overflow-y-auto h-screen">
+          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
+                        <div className="flex items-center space-x-4">
+                                      <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                          {isSidebarOpen ? <X/> : <Menu />}
+                                      </button>
+                                    </div>
+                        {/* <div className="w-40"/> */}
+                      <div className="flex items-center gap-6">
+                          <button className="relative">
+                            <Bell size={24} className="text-gray-500" />
+                            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                              3
+                            </span>
+                          </button>
+                          <div onClick={() => {
+                            router.push('/pages/settings')
+                          }} className='cursor-pointer'>
+                            <UserRound size={20} color='#000'/>
+                          </div>
+                      </div>
+                    </header>
+          <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div >
+            {/* Header Section */}
+            <div  className="flex flex-col font-plus md:flex-row md:items-center md:justify-between mb-8 gap-4">
+              <h1 className="text-3xl font-bold text-gray-900">Orders</h1>
+              {/* <button className="bg-violet-600 cursor-pointer text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:bg-violet-700 transition-colors self-start md:self-auto">
+                New Booking
+              </button> */}
+              <div className="w-40"/>
+            </div>
+
+            {/* Search and Filter Section */}
+          <div className="mb-6">
+              <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
+                <div className="relative md:w-1/2 lg:w-[40%]">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <input
+                    type="text"
+                    placeholder="search order..."
+                    className="w-full md:w-full pl-12 text-black pr-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
+                  />
+                </div>
+                <div className='w-1/3 md:w-1/5 lg:w-1/6 cursor-pointer bg-white hover:bg-[#3B0A45] py-2 rounded-lg mt-4 md:mt-0 text-[#3B0A45]  hover:text-white'>
+                  <button 
+                    className="flex  mx-auto gap-3 font-plus cursor-pointer font-medium transition-colors"
+                  >
+                    Filter
+                    <SlidersHorizontal />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
-           <div className='mb-16'>
-            <div className='mt-3 flex gap-5'>
-              <div className='bg-purple-100 hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/9'>
-                <h3 className='text-sm'>All</h3>
-              </div>
-              <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/9'>
-                <h3 className='text-sm'>Pending</h3>
-              </div>
-              <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/4 xl:w-1/7'>
-                <h3 className='text-sm'>In Preparation</h3>
-              </div>
-              <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/9'>
-                <h3 className='text-sm'> Ready</h3>
+            <div className='mb-16'>
+              <div className='mt-3 flex gap-5'>
+                <div className='bg-purple-100 hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/9'>
+                  <h3 className='text-sm'>All</h3>
+                </div>
+                <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/9'>
+                  <h3 className='text-sm'>Pending</h3>
+                </div>
+                <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/4 xl:w-1/7'>
+                  <h3 className='text-sm'>In Preparation</h3>
+                </div>
+                <div className='bg-white hover:bg-[#3B0A45] hover:text-white px-4 py-3 cursor-pointer rounded-lg flex flex-col items-center lg:w-1/9'>
+                  <h3 className='text-sm'> Ready</h3>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Bookings Table Section */}
-          <div className="bg-white rounded-lg overflow-hidden font-plus">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                {/* Desktop Table Header */}
-                <thead className="border-b border-gray-200 hidden md:table-header-group">
-                  <tr>
-                    <th className="px-6 py-6 text-[17px] font-semibold">Order Id</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold">Customer</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold">Order Time</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold">Status</th>
-                    <th className="px-6 py-6 text-[17px] font-semibold">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 font-plus">
-                  {bookingsData.map((booking, index) => (
-                    // On mobile, each row is a card. On desktop, it's a standard table row.
-                    <tr key={index} className="block md:table-row p-4 md:p-0 border-b border-[#E3DBE5] last:border-none">
-                      {/* Mobile Label + Data */}
-                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
-                        <span className="font-semibold md:hidden mr-2">Order Id:</span>
-                        <span className="font-normal text-sm ">{booking.orderId}</span>
-                      </td>
-                      <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
-                        <span className="font-semibold md:hidden mr-2">Customer:</span>
-                        <span className="font-normal text-sm ">{booking.customer}</span>
-                      </td>
-                      <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-gray-600">
-                        <span className="font-semibold text-gray-800 text-sm md:hidden mr-2">Order Time:</span>
-                        {booking.time}
-                      </td>
-                      <td   className="flex cursor-pointer justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap"
-                        onClick={() => {
-                          setSelectedBooking(null);
-                          setStatus(booking);
-                        }}
-                      >
-                        <span className="font-semibold text-gray-800 md:hidden mr-2">Status:</span>
-                        <Badge status={booking.status} />
-                      </td>
-                      <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
-                         <button onClick={() => {
-                          setSelectedBooking(booking);
-                          setStatus(null);
-                         }} className="text-[#3B0A45] cursor-pointer">
-                                View
-                            </button>
-                        <span className="text-black mx-1"> | </span>
-                        <button onClick={() => setDeleteBooking(true)} className="text-red-700 cursor-pointer">
-                                <h3>Delete</h3>
-                            </button>
-                      </td>
+            {/* Bookings Table Section */}
+            <div className="bg-white rounded-lg overflow-hidden font-plus">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  {/* Desktop Table Header */}
+                  <thead className="border-b border-gray-200 hidden md:table-header-group">
+                    <tr>
+                      <th className="px-6 py-6 text-[17px] font-semibold">Order Id</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold">Customer</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold">Order Time</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold">Status</th>
+                      <th className="px-6 py-6 text-[17px] font-semibold">Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 font-plus">
+                    {bookingsData.map((booking, index) => (
+                      // On mobile, each row is a card. On desktop, it's a standard table row.
+                      <tr key={index} className="block md:table-row p-4 md:p-0 border-b border-[#E3DBE5] last:border-none">
+                        {/* Mobile Label + Data */}
+                        <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
+                          <span className="font-semibold md:hidden mr-2">Order Id:</span>
+                          <span className="font-normal text-sm ">{booking.orderId}</span>
+                        </td>
+                        <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap">
+                          <span className="font-semibold md:hidden mr-2">Customer:</span>
+                          <span className="font-normal text-sm ">{booking.customer}</span>
+                        </td>
+                        <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-gray-600">
+                          <span className="font-semibold text-gray-800 text-sm md:hidden mr-2">Order Time:</span>
+                          {booking.time}
+                        </td>
+                        <td   className="flex cursor-pointer justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap"
+                          onClick={() => {
+                            setSelectedBooking(null);
+                            setStatus(booking);
+                          }}
+                        >
+                          <span className="font-semibold text-gray-800 md:hidden mr-2">Status:</span>
+                          <Badge status={booking.status} />
+                        </td>
+                        <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
+                          <button onClick={() => {
+                            setSelectedBooking(booking);
+                            setStatus(null);
+                          }} className="text-[#3B0A45] cursor-pointer">
+                                  View
+                              </button>
+                          <span className="text-black mx-1"> | </span>
+                          <button onClick={() => setDeleteBooking(true)} className="text-red-700 cursor-pointer">
+                                  <h3>Delete</h3>
+                              </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
+        </main>
         </div>
-      </main>
+        <AnimatePresence>
+          {selectedBooking && (
+              <OrderDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {status && (
+              <ConfirmOrderModal booking={status} onClose={() => setStatus(null)} />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {deletebooking && (
+              <CancelDetailModal  onClose={() => setDeleteBooking(false)} />
+          )}
+        </AnimatePresence>
       </div>
-       <AnimatePresence>
-        {selectedBooking && (
-            <OrderDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {status && (
-            <ConfirmOrderModal booking={status} onClose={() => setStatus(null)} />
-        )}
-      </AnimatePresence>
-       <AnimatePresence>
-        {deletebooking && (
-            <CancelDetailModal  onClose={() => setDeleteBooking(false)} />
-        )}
-      </AnimatePresence>
-    </div>
+    </OrderLayout>
     
   );
 }

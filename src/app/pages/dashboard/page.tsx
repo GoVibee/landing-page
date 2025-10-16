@@ -11,6 +11,7 @@ import DashboardLayout from "./layout";
 import { ChartContainer} from './../../../components/pages/dashboard/ChartContainer';
 import {TotalOrdersChart} from '../../../components/pages/dashboard/TotalOrdersChart';
 import {TotalRevenueChart} from '../../../components/pages/dashboard/TotalRevenueChart';
+import {useAuth} from '../../../hooks/useAuth';
 
 
 
@@ -27,6 +28,7 @@ const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
 export default function HomePage() {
    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
    const router = useRouter();
+   const {Logout} = useAuth();
 
     const sidebarNavItems = [
       { icon: LayoutDashboard, text: 'Dashboard', active: true,route: '/pages/dashboard'  },
@@ -37,6 +39,7 @@ export default function HomePage() {
       { icon: Users, text: 'Staff',route: '/pages/staff' },
       { icon: Settings, text: 'Settings',route: '/pages/settings'},
     ];
+
   return (
     <DashboardLayout>
       <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
@@ -51,9 +54,15 @@ export default function HomePage() {
               <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
             ))}
           </nav>
-          <div  className="mt-20 lg:mb-20 flex items-center space-x-3 px-4 w-64 lg:w-56 xl:w-64 mx-auto">
-            <CornerDownRight size={24} color="#000" className='text-red-700'/> 
-            <button className='cursor-pointer text-red-700 font-medium'> Logout </button>
+          <div  className="mt-20 lg:mb-20 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+            <CornerDownRight size={24} className='text-red-700'/> 
+            <button 
+              className='cursor-pointer text-red-700 font-medium'
+              onClick={() => {
+                Logout();
+                router.push('/pages/signup')
+              }}
+            > Logout </button>
           </div>
         </aside>
         
