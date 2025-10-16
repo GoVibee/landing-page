@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Oval } from 'react-loader-spinner';
 import { toast } from "react-toastify";
+import SettingsLayout from './layout';
 
 
 // --- Reusable Components ---
@@ -126,112 +127,114 @@ export default function SettingsPage() {
   ]
 
   return (
-    <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
-      {/* --- Sidebar --- */}
-     <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
-          <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
-            <div className="text-2xl font-bold text-gray-800">
-              <span className="text-[#3B0A45]">Go</span>Vibe
+    <SettingsLayout>
+      <div className="lg:flex min-h-screen bg-gray-100 w-full font-plus">
+        {/* --- Sidebar --- */}
+      <aside className={`fixed top-0 h-screen inset-y-0 left-0 bg-white shadow-sm z-50 w-64 lg:w-56 xl:w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+            <div className="p-6 flex items-center space-x-2 border-b border-gray-200">
+              <div className="text-2xl font-bold text-gray-800">
+                <span className="text-[#3B0A45]">Go</span>Vibe
+              </div>
             </div>
-          </div>
-          <nav className="flex-1 p-4 space-y-2">
-            {sidebarNavItems.map(item => (
-              <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
-            ))}
-          </nav>
-          {/* <div  className="p-4 border-t">
-            <CornerDownRight size={24} color="#000"/> 
-            <button> Logout </button>
-          </div> */}
-        </aside>
-      
-      {/* Backdrop for mobile sidebar */}
-      {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
+            <nav className="flex-1 p-4 space-y-2">
+              {sidebarNavItems.map(item => (
+                <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
+              ))}
+            </nav>
+            {/* <div  className="p-4 border-t">
+              <CornerDownRight size={24} color="#000"/> 
+              <button> Logout </button>
+            </div> */}
+          </aside>
+        
+        {/* Backdrop for mobile sidebar */}
+        {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
 
-      {/* --- Main Content --- */}
-      <div className="flex-1 flex flex-col overflow-y-auto h-screen">
-        {/* --- Top Header --- */}
-            <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
-             <div className="flex items-center space-x-4">
-                            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
-                                {isSidebarOpen ? <X/> : <Menu />}
-                            </button>
-                         </div>
-              {/* <div className="w-40"/> */}
-            <div className="flex items-center gap-6">
-              <button className="relative">
-                <Bell size={24} className="text-gray-500" />
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  3
-                </span>
-              </button>
-              <div onClick={() => {
-                router.push('/pages/settings')
-               }} className='cursor-pointer'>
-                <UserRound size={20} color='#000'/>
-               </div>
-            </div>
-          </header>
-
-        {/* --- Page Content --- */}
-        <main className="flex-1 p-6 lg:p-8">
-          <div className="container mx-auto">
-            <h1 className="text-3xl font-bold text-gray-800 mb-8">Settings</h1>
-
-            <div className="max-w-4xl mx-auto space-y-10">
-                {settingsSections.map(section => (
-                    <section key={section.title} className='cursor-pointer'>
-                        <h2 className="text-xl font-semibold text-gray-800 mb-4">{section.title}</h2>
-                        <div className="space-y-4">
-                            {section.items.map(item => (
-                                <SettingsItem key={item.title} icon={item.icon} title={item.title} description={item.description} route={item.route} />
-                            ))}
-                        </div>
-                    </section>
-                ))}
-                 {/* <h2 className="text-xl font-semibold text-gray-800 mb-4">Account Profile </h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                        <FormInput label="Email" placeholder="123@gmail.com" value={user.email}/>
-                        <FormInput label="Password" placeholder="*******" type="tel" />
-                        <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" />
-                    </div> */}
-                    {/* <h3 className='text-black'>Change pasword </h3> */}
-                    {/* <form >
-                      <div className="grid md:grid-cols-2 gap-4 -mt-4">
-                        <FormInput 
-                          label="Old password" 
-                          placeholder="*******" 
-                          value={formdata.oldPassword}
-                          onChange={handleChange}
-                        />
-                        <FormInput  
-                          label="New password" 
-                          placeholder="*******" 
-                          value={formdata.newPassword}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      <div className="mt-6">
-                      <button className="w-full bg-[#3B0A45] cursor-pointer text-white font-semibold rounded-lg py-2.5  transition-colors">
-                          {loading ? (
-                                              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                                                <Oval
-                                                  visible={true}
-                                                  height="30"
-                                                  width="30"
-                                                  color="#ffffff"
-                                                  wrapperStyle={{}}
-                                                  wrapperClass=""
-                                                />
-                                              </div>
-                                            ) : 'Save changes'}
-                      </button>
-                      </div>
-                    </form> */}
+        {/* --- Main Content --- */}
+        <div className="flex-1 flex flex-col overflow-y-auto h-screen">
+          {/* --- Top Header --- */}
+              <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
+              <div className="flex items-center space-x-4">
+                              <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                  {isSidebarOpen ? <X/> : <Menu />}
+                              </button>
+                          </div>
+                {/* <div className="w-40"/> */}
+              <div className="flex items-center gap-6">
+                <button className="relative">
+                  <Bell size={24} className="text-gray-500" />
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                    3
+                  </span>
+                </button>
+                <div onClick={() => {
+                  router.push('/pages/settings')
+                }} className='cursor-pointer'>
+                  <UserRound size={20} color='#000'/>
                 </div>
-            </div>
-        </main>
+              </div>
+            </header>
+
+          {/* --- Page Content --- */}
+          <main className="flex-1 p-6 lg:p-8">
+            <div className="container mx-auto">
+              <h1 className="text-3xl font-bold text-gray-800 mb-8">Settings</h1>
+
+              <div className="max-w-4xl mx-auto space-y-10">
+                  {settingsSections.map(section => (
+                      <section key={section.title} className='cursor-pointer'>
+                          <h2 className="text-xl font-semibold text-gray-800 mb-4">{section.title}</h2>
+                          <div className="space-y-4">
+                              {section.items.map(item => (
+                                  <SettingsItem key={item.title} icon={item.icon} title={item.title} description={item.description} route={item.route} />
+                              ))}
+                          </div>
+                      </section>
+                  ))}
+                  {/* <h2 className="text-xl font-semibold text-gray-800 mb-4">Account Profile </h2>
+                  <div className="grid md:grid-cols-2 gap-4">
+                          <FormInput label="Email" placeholder="123@gmail.com" value={user.email}/>
+                          <FormInput label="Password" placeholder="*******" type="tel" />
+                          <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" />
+                      </div> */}
+                      {/* <h3 className='text-black'>Change pasword </h3> */}
+                      {/* <form >
+                        <div className="grid md:grid-cols-2 gap-4 -mt-4">
+                          <FormInput 
+                            label="Old password" 
+                            placeholder="*******" 
+                            value={formdata.oldPassword}
+                            onChange={handleChange}
+                          />
+                          <FormInput  
+                            label="New password" 
+                            placeholder="*******" 
+                            value={formdata.newPassword}
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div className="mt-6">
+                        <button className="w-full bg-[#3B0A45] cursor-pointer text-white font-semibold rounded-lg py-2.5  transition-colors">
+                            {loading ? (
+                                                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                                  <Oval
+                                                    visible={true}
+                                                    height="30"
+                                                    width="30"
+                                                    color="#ffffff"
+                                                    wrapperStyle={{}}
+                                                    wrapperClass=""
+                                                  />
+                                                </div>
+                                              ) : 'Save changes'}
+                        </button>
+                        </div>
+                      </form> */}
+                  </div>
+              </div>
+          </main>
+        </div>
       </div>
-    </div>
+    </SettingsLayout>
   );
 }
