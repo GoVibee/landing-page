@@ -35,7 +35,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable}  ${plusJakartaSans.variable} antialiased`}
       >
-         <ProtectedRoute>
                   <ReduxProvider>
                     {children}
                      <ToastContainer
@@ -51,7 +50,6 @@ export default function RootLayout({
                       theme="light"
                     />
                   </ReduxProvider>
-                </ProtectedRoute>
       </body>
     </html>
   );
