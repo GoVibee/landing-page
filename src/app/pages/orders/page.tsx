@@ -5,6 +5,7 @@ import Badge from '@/components/ui/Badge';
 import React, { useState,useEffect } from 'react';
 import { Calendar, LayoutDashboard,Logs,Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,SlidersHorizontal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import OrderLayout from './layout';
 
 
 const bookingsData = [
@@ -27,6 +28,7 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
     };
 
     return (
+      <OrderLayout>
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
             <motion.div
                 variants={modalVariants}
@@ -84,6 +86,7 @@ const OrderDetailModal = ({ booking, onClose }: any) => {
                 </div>
             </motion.div>
         </div>
+      </OrderLayout>
     );
 };
 
