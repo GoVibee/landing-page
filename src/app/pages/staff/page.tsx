@@ -3,10 +3,11 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../../components/ui/Badge';
 import React, { useState,useEffect } from 'react';
-import { Calendar, LayoutDashboard,Logs, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare,Plus,ChevronRight } from 'lucide-react';
+import { Calendar, LayoutDashboard,Logs, Settings, CornerDownRight, Users, Search, Bell, Menu, X,UserRound,MessageSquare,Plus,ChevronRight } from 'lucide-react';
 import { useRouter,usePathname } from 'next/navigation';
 import { p } from 'framer-motion/client';
 import StaffLayout from './layout';
+import { useAuth } from '@/hooks/useAuth';
 
 
 const bookingsData = [
@@ -246,6 +247,7 @@ export default function HomePage() {
   const [deletebooking, setDeleteBooking] = useState<any>(false);
   const [addcategory,setAddCategory] = useState<any>(false);
   const [editcategory,setEditCategory] = useState<any>(false);
+  const {Logout} = useAuth();
 
   const router = useRouter();
 
@@ -288,6 +290,16 @@ export default function HomePage() {
               </div>
             ))}
               </nav>
+              <div  className="mt-10 lg:mb-10 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+                                                     <CornerDownRight size={24} className='text-red-700'/> 
+                                                     <button 
+                                                       className='cursor-pointer text-red-700 font-medium'
+                                                       onClick={() => {
+                                                         Logout();
+                                                         router.push('/pages/signup')
+                                                       }}
+                                                     > Logout </button>
+                                                   </div>
             </aside>
             
             {/* Backdrop for mobile sidebar */}
