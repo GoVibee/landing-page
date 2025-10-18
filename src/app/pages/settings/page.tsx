@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState,useEffect } from 'react';
-import {Calendar,BellRing,CreditCard,ChevronRight, LayoutDashboard,UserRound, Settings, Users,Logs, Bell, Menu, X, User,MessageSquare,Utensils,QrCode} from 'lucide-react';
+import {Calendar,BellRing,CreditCard,ChevronRight,CornerDownRight, LayoutDashboard,UserRound, Settings, Users,Logs, Bell, Menu, X, User,MessageSquare,Utensils,QrCode} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Oval } from 'react-loader-spinner';
@@ -48,6 +48,7 @@ export default function SettingsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const router = useRouter();
 //   const {GetUser,UpdateAdmin} = useAuth();
+const {Logout} = useAuth();
   const [user,setUser] = useState<any>([])
   const [loading,setLoading] = useState(false);
   const [formdata,setFormdata]  = useState<any>({
@@ -141,10 +142,16 @@ export default function SettingsPage() {
                 <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
               ))}
             </nav>
-            {/* <div  className="p-4 border-t">
-              <CornerDownRight size={24} color="#000"/> 
-              <button> Logout </button>
-            </div> */}
+            <div  className="mt-10 lg:mb-10 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+                                                   <CornerDownRight size={24} className='text-red-700'/> 
+                                                   <button 
+                                                     className='cursor-pointer text-red-700 font-medium'
+                                                     onClick={() => {
+                                                       Logout();
+                                                       router.push('/pages/signup')
+                                                     }}
+                                                   > Logout </button>
+                                                 </div>
           </aside>
         
         {/* Backdrop for mobile sidebar */}

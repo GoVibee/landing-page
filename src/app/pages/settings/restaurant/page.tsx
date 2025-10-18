@@ -2,7 +2,7 @@
 
 import React, { useState,useRef,useEffect } from 'react';
 import Image from 'next/image';
-import { Calendar, LayoutDashboard, Settings, Users, Bell, Menu, X,Logs,MessageSquare ,UploadCloud,UserRound,ChevronDown,Check,Clock } from 'lucide-react';
+import { Calendar, LayoutDashboard, Settings, Users,CornerDownRight, Bell, Menu, X,Logs,MessageSquare ,UploadCloud,UserRound,ChevronDown,Check,Clock } from 'lucide-react';
 import Image1 from '../../../../assets/go.png';
 import { useRouter } from 'next/navigation';
 import {storage} from '../../../../firebase';
@@ -10,6 +10,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import { useRestaurant } from '@/hooks/useRestaurant';
 import { Oval } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
+import {useAuth} from '@/hooks/useAuth';
 
 
 // --- Reusable Components ---
@@ -203,6 +204,7 @@ export default function CreateRestaurantPage() {
     // const {UploadFiles} = useRestaurant();
     const [uploadloading,setUploadLoading] = useState(false);
     const [submitloading,setSubmitLoading] = useState(false);
+    const {Logout} = useAuth();
     
     const [selectedCuisines, setSelectedCuisines] = useState([]);
     // --- NEW: State for the entire menu structure ---
@@ -296,10 +298,16 @@ export default function CreateRestaurantPage() {
               <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
             ))}
           </nav>
-          {/* <div  className="p-4 border-t">
-            <CornerDownRight size={24} color="#000"/> 
-            <button> Logout </button>
-          </div> */}
+         <div  className="mt-10 lg:mb-10 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+                                                <CornerDownRight size={24} className='text-red-700'/> 
+                                                <button 
+                                                  className='cursor-pointer text-red-700 font-medium'
+                                                  onClick={() => {
+                                                    Logout();
+                                                    router.push('/pages/signup')
+                                                  }}
+                                                > Logout </button>
+                                              </div>
         </aside>
       
       {/* Backdrop for mobile sidebar */}

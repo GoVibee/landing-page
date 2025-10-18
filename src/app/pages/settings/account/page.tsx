@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState,useEffect } from 'react';
-import { Home, Calendar, LayoutDashboard,UserRound, Settings, BarChart2, Beer, Coffee, Users, Bell, Menu, X, ChevronRight,Logs,MessageSquare } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard,UserRound,CornerDownRight, Settings, BarChart2, Beer, Coffee, Users, Bell, Menu, X, ChevronRight,Logs,MessageSquare } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Oval } from 'react-loader-spinner';
@@ -46,6 +46,7 @@ const FormInput = ({ label, placeholder, type = 'text',value,onChange }: any) =>
 export default function SettingsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const router = useRouter();
+  const {Logout} = useAuth();
   const [user,setUser] = useState<any>([])
   const [loading,setLoading] = useState(false);
   const [formdata,setFormdata]  = useState<any>({
@@ -108,6 +109,16 @@ export default function SettingsPage() {
             <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active}  route={item.route}/>
           ))}
         </nav>
+        <div  className="mt-10 lg:mb-10 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+                                               <CornerDownRight size={24} className='text-red-700'/> 
+                                               <button 
+                                                 className='cursor-pointer text-red-700 font-medium'
+                                                 onClick={() => {
+                                                   Logout();
+                                                   router.push('/pages/signup')
+                                                 }}
+                                               > Logout </button>
+                                             </div>
       </aside>
       
       {/* Backdrop for mobile sidebar */}
