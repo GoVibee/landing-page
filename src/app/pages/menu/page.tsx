@@ -3,8 +3,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../../components/ui/Badge';
 import React, { useState,useEffect } from 'react';
-import { Home, Calendar, LayoutDashboard,Logs, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound,MessageSquare,Plus,ChevronRight } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard,Logs, Settings,CornerDownRight, Users, Search, Bell, Menu, X,UserRound,MessageSquare,Plus,ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 import Image1 from '../../../../assets/hero-3.jpg';
 import Image from 'next/image';
 import MenuLayout from './layout';
@@ -281,6 +282,7 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [addmenuoption, setAddMenuOption] = useState<any>(false);
   const [editmenuoption,setEditMenuOption] = useState<any>(false);
+  const {Logout} = useAuth();
   const router = useRouter();
 
   const menuCategories = [{
@@ -371,6 +373,16 @@ export default function HomePage() {
               </div>
             ))}
               </nav>
+              <div  className="mt-10 lg:mb-10 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+                          <CornerDownRight size={24} className='text-red-700'/> 
+                          <button 
+                            className='cursor-pointer text-red-700 font-medium'
+                            onClick={() => {
+                              Logout();
+                              router.push('/pages/signup')
+                            }}
+                          > Logout </button>
+                        </div>
             </aside>
             
             {/* Backdrop for mobile sidebar */}
