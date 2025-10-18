@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '@/components/ui/Badge';
 import FilterDropdown from '../../../components/ui/FilterDropdown';
 import React, { useState,useEffect } from 'react';
-import { Calendar, LayoutDashboard,Logs,ChevronDown, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare, SlidersHorizontal } from 'lucide-react';
+import { Calendar, LayoutDashboard,Logs,CornerDownRight, Settings, BarChart2, Users, Search, Bell, Menu, X,UserRound,MessageSquare, SlidersHorizontal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import NotificationsLayout from './layout';
+import { useAuth } from '@/hooks/useAuth';
 
 
 
@@ -19,6 +20,7 @@ const SidebarLink = ({ icon: Icon, text,route }: any) => (
 
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const {Logout} = useAuth();
 
 
   const router = useRouter();
@@ -65,6 +67,16 @@ export default function HomePage() {
                 <SidebarLink key={item.text} icon={item.icon} text={item.text}  route={item.route}/>
               ))}
             </nav>
+            <div  className="mt-10 lg:mb-10 flex items-center space-x-3 px-8 w-64 lg:w-56 xl:w-64 mx-auto">
+                                       <CornerDownRight size={24} className='text-red-700'/> 
+                                       <button 
+                                         className='cursor-pointer text-red-700 font-medium'
+                                         onClick={() => {
+                                           Logout();
+                                           router.push('/pages/signup')
+                                         }}
+                                       > Logout </button>
+                                     </div>
           </aside>
             
             {/* Backdrop for mobile sidebar */}
